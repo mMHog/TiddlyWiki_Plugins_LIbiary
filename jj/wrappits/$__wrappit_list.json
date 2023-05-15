@@ -1,0 +1,16 @@
+[
+    {
+        "created": "20200426200047324",
+        "text": "",
+        "tooltip": "Generates lists of tiddlers",
+        "title": "$:/wrappit/list",
+        "tags": "",
+        "suffix": "</$list>",
+        "reflink": "ListWidget",
+        "prefix": " <$list filter=\"\" variable=\"\" emptyMessage=\"\">",
+        "modified": "20200502094857552",
+        "icon": "",
+        "caption": "",
+        "param": "wrap-lines"
+    }
+]

@@ -1,0 +1,11 @@
+{
+    "title": "$:/plugins/tg/exploration",
+    "author": "TonGerner",
+    "core-version": ">=5.1.15",
+    "description": "Exploration",
+    "list": "readme license",
+    "name": "Exploration",
+    "plugin-type": "plugin",
+    "source": "http://www.tongerner.nl/TW5/TW5_index.html",
+    "version": "0.0.12"
+}

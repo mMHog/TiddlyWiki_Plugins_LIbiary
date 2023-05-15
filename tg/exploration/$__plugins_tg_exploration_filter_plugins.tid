@@ -1,0 +1,8 @@
+created: 20170324171715717
+creator: TonGerner
+description: Plugins
+filter: [all[shadows]sort[title]]+[prefix[$:/plugins]]
+modified: 20191229162338672
+modifier: TonGerner
+tags: $:/tags/codeFilter
+title: $:/plugins/tg/exploration/filter/plugins

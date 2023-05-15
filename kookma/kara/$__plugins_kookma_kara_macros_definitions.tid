@@ -1,0 +1,7 @@
+code-body: yes
+tags: 
+title: $:/plugins/kookma/kara/macros/definitions
+type: text/vnd.tiddlywiki
+
+\define checklistDisplayConfig() $:/config/kara/checklist/mode
+\define interstitialDisplayConfig() $:/config/kara/interstitial/mode

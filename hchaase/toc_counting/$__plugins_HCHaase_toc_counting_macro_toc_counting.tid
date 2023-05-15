@@ -1,0 +1,88 @@
+created: 20200309120858675
+creator: HC Haase
+description: code from toc macro with counting inserted. will be given tag tags/macro to replace the original toc macro
+modified: 20200311110008835
+modifier: HC Haase
+state: tag/link
+tags: $:/tags/Macro
+title: $:/plugins/HCHaase/toc_counting/macro/toc_counting
+
+\define toc_counting()
+
+<!-- clasic 1. level search in tags -->
+
+<$reveal type="match" state="$:/state/plugins/HCHaase/toc_counting/macro/toc_counting!!level" text="1">
+<!-- show tag count if any-->
+<$reveal type="match" state="$:/state/plugins/HCHaase/toc_counting/macro/toc_counting" text="tag">
+<$button set="$:/state/plugins/HCHaase/toc_counting/macro/toc_counting" setTo="tag/link" class="tc-btn-invisible">
+<small class="tc-menu-list-count"><$list filter='[all[tiddlers]tag<currentTiddler>limit[1]]'  variable=null> (<$count filter="[all[current]tagging[]]"/>)</$list></small>
+</$button>
+</$reveal> 
+
+<!-- show tag/link count if any-->
+<$reveal type="match" state="$:/state/plugins/HCHaase/toc_counting/macro/toc_counting" text="tag/link">
+<$button set="$:/state/plugins/HCHaase/toc_counting/macro/toc_counting" setTo="link" class="tc-btn-invisible">
+<small class="tc-menu-list-count"><$list filter='[all[tiddlers]tag<currentTiddler>] [all[current]backlinks[]] +[limit[1]]'  variable=null> (<$count filter="[all[current]tagging[]]"/>/__<$count filter='[all[current]backlinks[]]'/>__)</$list></small>
+</$button>
+</$reveal> 
+
+<!-- show backlink count if any-->
+<$reveal type="match" state="$:/state/plugins/HCHaase/toc_counting/macro/toc_counting" text="link">
+<$button set="$:/state/plugins/HCHaase/toc_counting/macro/toc_counting" setTo="tag" class="tc-btn-invisible">
+<small class="tc-menu-list-count"><$list filter='[all[current]backlinks[]limit[1]]'  variable=null> (__<$count filter='[all[current]backlinks[]]'/>__)</$list></small>
+</$button>
+</$reveal>
+</$reveal> 
+
+
+<!-- deep level search in tags  -->
+
+<$reveal type="match" state="$:/state/plugins/HCHaase/toc_counting/macro/toc_counting!!level" text="deep">
+<!-- show tag count if any-->
+<$reveal type="match" state="$:/state/plugins/HCHaase/toc_counting/macro/toc_counting" text="tag">
+<$button set="$:/state/plugins/HCHaase/toc_counting/macro/toc_counting" setTo="tag/link" class="tc-btn-invisible">
+<small class="tc-menu-list-count"><$list filter='[all[tiddlers]tag<currentTiddler>limit[1]]'  variable=null> (<$count filter="[kin::to<currentTiddler>!<currentTiddler>]"/>)</$list></small>
+</$button>
+</$reveal> 
+
+<!-- show tag/link count if any-->
+<$reveal type="match" state="$:/state/plugins/HCHaase/toc_counting/macro/toc_counting" text="tag/link">
+<$button set="$:/state/plugins/HCHaase/toc_counting/macro/toc_counting" setTo="link" class="tc-btn-invisible">
+<small class="tc-menu-list-count"><$list filter='[all[tiddlers]tag<currentTiddler>] [all[current]backlinks[]] +[limit[1]]'  variable=null> (<$count filter="[kin::to<currentTiddler>!<currentTiddler>]"/>/__<$count filter='[all[current]backlinks[]]'/>__)</$list></small>
+</$button>
+</$reveal> 
+
+<!-- show backlink count if any-->
+<$reveal type="match" state="$:/state/plugins/HCHaase/toc_counting/macro/toc_counting" text="link">
+<$button set="$:/state/plugins/HCHaase/toc_counting/macro/toc_counting" setTo="tag" class="tc-btn-invisible">
+<small class="tc-menu-list-count"><$list filter='[all[current]backlinks[]limit[1]]'  variable=null> (__<$count filter='[all[current]backlinks[]]'/>__)</$list></small>
+</$button>
+</$reveal> 
+</$reveal> 
+
+\end
+
+
+!!Function
+used in the TOC_counting plugin.
+
+use the toc counint plugin in the different TOC's and lists to put counting at the end of entries.
+
+Change state by pressing the number
+
+# show tags (tag)
+# show tags and __backlinkslinkls__ (tag/__links__) (slower)
+# show __backlinks__ (__links__)
+
+Links are __underlined__.
+
+swithc between one level counting, and all sub-level counting (with kin filter) (very slow) in the [[settings|$:/plugins/HCHaase/toc_counting/settings]].
+
+!!Use 
+
+Put in the macros for the lists you want to add the counter to.
+
+;Syntax
+:`<<toc_counting>>` <$button message="tm-copy-to-clipboard" param="<<toc_counting>>"}>Copy</$button>
+
+

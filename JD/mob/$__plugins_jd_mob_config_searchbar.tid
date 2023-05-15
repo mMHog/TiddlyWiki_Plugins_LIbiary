@@ -1,0 +1,26 @@
+caption: Choose searchbar style
+created: 20171118171759396
+creator: JD
+modified: 20171122123127279
+modifier: JD
+tags: 
+title: $:/plugins/jd/mob/config/searchbar
+
+<h3>Choose searchbar style</h3>
+
+<$button class="tc-btn-invisible">
+<<tglSearch show>>
+<<jdconfig searchbarchoice combined>>
+<<jdconfig searchbutton combined>>
+<<jdradbut searchbutton combined>>
+</$button> Combined search
+<br>
+<$button class="tc-btn-invisible">
+<<tglSearch show>>
+<<jdconfig searchbarchoice simple>>
+<<jdconfig searchbutton simple>>
+<<jdradbut searchbutton simple>>
+</$button> Simple search
+<p>
+<$checkbox tiddler="$:/config/jd/mobbutton/visibility/$:/plugins/jd/mob/button/search" field="text" checked="show" unchecked="hide" default="show"/> Show search button at controls
+</p>

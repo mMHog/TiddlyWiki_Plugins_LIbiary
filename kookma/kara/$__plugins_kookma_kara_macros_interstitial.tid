@@ -1,0 +1,36 @@
+tags: $:/tags/Macro
+title: $:/plugins/kookma/kara/macros/interstitial
+type: text/vnd.tiddlywiki
+
+\define interstitial(tiddler, showInput, focus:"yes", mode:"")
+\import $:/plugins/kookma/kara/macros/definitions
+\import $:/plugins/kookma/kara/macros/add-items
+\import $:/plugins/kookma/kara/macros/add-items-interstitial
+\import $:/plugins/kookma/kara/macros/disp-items-interstitial
+<$let tiddler={{{ [<__tiddler__>trim[]] }}}
+      src= {{{ [<tiddler>!is[blank]then<tiddler>else<currentTiddler>] }}}
+      dataBlockStartDelimiter ="@@.interstitial"
+      dataBlockEndDelimiter   = "@@"  
+      tempId={{{ [<tiddler>!is[blank]then[interstitial/$(currentTiddler)$/]addsuffix<tiddler>]
+                 :else[[interstitial/]addsuffix[$(currentTiddler)$]] }}}			
+      editTextPlaceholder="add new interstitial note"
+      focusStatus=<<__focus__>>
+      displayMode={{{ [<interstitialDisplayConfig>get[text]] [<__mode__>] :and[first[]] }}}
+      lbr="
+"      >
+<!-- extract the data block -->
+<$let dblock0 = {{{ [<src>get[text]splitregexp<dataBlockStartDelimiter>butfirst[1]] }}}
+      dblock  = {{{ [<dblock0>splitregexp<dataBlockEndDelimiter>butlast[1]] }}} >
+<section class="kk-kara-ui">		
+
+<!-- display add items UI -->
+<$list filter="[<__showInput__>!match[no]]" variable=null>
+<<kara-add-items>>
+</$list>
+
+<!-- display interstitial notes -->
+<<kara-disp-items>>
+</section>
+</$let>
+</$let>
+\end

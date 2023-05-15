@@ -1,0 +1,16 @@
+[
+    {
+        "created": "20200421233839117",
+        "text": "",
+        "tooltip": "",
+        "title": "$:/wrappit/reveal",
+        "tags": "",
+        "suffix": "</$reveal>",
+        "reflink": "RevealWidget",
+        "prefix": " <$reveal state=\"\" type=\"nomatch ... lteq\" text=<<>> >",
+        "modified": "20200502095010787",
+        "icon": "",
+        "caption": "",
+        "param": "wrap-lines"
+    }
+]

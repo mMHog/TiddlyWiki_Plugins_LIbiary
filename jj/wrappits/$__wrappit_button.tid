@@ -1,0 +1,17 @@
+caption: 
+created: 20200421235645481
+icon: 
+modified: 20200502095030657
+param: wrap-lines
+prefix: <$button class="tc-btn-invisible">
+reflink: ButtonWidget
+suffix: </$button>
+tags: 
+title: $:/wrappit/button
+tooltip: 
+
+<$button class="tc-btn-invisible">
+<$action-listops $field="myfield" $subfilter="-abc -hlm"/>
+<$action-deletetiddler $tiddler=""" """/>
+<$action-setfield $tiddler="" $field="" $value=""/>
+</$button>

@@ -1,0 +1,8 @@
+created: 20141025095607867
+creator: TonGerner
+description: Core images
+filter: [all[shadows]sort[title]]+[prefix[$:/core/images]]
+modified: 20191229161855341
+modifier: TonGerner
+tags: $:/tags/codeFilter
+title: $:/plugins/tg/exploration/filter/core-images

@@ -1,0 +1,17 @@
+created: 20140714115927407
+creator: TonGerner
+modified: 20191229161659137
+modifier: TonGerner
+title: $:/plugins/tg/exploration/exploration
+
+!!!Exploration
+<<<
+''Note:''
+
+While working in a new window (in contrast to a standard tiddler):
+
+* The dropdown menu for filter selecting stays open and can only be closed by clicking the {{$:/core/images/down-arrow}} button
+* Buttons are not rendered correctly in this window!
+<<<
+
+<<tabs "[all[shadows+tiddlers]tag[$:/tags/xcode]] [[$:/plugins/tg/exploration/help]]" "" "$:/state/tab/exploration" "">>

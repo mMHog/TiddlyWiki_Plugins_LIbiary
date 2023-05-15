@@ -1,0 +1,18 @@
+caption: Folders
+tags: $:/tags/Favorites/Manager
+title: $:/plugins/kookma/favorites/manager/tabs/folders
+type: text/vnd.tiddlywiki
+
+\import $:/plugins/kookma/favorites/macros/definition
+\import [all[tiddlers+shadows]tag[$:/tags/Favorites/Macro/Folder]]
+
+<!-- Create the UI --->
+
+Create, delete, rename, and rearrange folders
+
+<$transclude tiddler="$:/plugins/kookma/favorites/templates/ui-folder-create"  />
+<$transclude tiddler="$:/plugins/kookma/favorites/templates/ui-folder-reorder" />
+
+<$vars fv-config-buttons=yes>
+<$transclude tiddler="$:/plugins/kookma/favorites/templates/ui-folder-tree" field=text/>
+</$vars>

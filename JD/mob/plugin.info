@@ -1,0 +1,9 @@
+{
+    "title": "$:/plugins/jd/mob",
+    "author": "JD",
+    "core-version": ">=5.1.14",
+    "description": "JD Mobile Layout",
+    "list": "readme config",
+    "plugin-type": "plugin",
+    "version": "1.0.4"
+}

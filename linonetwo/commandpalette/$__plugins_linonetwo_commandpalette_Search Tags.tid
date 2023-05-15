@@ -1,0 +1,9 @@
+command-palette-caption: 搜索标签列表
+command-palette-hint: 在命令菜单里列出搜索到的标签
+command-palette-name: Search Tags
+command-palette-type: prompt
+tags: $:/tags/CommandPaletteCommand
+title: $:/plugins/linonetwo/commandpalette/Search Tags
+type: text/vnd.tiddlywiki
+
+#

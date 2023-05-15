@@ -1,0 +1,21 @@
+code-body: yes
+tags: 
+title: $:/plugins/kookma/favorites/templates/folder-title-view
+type: text/vnd.tiddlywiki
+
+<!-- view mode ----->
+<div class="kk-fav-title">
+<$droppable actions=<<drop-actions>> enable=<<tv-enable-drag-and-drop>> tag="div">
+<$let tv-wikilinks="no">
+<$transclude tiddler=<<currentFolder>> field="caption">
+<$transclude tiddler=<<currentFolder>> field="title"/>
+</$transclude>
+</$let>
+</$droppable>
+</div>
+
+<!-- 
+This tiddler is a duplicate of $:/plugins/kookma/favorites/templates/folder-title-edit view part 
+It is only needed to prevent displaying edit box when "Folder Manager" is open in story river
+and user edit a folder
+-->

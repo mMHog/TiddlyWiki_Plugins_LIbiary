@@ -1,0 +1,16 @@
+created: 20170511200701782
+creator: TonGerner
+modified: 20210104201738736
+modifier: TonGerner
+tags: 
+title: $:/plugins/tg/timestamp-button/readme
+
+\define icn(icon)
+<button class="tc-btn-invisible"> {{$icon$}}</button>
+\end
+
+A button (<<icn $:/core/images/timestamp>>) for the Editor toolbar that inserts a timestamp.<br>Adapt the date/time format - `<<now [format]>>` in $:/core/ui/EditorToolbar/timestamp - to your liking.<br>
+Assigned shortcut: {{$:/config/shortcuts/timestamp}}
+
+
+

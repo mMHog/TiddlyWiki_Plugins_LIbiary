@@ -1,0 +1,13 @@
+caption: Code4
+created: 20141001091735182
+creator: TonGerner
+modified: 20191229161613529
+modifier: TonGerner
+tags: $:/tags/xcode
+title: $:/plugins/tg/exploration/code4
+
+!! [[Code4|$:/plugins/tg/exploration/code4]]
+<<selectfilter "code4">>
+
+<$macrocall $name="codefilter" filter={{$:/temp/filter/code4}} state="code4"/>
+

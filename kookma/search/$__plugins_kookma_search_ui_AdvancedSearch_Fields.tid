@@ -1,0 +1,7 @@
+caption: Fields
+list-before: $:/core/ui/AdvancedSearch/Filter
+tags: $:/tags/AdvancedSearch
+title: $:/plugins/kookma/search/ui/AdvancedSearch/Fields
+type: text/vnd.tiddlywiki
+
+{{$:/plugins/kookma/search/ui/inputs}}

@@ -1,0 +1,42 @@
+tags: $:/tags/Macro
+title: $:/plugins/kookma/kara/macros/checklist
+type: text/vnd.tiddlywiki
+
+\define checklist(tiddler, showInput, focus:"yes", mode:"")
+\import $:/plugins/kookma/kara/macros/definitions
+\import $:/plugins/kookma/kara/macros/add-items
+\import $:/plugins/kookma/kara/macros/add-items-checklist
+\import $:/plugins/kookma/kara/macros/disp-items-checklist
+<$let tiddler={{{ [<__tiddler__>trim[]] }}}
+      src= {{{ [<tiddler>!is[blank]then<tiddler>else<currentTiddler>] }}}
+      dataBlockStartDelimiter ="@@.todo"
+      dataBlockEndDelimiter   = "@@"  
+      doneMark="[x]"
+      undoneMark="[ ]"
+      undoneMarkalt="[]"
+      tempId={{{ [<tiddler>!is[blank]then[checklist/$(currentTiddler)$/]addsuffix<tiddler>]
+                 :else[[checklist/]addsuffix[$(currentTiddler)$]] }}}
+      editTextPlaceholder="add new todo item"
+      focusStatus=<<__focus__>>
+      displayMode={{{ [<checklistDisplayConfig>get[text]] [<__mode__>] :and[first[]] }}}
+      lbr="
+"      >
+<!-- extract the data block -->
+<$let dblock0 = {{{ [<src>get[text]splitregexp<dataBlockStartDelimiter>butfirst[1]] }}}
+      dblock  = {{{ [<dblock0>splitregexp<dataBlockEndDelimiter>butlast[1]] }}} >
+<section class="kk-kara-ui">
+
+<!-- display add items UI -->
+<$list filter="[<__showInput__>!match[no]]" variable=null>
+<<kara-add-items>>
+</$list>
+
+<!-- display checklist -->
+<<kara-disp-items>>
+</section>
+</$let>
+</$let>
+\end
+
+
+

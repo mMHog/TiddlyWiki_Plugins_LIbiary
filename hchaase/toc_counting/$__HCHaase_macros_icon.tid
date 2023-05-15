@@ -1,0 +1,58 @@
+created: 20200210162320311
+creator: HC Haase
+modified: 20200309121756465
+modifier: HC Haase
+revision: 0
+tags: Macros plugins TW $:/tags/Macro
+title: $:/HCHaase/macros/icon
+type: text/vnd.tiddlywiki
+
+\define icon(icon navigate tooltip) 
+<$button to="$navigate$" tooltip="$tooltip$"class="tc-btn-invisible"><<__icon__>></$button>
+\end
+
+\define _icon(icon) 
+<button class="tc-btn-invisible"disabled><<__icon__>></button>
+\end
+
+
+* ''Version'': 1.0.0
+* ''Date'': 2020/02/27
+* ''Creator'': HC Haase. Inspired by [[Bimlas|https://bimlas.gitlab.io/tw5-locator/#%24%3A%2Fbimlas%2Fmacros%2Ficon]].
+
+!! Function
+This macro make transcluded icons follow the line height of the text with the option of a link and a tooltip. 
+This makes prettier references to buttons (like this <<_icon {{$:/core/images/new-button}} "link" "tooltip text">> instead of  this  {{$:/core/images/new-button}}) in documentation text.
+
+There is a'' simple macro'' without a button and an ''extended macro'' with a button.
+
+!! Use
+
+;Syntax, simple macro  (note the `_`)
+:`<<_icon <transclusion> >>`<$button message="tm-copy-to-clipboard" param="<<_icon <transclusion> >>"}>Copy</$button>
+
+;Syntax, extended macro
+:`<<icon <transclusion> <link> "<tooltip text>" >>`<$button message="tm-copy-to-clipboard" param="<<icon <transclusion> >>"}>Copy</$button>
+
+|! Attribute|!Option|!Description|
+|transclusion|required|a transclusion of an icon|
+|link|optional|name of tiddler to link to (omit with `""`)|
+|tooltip text|optional|text of tooltip|
+
+
+;Example
+:`<<icon {{$:/core/images/new-button}} "link" "tooltip text">>` 
+:will produce <<icon {{$:/core/images/new-button}} "link" "tooltip text">> that links to "link".
+NB: if you want no link, but at tooltip, use `""` for a empty link.
+
+!! Code
+
+```
+\define icon(icon navigate tooltip) 
+<$button to="$navigate$" tooltip="$tooltip$"class="tc-btn-invisible"><<__icon__>></$button>
+\end
+
+\define _icon(icon) 
+<button class="tc-btn-invisible"disabled><<__icon__>></button>
+\end
+```

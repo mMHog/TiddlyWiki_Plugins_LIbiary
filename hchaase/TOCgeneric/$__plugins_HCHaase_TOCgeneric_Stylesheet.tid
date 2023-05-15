@@ -1,0 +1,71 @@
+created: 20200218130355102
+creator: HC Haase
+modified: 20200826070945293
+modifier: HC Haase
+tags: css $:/tags/Stylesheet
+title: $:/plugins/HCHaase/TOCgeneric/Stylesheet
+
+/*box/indet/print adopted from $:/.giffmex/.Stylesheet4tiddlyblink - changed colours to use tw standard code block colours and normal forground/text colours */
+
+/*BOXES*/
+
+html body.tc-body .transclude-box {
+	display:block;
+	background-color: <<colour code-background>>; 
+	color: <<colour foreground>>;
+	padding:5px;
+	padding-left:20px;
+	padding-top:10px;
+	margin-top:5px;
+	margin-bottom:5px;
+	width:95%;
+}
+
+
+html body.tc-body .subtext {
+	display:block;
+        text-align:right;
+        opacity: 0.5;
+}
+
+
+/*INDENTING*/
+
+html body.tc-body .toc-indent {margin-left:1.5em;display:block;}
+
+
+/*HIDE SECTIONS FOR PRINTING*/
+
+@media print {#tc-page-background {display: none ! important;}} 
+@media print {.tc-tags-wrapper {display: none ! important;}} 
+
+ @media print { body.tc-body {background-color: transparent;}}
+ @media print {.tc-image-chevron-up {display: none ! important;}} 
+ @media print {.tc-image-chevron-down {display: none ! important;}} 
+ @media print {button.sidebar-toggle {display: none ! important;}} 
+@media print {.hideprint, .no-print {display: none ! important;}} /*ADDED.NO-PRINT - CLEAN OUT HIDEPRINT OR NO-PRINT*/
+/* @media print {.tc-btn-invisible {display: none ! important;}} */
+
+@media print {
+
+.story-river {
+margin: 0;
+padding: 0;
+}
+
+html body.tc-body .tc-tiddler-frame {
+margin: 0;
+border-bottom: 1px solid #fff;
+padding: 5px;}
+
+html body.tc-body a.tc-tiddlylink-external:hover {
+border: 1px solid <<colour tiddler-border>>;
+}
+
+html body.tc-body .tc-tiddler-info {
+padding: 14px 42px 14px 42px;
+background-color: <<colour tiddler-info-background>>;}
+
+}
+
+

@@ -1,0 +1,8 @@
+created: 20140923160624756
+creator: TonGerner
+description: Code snippets
+filter: [all[shadows]sort[title]]+[prefix[$:/snippets]]
+modified: 20191229161812075
+modifier: TonGerner
+tags: $:/tags/codeFilter
+title: $:/plugins/tg/exploration/filter/code-snippets

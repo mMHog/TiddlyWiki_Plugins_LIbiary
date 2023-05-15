@@ -1,0 +1,17 @@
+code-body: yes
+tags: 
+title: $:/plugins/kookma/favorites/templates/export-bundle
+type: text/vnd.tiddlywiki
+
+<$let timeStamp=<<now "YYYY0MM0DD0hh0mm0ssXXX">>
+      folderName={{{ [<timeStamp>addprefix[/f-]addprefix<folderpath>] }}}	>
+[<$list filter=<<exportFilter>> ><$text text=<<jsontiddler>>/>,</$list>
+{
+    "created":"<<timeStamp>>",
+    "exported-from":"{{$:/SiteTitle}}",
+    "tags":"<<foldertags>>",
+    "title":"<<folderName>>",
+    "caption":"<<foldercaption>>",
+    "list":"{{{ [subfilter<exportFilter>format:titlelist[]join[ ]] }}}"
+}
+]</$let>

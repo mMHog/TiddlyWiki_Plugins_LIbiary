@@ -1,0 +1,12 @@
+caption: Code2
+created: 20141001084954911
+creator: TonGerner
+modified: 20191229161535662
+modifier: TonGerner
+tags: $:/tags/xcode
+title: $:/plugins/tg/exploration/code2
+
+!! [[Code2|$:/plugins/tg/exploration/code2]]
+<<selectfilter "code2">>
+
+<$macrocall $name="codefilter" filter={{$:/temp/filter/code2}} state="code2"/>

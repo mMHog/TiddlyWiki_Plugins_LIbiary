@@ -1,0 +1,19 @@
+created: 20200404125701939
+modified: 20200404131622364
+tags: 
+title: $:/plugins/kookma/searchwikis/readme
+type: text/vnd.tiddlywiki
+
+; Searchwikis
+Searchwikis plugin uses index (dataTiddler) to search multiple external Tiddlywikis. It has two parts
+
+# An indexer, to build an index of all tiddlers in an external wiki
+# A search tool to search indexes and display a link to a tiddler found in an external wiki
+
+Then one master wiki can hosts many index tiddlers and lets to search several external wikis through index tiddlers.
+
+;Code and demo
+For learning plugin features, syntax, tutorial and examples see the plugin demo and code pages
+
+* Demo: https://kookma.github.io/TW-Searchwikis/
+* Code: https://github.com/kookma/TW-Searchwikis

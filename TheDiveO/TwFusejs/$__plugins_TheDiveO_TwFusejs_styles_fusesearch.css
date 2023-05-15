@@ -1,0 +1,17 @@
+div.fuse-results-count::after {
+  content: "...";
+}
+
+div.fuse-results-count + dl.fuse-results {
+  margin-top: 0;
+}
+
+dl.fuse-results dd {
+  font-size: 90%;
+  font-style: italic;
+  line-height: normal;
+}
+
+dl.fuse-results dd + dt {
+  margin-top: 1ex;
+}

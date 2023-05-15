@@ -1,0 +1,12 @@
+code-body: yes
+tags: 
+title: $:/plugins/kookma/favorites/templates/folder-reorder-btn
+type: text/vnd.tiddlywiki
+
+\define check-actions()
+<!-- Save the current ordering of the tiddlers with this tag -->
+<$set name="order" filter="[<foldertagTid>tagging[]] -[<recentlyAdded>]">
+<$action-listops $tiddler=<<foldertagTid>> $field="list" $filter="+[enlist<order>]">
+</$set>
+\end
+<$radio tiddler=<<tempreorderTid>> field=text value=<<currentFolder>> actions=<<check-actions>> class="kk-fav-btn-radio"/>

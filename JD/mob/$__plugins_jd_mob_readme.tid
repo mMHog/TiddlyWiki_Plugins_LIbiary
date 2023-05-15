@@ -1,0 +1,50 @@
+created: 20171030143047925
+creator: JD
+modified: 20180903122259331
+modifier: JD
+tags: 
+title: $:/plugins/jd/mob/readme
+
+This is a mobile layout that applies to narrow screens. It introduces the following:
+
+# A Topbar that can be any of the following:
+#* Hidden
+#* Titlebar (search, title, subtitle, menu)
+#* Mobbuttons bar
+#**  Buttons tagged ''~$:/tags/jd/mobbutton''
+#* Searchbar
+#**  Simple searchbar lists standard search results only
+#**  Combined searchbar lists all search results (possibly slow on some devices)
+#* Control area containing ''Top Left Bar'', ''Page Control'', ''Mob-only'', and ''Top Right Bar'' buttons (in that order)
+#**  ''Top Left Bar'' >> buttons tagged ''~$:/tags/TopLeftBar''
+#**  ''Page control'' >> buttons tagged ''~$:/tags/PageControls''
+#**  ''Mob-only'' >> other buttons tagged ''~$:/tags/jd/mobbutton''
+#**  ''Top Right Bar'' >> buttons tagged ''~$:/tags/TopRightBar''
+#**  Buttons you don't want to appear here should be tagged ''~$:/tags/jd/mobno'' 
+
+# A Bottombar that can be any of the following:
+#* Hidden
+#* Mobbuttons bar
+#**  Buttons tagged ''~$:/tags/jd/mobbutton''
+#* Control area containing ''Top Left Bar'', ''Page Control'', ''Mob-only'', and ''Top Right Bar'' buttons (in that order)
+#**  ''Top Left Bar'' >> buttons tagged ''~$:/tags/TopLeftBar''
+#**  ''Page control'' >> buttons tagged ''~$:/tags/PageControls''
+#**  ''Mob-only'' >> other buttons tagged ''~$:/tags/jd/mobbutton''
+#**  ''Top Right Bar'' >> buttons tagged ''~$:/tags/TopRightBar''
+#**  Buttons you don't want to appear here should be tagged ''~$:/tags/jd/mobno'' 
+
+//Note:// 
+
+This layout is tied to the ''Sidebar Breakpoint'' set at ''Control Panel'' >> ''Appearance'' >> ''Theme Tweaks''.
+
+This layout is compatible with any core theme as of release date.
+
+<a target="blank" href="http://j.d.simplemobile.tiddlyspot.com">Project Homepage on Tiddlyspot</a>
+
+!! Version History
+
+!!! 2018-09-03 Release of version 1.0.4
+
+* Added ability to create tiddler out of search term via "+" button, or keyboard shortcut: "ctrl+space"
+
+[[Detailed changelog|http://j.d.simplemobile.tiddlyspot.com/#Changelog]]

@@ -1,0 +1,158 @@
+created: 20180715075800922
+creator: jd
+modified: 20180717155443896
+modifier: jd
+tags: $:/tags/Macro
+title: $:/plugins/jd/plainrevs/macros/save
+
+\define saveRev(from source)
+<$wikify name="revSource" text="""<$text text="[["/>$source$<$text text="]]"/>""">
+<$wikify name="revTitle" text="""$:/rev/<<now YYYY0MM0DD.0hh:0MM:0ss>>""">
+<$list filter="[$from$!is[missing]]" variable="checker">
+<$action-createtiddler $basetitle=<<revTitle>> $savetitle="$:/temp/saveTid" text={{{ [$from$get[text]] }}} list=<<revSource>>/>
+<$list filter="[$from$fields[]] -title -text" variable="field">
+<$action-setfield $tiddler={{$:/temp/saveTid}} $field={{{ [<field>addprefix[rev-]] }}} $value={{{ [$from$get<field>] }}}/>
+</$list>
+<$action-deletetiddler $tiddler="$:/temp/saveTid"/>
+</$list>
+</$wikify>
+</$wikify>
+\end
+
+\define keepRev(from)
+<$wikify name="deleteFilter" text="""
+<$list filter="[$from$keep-rev[no]]">[$from$listed[]prefix[$:/rev]!has[pin]]</$list>
+<$list filter="[$from$!keep-rev[no]]" variable="notNo">
+<$list filter="[$from$!keep-rev[all]]" variable="notAll">
+<$list filter="[$from$get[keep-rev]]" variable="num"><$text text="[$from$listed[]prefix[$:/rev]!has[pin]] +[butlast["/><<num>><$text text="]]"/></$list>
+</$list>
+</$list>
+<$list filter="[$from$keep-rev[]]">[$from$listed[]prefix[$:/rev]!has[pin]] +[butlast[<$list filter="[[$:/config/plainrevs/default]!is[missing]get[text]]" emptyMessage="3"/>]]</$list>
+""">
+<$action-deletetiddler $filter=<<deleteFilter>>/>
+</$wikify>
+\end
+
+\define RestoreButton()
+<$button class="tc-btn-invisible tc-tiddlylink">(restore checked fields)
+<$macrocall $name="saveRev" from="<currentTiddler>" source="<<currentTiddler>>"/>
+<$list filter="[[$:/config/plainrevs/restorefield]get:field[text]!prefix[no]]" variable="checkFieldRestore" emptyMessage="""<$action-setfield $tiddler=<<currentTiddler>> text={{{ [<revTitle>get[text]] }}}/>""">
+<$action-setfield $tiddler=<<currentTiddler>> text={{{ [<revTitle>get[text]] }}}/>
+</$list>
+<$list filter="[<currentTiddler>fields[]] -title -text" variable="field">
+<$list filter="[[$:/config/plainrevs/restorefield]get:field<field>!prefix[no]]" variable="checkFieldRestore" emptyMessage="""<$action-setfield $tiddler={{$:/temp/recentTiddler}} $field={{{ [<field>addprefix[rev-]] }}} $value={{{ [<currentTiddler>get<field>] }}}/>""">
+<$action-setfield $tiddler={{$:/temp/recentTiddler}} $field={{{ [<field>addprefix[rev-]] }}} $value={{{ [<currentTiddler>get<field>] }}}/>
+<$action-deletefield $tiddler=<<currentTiddler>> $field=<<field>>/>
+</$list>
+</$list>
+<$list filter="[<revTitle>fields[]prefix[rev-]]" variable="field">
+<$list filter="[[$:/config/plainrevs/restorefield]get:field<field>!prefix[no]]" variable="checkFieldRestore" emptyMessage="""<$action-setfield $tiddler=<<currentTiddler>> $field={{{ [<field>removeprefix[rev-]] }}} $value={{{ [<revTitle>get<field>] }}}/>""">
+<$action-setfield $tiddler=<<currentTiddler>> $field={{{ [<field>removeprefix[rev-]] }}} $value={{{ [<revTitle>get<field>] }}}/>
+</$list>
+</$list>
+<$action-deletetiddler $tiddler="$:/temp/recentTiddler"/>
+</$button>
+\end
+
+\define PinButton()
+<$list filter="[<revTitle>!has[pin]]" emptyMessage="""
+<$button class="tc-btn-invisible tc-tiddlylink">(unpin)
+<$action-deletefield $tiddler=<<revTitle>> pin/>
+</$button>
+""">
+<$button class="tc-btn-invisible tc-tiddlylink">(pin)
+<$action-setfield $tiddler=<<revTitle>> pin="yes"/>
+</$button>
+</$list>
+\end
+
+\define DeleteButton()
+<$button class="tc-btn-invisible tc-tiddlylink">(delete)
+<$action-deletetiddler $tiddler=<<revTitle>>/>
+</$button>
+\end
+
+\define DiffTextButton()
+<$list filter="[[$:/state/revTab/difftext]!text[yes]]" variable="stateCheck" emptyMessage="""
+<$button set="$:/state/revTab/difftext" setTo="no" class="tc-btn-invisible tc-tiddlylink">
+(hide differences)
+</$button>
+""">
+<$button set="$:/state/revTab/difftext" setTo="yes" class="tc-btn-invisible tc-tiddlylink">
+(show differences)
+</$button>
+</$list>
+\end
+
+\define revTabs(type)
+<div class="tc-tab-set $type$">
+<div class="tc-tab-buttons $type$">
+<$list filter="[[$:/state/revTab/tabType]!text[vertical]]" variable="tabType" emptyMessage="""
+<$button set="$:/state/revTab/tabType" setTo="horizontal" style="width: auto; margin-left: auto;">→
+</$button>
+""">
+<$button set="$:/state/revTab/tabType" setTo="vertical" style="width: auto; margin-left: auto;">↓
+</$button>
+</$list>
+<$list filter="[<currentTiddler>listed[]has[pin]][<currentTiddler>listed[]!has[pin]] -[!prefix[$:/rev]]" variable="revTitle">
+<$button set="$:/state/revTab" setTo=<<revTitle>> selectedClass=" tc-tab-selected">
+<$list filter="[<revTitle>has[pin]]" variable="checkPin">
+・<$text text={{{ [<currentTiddler>listed[]prefix[$:/rev]has[pin]allbefore:include<revTitle>count[]] }}}/></$list>
+<$list filter="[<revTitle>!has[pin]]" variable="checkPin">
+<$text text={{{ [<currentTiddler>listed[]prefix[$:/rev]!has[pin]allbefore:include<revTitle>count[]] }}}/></$list>
+</$button>
+</$list>
+</div>
+<div class="tc-tab-divider $type$"></div>
+<div class="tc-tab-content $type$" style="overflow: auto;">
+<$list filter="[<currentTiddler>listed[]] -[!prefix[$:/rev]]" variable="revTitle">
+<$reveal type="match" state="$:/state/revTab" text=<<revTitle>> tag="div">
+<div style="padding-bottom: 0.4em; float: right;">
+<<DiffTextButton>>&nbsp;<<RestoreButton>>&nbsp;<<PinButton>>&nbsp;<<DeleteButton>>
+</div>
+<div class="diff-wrapper">
+
+<b style="float: left;"><$checkbox tiddler="$:/config/plainrevs/restorefield" field="text" checked="yes" unchecked="no" default="yes">&nbsp;text:&nbsp;</$checkbox></b>
+<$list filter="[[$:/state/revTab/difftext]!text[yes]]" variable="stateCheck">
+<div><pre><$text text={{{ [<revTitle>get[text]] }}}/></pre></div>
+</$list>
+<$list filter="[[$:/state/revTab/difftext]text[yes]]" variable="stateCheck">
+<$diff-text source={{{ [<revTitle>get[text]] }}} dest={{{ [<currentTiddler>get[text]] }}}/>
+</$list>
+
+<$list filter="[<revTitle>fields[]prefix[rev-]] +[sort[]]" variable="field">
+
+<b style="float: left;"><$checkbox tiddler="$:/config/plainrevs/restorefield" field=<<field>> checked="yes" unchecked="no" default="yes">&nbsp;<$text text={{{ [<field>removeprefix[rev-]] }}}/>:&nbsp;</$checkbox></b>
+<$list filter="[[$:/state/revTab/difftext]!text[yes]]" variable="stateCheck">
+<div><pre><$text text={{{ [<revTitle>get<field>] }}}/></pre></div>
+</$list>
+<$list filter="[[$:/state/revTab/difftext]text[yes]]" variable="stateCheck">
+<$list filter="[<field>removeprefix[rev-]]" variable="currfield">
+<$diff-text source={{{ [<revTitle>get<field>] }}} dest={{{ [<currentTiddler>get<currfield>] }}}/>
+</$list>
+</$list>
+
+</$list>
+
+<em style="line-height: 2.5em;">Field/s of currentTiddler not present in this revision (or was empty):</em>
+<$list filter="[<currentTiddler>fields[]] -title -text -tags -type -created -creator -modified -modifier +[addprefix[rev-]] +[sort[]]" variable="revField">
+<$list filter="[<revTitle>!has<revField>]" variable="fieldCheck" >
+<$list filter="[<revField>removeprefix[rev-]]" variable="field">''<<field>>'', 
+</$list>
+</$list>
+</$list>
+
+<em style="line-height: 2.5em;">Field/s of this revision not present in currentTiddler (or is empty):</em>
+<$list filter="[<revTitle>fields[]prefix[rev-]] +[removeprefix[rev-]] +[sort[]] -tags -type" variable="revField">
+<$list filter="[<currentTiddler>!has<revField>]" variable="fieldCheck" >
+<$list filter="[<revField>]" variable="field">''<<field>>'', 
+</$list>
+</$list>
+</$list>
+
+</div>
+</$reveal>
+</$list>
+</div>
+</div>
+\end

@@ -1,0 +1,54 @@
+caption: Fonts and heights
+created: 20171118171842911
+creator: JD
+modified: 20171119072342630
+modifier: JD
+tags: 
+title: $:/plugins/jd/mob/config/titlebar
+
+<h3>Vertical position</h3>
+
+<$button class=tc-btn-invisible>
+<<jdconfig titlebaradjust no>>
+<<jdradbut titlebaradjust no>>
+</$button> Default
+<br>
+<$button class=tc-btn-invisible>
+<<jdconfig titlebaradjust yes>>
+<$action-setfield $tiddler="$:/temp/jd/mob/font/height-sitetitle" caption="Site title vertical position" text="-3px" list-after="$:/temp/jd/mob/font/font-sitetitle"/>
+<$action-setfield $tiddler="$:/temp/jd/mob/font/font-sitetitle" caption="Site title font size" text="18px"/>
+<$action-setfield $tiddler="$:/temp/jd/mob/font/height-subsitetitle" caption="Site subtitle vertical position" text="15px" list-after="$:/temp/jd/mob/font/font-subsitetitle"/>
+<$action-setfield $tiddler="$:/temp/jd/mob/font/font-subsitetitle" caption="Site subtitle font size" text="12px"/>
+<<jdradbut titlebaradjust yes>>
+</$button> Custom
+
+<$reveal type="match" state="$:/plugins/jd/mob/config/config##titlebaradjust" text="yes">
+
+Include unit (''px'' or ''em'') when entering custom values
+
+<table style="width:100%">
+<tr>
+<th style="width:40%">Element</th>
+<th style="width:60%">Adjust</th>
+</tr>
+<$list filter="[all[shadows+tiddlers]prefix[$:/temp/jd/mob/font/]suffix[sitetitle]]">
+<tr>
+<td><$view field="caption"/></td>
+<td><$edit-text tiddler={{!!title}} field="temp" placeholder={{!!text}} class="texte"/>
+<$reveal type="match" state=!!temp text="">
+<$button class="tc-btn-invisible" style="color:grey; cursor:not-allowed;">✓</$button>
+<$button class="tc-btn-invisible" style="color:grey; cursor:not-allowed;">✕</$button>
+</$reveal>
+<$reveal type="nomatch" state=!!temp text="">
+<$button class="tc-btn-invisible">
+<$action-setfield $tiddler={{!!title}} text={{!!temp}}/>
+<$action-setfield $tiddler={{!!title}} temp=""/>✓</$button>
+<$button class="tc-btn-invisible">
+<$action-setfield $tiddler={{!!title}} temp=""/>✕</$button>
+</$reveal>
+</td>
+</tr>
+</$list>
+</table>
+</$reveal>
+{{$:/plugins/jd/mob/config/searchbutton}}

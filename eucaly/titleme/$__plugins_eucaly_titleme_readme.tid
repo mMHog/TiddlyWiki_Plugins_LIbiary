@@ -1,0 +1,92 @@
+caption: ~TitleMe
+created: 20140913032347138
+creator: EucalyJ
+example1: <<TitleMe>>
+example2: <<LinkMe "This link to source">>
+example3: <<ShowMe>> and <<EditMe>>
+example4: <<ShowMe Open "Here to " " the source tiddler.">>
+example5: <<EditMe "$:/core/images/edit-button" "This " " button to edit." "tc-btn-invisible">>
+lastupdate: 20140913.6
+modified: 20140914032952899
+modifier: EucalyJ
+tags: $:/_readme $:/_titleme
+title: $:/plugins/eucaly/titleme/readme
+type: text/vnd.tiddlywiki
+
+\define example-code-table(src) 
+<table>
+<tr><th style="width:50%;"> Code </th><th> Result </th></tr>
+<$list filter="example1 example2 example3 example4 example5" variable="field">
+<tr>
+<td><p><$view tiddler="$:/plugins/eucaly/titleme/readme" field=<<field>>/></p></td>
+<td><$transclude tiddler="$:/plugins/eucaly/titleme/readme" field=<<field>> /></td>
+</tr>
+</$list>
+\end
+
+!!<<LinkMe "TitleMe Plugin">>
+<hr>
+
+TitleMe - Return in-place tiddler title, to link / show / edit the source tiddler
+
+!!!Features
+`**` All below macros help you to __access the "source tiddler"__ (even in transclude hierarchy, tabs, sidebar, or toolbar)
+
+# `<<TitleMe>>` -- returns the title of source tiddler 
+# `<<LinkMe>>` -- links to the source tiddler
+# `<<ShowMe>>` -- a button to show the source tiddler
+# `<<EditMe>>` -- a button to edit the source tiddler
+# `<<trace-variable>>` -- trace a variable through widget/transclude hierarchy.
+
+!!!Install
+* Drag&Drop -- [[$:/plugins/eucaly/titleme]] (with documentation)
+
+!!!Uasge
+<table>
+<tr><th style="width:50%;"> Syntax </th><th> Parameters </th></tr>
+<tr>
+<td><p>`<<TitleMe>>` <br/>-- returns the title of source tiddler</p></td>
+<td>
+
+* no parameter needed
+</td></tr><tr>
+<td><p>`<<LinkMe text>>` <br/>-- links to the source tiddler</p></td>
+<td> 
+
+* Default as tiddler title, if `text` is not specified
+</td></tr><tr>
+<td><p>`<<ShowMe text:"" beginText:"" endText:"" class:"">>` <br/>-- a button to show the source tiddler</p></td>
+<td>
+
+* Default `text` defined in [[$:/plugins/eucaly/titleme/defaultShowText]]. 
+* Can also put image there, such as `{{$:/core/images/down-arrow}}`
+* Surrounding text (`beginText` and `endText`) will disappear if this plugin is disabled.
+* `class` to specify the button CSS style, such as `tc-btn-invisible` or user defined style.
+</td></tr><tr>
+<td><p>`<<EditMe text:"" beginText:"" endText:"" class:"">>` <br/>-- a button to edit the source tiddler</p></td>
+<td>
+
+* Default `text` defined in [[$:/plugins/eucaly/titleme/defaultEditText]].
+* Others are similar to `<<ShowMe>>`
+</td></tr><tr>
+<td><p>
+`<<trace-variable variableName>>`</p>
+<p>`<<trace-variable variableName delimiter>>`</p></td>
+<td>
+
+* If delimiter not specified, could be applied as filter in  `<$list>` widget, see [[trace-variable Example]]
+<$text text="[[value of this]] [[value of parent widget]] ... [[value until root widget]]"/>
+
+* Will use `delimiter` if specified
+</td></tr></table>
+
+* Example
+<<example-code-table>>
+<!--
+
+
+
+<<EditOrShowMe "toEdit" "toShow" "</" "=" ">" >>
+<<LinkMe>>
+<<LinkMe "this is test">> 
+{{$:/core/images/down-arrow}} -->

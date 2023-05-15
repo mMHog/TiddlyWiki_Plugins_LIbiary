@@ -1,0 +1,24 @@
+caption: History2
+created: 20160505094007336
+creator: Wim Moermans
+modified: 20160507171948465
+modifier: wjam
+tags: $:/tags/AdvancedSearch historyplugin
+title: $:/plugins/wimmoermans/history/HistoryTab2
+
+<$linkcatcher to="$:/temp/advancedsearch">
+
+<<lingo Shadows/Hint>>
+
+<div class="tc-search">
+<$edit-text tiddler="$:/temp/advancedsearch" type="search" tag="input"/>
+<$reveal state="$:/temp/advancedsearch" type="nomatch" text="">
+<$button class="tc-btn-invisible">
+<$action-setfield $tiddler="$:/temp/advancedsearch" $field="text" $value=""/>
+{{$:/core/images/close-button}}
+</$button>
+</$reveal>
+</div>
+
+</$linkcatcher>
+{{{ [history[]search{$:/temp/advancedsearch}limit[26]] }}}

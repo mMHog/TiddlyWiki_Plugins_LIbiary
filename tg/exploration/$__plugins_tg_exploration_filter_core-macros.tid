@@ -1,0 +1,8 @@
+created: 20140923160458155
+creator: TonGerner
+description: Core macros
+filter: [all[shadows]sort[title]]+[prefix[$:/core/macros]]
+modified: 20191229161917503
+modifier: TonGerner
+tags: $:/tags/codeFilter
+title: $:/plugins/tg/exploration/filter/core-macros

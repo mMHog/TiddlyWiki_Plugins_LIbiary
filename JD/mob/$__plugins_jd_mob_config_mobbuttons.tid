@@ -1,0 +1,18 @@
+caption: Mob buttons
+created: 20171118051624478
+creator: JD
+modified: 20171122150902808
+modifier: JD
+tags: $:/tags/jd/config
+title: $:/plugins/jd/mob/config/mobbuttons
+
+\define config-base() $:/config/jd/mobbutton/visibility/
+<h2>Mob buttons</h2>
+<p>Here are buttons tagged <b>~$:/tags/jd/mobbutton</b></p>
+<p>Choose which ones are displayed. Drag and drop to change the ordering</p>
+<$set name="tv-config-toolbar-icons" value="yes">
+<$set name="tv-config-toolbar-text" value="yes">
+<$macrocall $name="list-tagged-draggable" tag="$:/tags/jd/mobbutton" itemTemplate="$:/core/ui/ControlPanel/Toolbars/ItemTemplate"/>
+</$set>
+</$set>
+<br>

@@ -1,0 +1,21 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_OUTPUT_EXCMD	mixed	/number, pattern, mixed, or combineV2/
+!_TAG_OUTPUT_FILESEP	slash	/slash or backslash/
+!_TAG_OUTPUT_MODE	u-ctags	/u-ctags or e-ctags/
+!_TAG_PATTERN_LENGTH_LIMIT	96	/0 for no limit/
+!_TAG_PROC_CWD	/home/max/dev/TW5/plugins/MaxGyver83/tw5-keyboard-navigation/	//
+!_TAG_PROGRAM_AUTHOR	Universal Ctags Team	//
+!_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
+!_TAG_PROGRAM_URL	https://ctags.io/	/official site/
+!_TAG_PROGRAM_VERSION	5.9.0	/05e6ab4b/
+Adding / Changing keybinds	README.md	/^## Adding \/ Changing keybinds$/;"	s	chapter:tw5-keyboard-navigation
+Demonstration/Installation	README.md	/^## Demonstration\/Installation$/;"	s	chapter:tw5-keyboard-navigation
+How to use	README.md	/^## How to use$/;"	s	chapter:tw5-keyboard-navigation
+Note on button functionality	README.md	/^## Note on button functionality$/;"	s	chapter:tw5-keyboard-navigation
+faviconLink	tw5-keyboard-navigation-plugin.html	/^<link id="faviconLink" rel="shortcut icon" href="favicon.ico">$/;"	I
+libraryModules	tw5-keyboard-navigation-plugin.html	/^<div id="libraryModules" style="display:none;">$/;"	I
+splashArea	tw5-keyboard-navigation-plugin.html	/^<div id="splashArea">$/;"	I
+storeArea	tw5-keyboard-navigation-plugin.html	/^<div id="storeArea" style="display:none;">$/;"	I
+styleArea	tw5-keyboard-navigation-plugin.html	/^<div id="styleArea">$/;"	I
+tw5-keyboard-navigation	README.md	/^# tw5-keyboard-navigation$/;"	c

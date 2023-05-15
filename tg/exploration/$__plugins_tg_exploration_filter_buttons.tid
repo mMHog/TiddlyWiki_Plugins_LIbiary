@@ -1,0 +1,8 @@
+created: 20141020201907464
+creator: TonGerner
+description: Buttons
+filter: [all[shadows]sort[title]]+[prefix[$:/core/ui/Buttons]]
+modified: 20191229162300142
+modifier: TonGerner
+tags: $:/tags/codeFilter
+title: $:/plugins/tg/exploration/filter/buttons

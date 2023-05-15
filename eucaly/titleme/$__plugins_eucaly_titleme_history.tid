@@ -1,0 +1,18 @@
+caption: History
+created: 20140913085909578
+creator: EucalyJ
+lastupdate: 20140913.6
+modified: 20140913111506455
+modifier: EucalyJ
+tags: $:/_readme $:/_titleme
+title: $:/plugins/eucaly/titleme/history
+type: text/vnd.tiddlywiki
+
+!!!History
+* 20140913 / ''0.0.1'' ( 12.3K / 6.8K )
+** Implement a javascript `<<TitleMe>>` macro
+** `<<LinkMe>>`, `<<ShowMe>>`, `<<EditMe>>`, `<<trace-variable>>`  also availbale
+* 20140910
+** Raise a request to __dedect location through ~PageTemplate hierarchy__ at [[TiddlyWiki Forum|http://groups.google.com/forum/#!topic/tiddlywiki/yKLkIWf0lGQ]]
+** Implement a javascript macro ''trace-variable.js'' to trace a variable through widget/transclude hierarchy.
+** Hint by @Jermolene that the ''transclusion'' variable will help to trace transclude hierarchy

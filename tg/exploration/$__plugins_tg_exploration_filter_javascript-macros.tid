@@ -1,0 +1,8 @@
+created: 20190203185551806
+creator: TonGerner
+description: Javascript macros
+filter: [all[shadows]sort[title]]+[prefix[$:/core/modules/macros/]]
+modified: 20191229162022534
+modifier: TonGerner
+tags: $:/tags/codeFilter
+title: $:/plugins/tg/exploration/filter/javascript-macros

@@ -1,0 +1,46 @@
+created: 20190601191736238
+modified: 20190602011358197
+tags: fira-code-demo
+title: $:/plugins/ScottSauyet/FiraCode/readme
+
+<div class="fira-code-demo">
+
+This plugin simply embeds [[Fira Code|https://github.com/tonsky/FiraCode]] in a Tiddlywiki.
+
+Fira Code is a monospaced font with programming ligatures.  This means that certain combinations of symbols are shown as cleaner characters.  
+
+For instance
+
+  * @@color: #dd1144;background-color: #f7f7f9;border: 1px solid #e1e1e8;padding: 0 3px 2px;border-radius: 3px;font-family: "SFMono-Regular",Consolas,"Liberation Mono",Menlo,Courier,monospace; <= @@ becomes `<=`
+  * @@color: #dd1144;background-color: #f7f7f9;border: 1px solid #e1e1e8;padding: 0 3px 2px;border-radius: 3px;font-family: "SFMono-Regular",Consolas,"Liberation Mono",Menlo,Courier,monospace; --> @@ becomes `-->`
+  * @@color: #dd1144;background-color: #f7f7f9;border: 1px solid #e1e1e8;padding: 0 3px 2px;border-radius: 3px;font-family: "SFMono-Regular",Consolas,"Liberation Mono",Menlo,Courier,monospace; 0xFF @@ becomes `0xFF`
+  * @@color: #dd1144;background-color: #f7f7f9;border: 1px solid #e1e1e8;padding: 0 3px 2px;border-radius: 3px;font-family: "SFMono-Regular",Consolas,"Liberation Mono",Menlo,Courier,monospace; 8.5x11 @@ becomes `8.5x11`
+  * @@color: #dd1144;background-color: #f7f7f9;border: 1px solid #e1e1e8;padding: 0 3px 2px;border-radius: 3px;font-family: "SFMono-Regular",Consolas,"Liberation Mono",Menlo,Courier,monospace; => @@ becomes `=>`
+
+
+
+!! Sample
+
+This Javascript code is written just with the symbols on a standard keyboard.  But it displays a number of more readable symbols.  If you copy and paste this to another editor, you will get back the symbols as typed.
+
+```javascript
+// clampit :: Functor f, Ord a => a -> a -> f a -> f a
+const clampit = (lo, hi) => (xs) =>
+  map(x => x <= lo ? lo : x >= hi ? hi : x, xs)
+
+const threeToSeven = clampit(3, 7)
+
+threeToSeven([8, 6, 7, 5, 3, 0, 9])   //~> [7, 6, 7, 5, 3, 3, 7]
+threeToSeven(Just(1))                 //~> Just(3)
+threeToSeven(Just(5))                 //~> Just(5)
+threeToSeven(Just(13))                //~> Just(7)
+threeToSeven(Nothing())               //~> Nothing()
+
+clampit('c', 'p')('capital').join('') //~> "ccpipcl"
+```
+
+!! All Ligatures
+
+[img[$:/plugins/ScottSauyet/FiraCode/all_ligatures.png]]
+
+</div>

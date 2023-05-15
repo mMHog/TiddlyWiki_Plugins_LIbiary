@@ -1,0 +1,50 @@
+caption: Plainrevs
+created: 20180716065308401
+creator: jd
+modified: 20180716081157055
+modifier: jd
+tags: $:/tags/ControlPanel/Settings
+title: $:/plugins/jd/plainrevs/config
+
+\define num()
+<$text text={{{ [[$:/config/plainrevs/default]!is[missing]get[text]] }}}/>
+<$text text={{{ [[$:/config/plainrevs/default]is[missing]removeprefix[$:/config/plainrevs/default]addprefix[3]] }}}/>
+\end
+
+<style>
+.pr-config-wrapper input[type="number"] { width: 3em; }
+</style>
+
+<$radio tiddler="$:/config/plainrevs/whitelist" value="yes"> Whitelist system</$radio>
+
+<$reveal type="match" state="$:/config/plainrevs/whitelist" text="yes" tag="div" class="pr-config-wrapper" animate="yes" retain="yes">
+
+<<<
+In the Whitelist system, no __future__ revision will be kept for tiddlers without the ''keep-rev'' field, nor when it exists but is empty. 
+
+Selecting this will not delete currently existing revisions.
+<<<
+
+</$reveal>
+
+<$radio tiddler="$:/config/plainrevs/whitelist" value="no"> Blacklist system</$radio>
+
+<$reveal type="nomatch" state="$:/config/plainrevs/whitelist" text="yes" tag="div" class="pr-config-wrapper" animate="yes" retain="yes">
+
+<<<
+In the Blacklist system, a number of revisions will be kept for tiddlers without the ''keep-rev'' field, or when it exists but is empty.
+
+Default number of revisions to keep when the tiddler has no ''keep-rev'' field: <$edit-text tiddler="$:/config/plainrevs/default" tag="input" type="number" default="3"/>
+<<<
+
+</$reveal>
+
+!!! ''keep-rev field''
+
+The ''keep-rev'' field of a tiddler will define how many revisions will be kept for that tiddler. Here are possible values for the field:
+
+* `no`: no revision will be saved
+
+* `all`: all revisions will be saved / no limit
+
+* any `integer` greater than `0`: that number of revisions will be saved

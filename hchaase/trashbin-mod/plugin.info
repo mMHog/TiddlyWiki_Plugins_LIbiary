@@ -1,0 +1,13 @@
+{
+    "version": "2.0.0",
+    "title": "$:/plugins/hchaase/trashbin-mod",
+    "plugin-type": "plugin",
+    "modifier": "HC Haase",
+    "modified": "20200403113442875",
+    "list": "readme",
+    "description": "trashbin-mod",
+    "creator": "HC Haase",
+    "created": "20200402085322510",
+    "core-version": "5.1.21",
+    "author": "HC Haase"
+}

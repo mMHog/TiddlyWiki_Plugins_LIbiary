@@ -1,0 +1,10 @@
+code-body: yes
+tags: $:/tags/Favorites/Manager/FilterButton
+title: $:/plugins/kookma/favorites/manager/filterbuttons/exptab-export
+type: text/vnd.tiddlywiki
+
+<$reveal type=nomatch default="0" text=<<resultCount>> ><!--display button if there is a result-->
+<$set name=exportFilter filter=<<selectionFilter>> >
+<$macrocall $name="exportButton"  exportFilter=<<exportFilter>> lingoBase="$:/language/Buttons/ExportTiddlers/" baseFilename="favorites"/>
+</$set>
+</$reveal>

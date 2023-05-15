@@ -1,0 +1,5 @@
+caption: {{$:/core/images/advanced-search-button}}
+tags: $:/tags/SideBar
+title: $:/plugins/wikilabs/advanced-search-plus/menu
+
+{{$:/AdvancedSearch}}

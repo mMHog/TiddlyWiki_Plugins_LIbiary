@@ -1,0 +1,12 @@
+{
+	"tokenize": true,
+    "shouldSort": true,
+	"minMatchCharLength": 3,
+    "threshold": 0.35,
+    "distance": 1000,
+	"keys": [
+    	{ "name": "fields.title", "weight": 0.1 },
+        { "name": "fields.text", "weight": 0.45 },
+        { "name": "fields.tags", "weight": 0.45 }
+    ]
+}

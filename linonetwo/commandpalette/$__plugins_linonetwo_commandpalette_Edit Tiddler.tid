@@ -1,0 +1,9 @@
+command-palette-caption: {{$:/language/Buttons/Edit/Caption}}
+command-palette-hint: {{$:/language/Buttons/Edit/Hint}}
+command-palette-name: Edit Tiddler
+command-palette-type: history
+tags: $:/tags/CommandPaletteCommand
+title: $:/plugins/linonetwo/commandpalette/Edit Tiddler
+type: text/vnd.tiddlywiki
+
+tm-edit-tiddler

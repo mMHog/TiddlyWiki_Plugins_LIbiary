@@ -1,0 +1,67 @@
+created: 20140913075557300
+creator: EucalyJ
+modified: 20140913102929280
+modifier: EucalyJ
+tags: $:/_macros $:/_titleme
+title: $:/plugins/eucaly/titleme/macros-render
+type: text/vnd.tiddlywiki
+
+\define beginRegEx() (beg|[(<])(?i)
+\define midRegEx() (mid|[|\/])(?i)
+\define endRegEx() (end|[)}>])(?i)
+
+\define ttme-render-link(text)
+<$link to="$(me)$">
+	<$transclude tiddler="$text$">
+		<$list filter="[[$text$]regexp[\S]first[]]" variable="text1">	<!-- $text$ not empty -->
+			<$text text="$text$"/>
+		</$list>
+		<$list filter="[[$text$]!regexp[\S]first[]]" variable="text2">	<!-- $text$ is empty -->
+			<$text text="$(me)$"/>
+		</$list>
+	</$transclude>
+</$link>
+\end
+
+\define ttme-render-button(text:"", message:"tm-navigate", tooltip:"", class:"-")
+<$button param="$(me)$" message="$message$" tooltip="$tooltip$" class="$class$">
+	<$transclude tiddler="$text$">
+		<$list filter="[[$text$]regexp[\S]first[]]" variable="text1">	<!-- $text$ not empty -->
+			<$text text="$text$"/>
+		</$list>
+		<$list filter="[[$text$]!regexp[\S]first[]]" variable="text2">	<!-- $text$ is empty -->
+			<$text text="$(me)$"/>
+		</$list>
+	</$transclude>
+</$button>
+\end
+
+\define ttme-render-full(editText:"", showText:"", beginText:"" endText:"", midText:"", class:"", order:"< edit / show >")
+<$list filter="$order$" variable="thisItem">
+	<$list filter="[<thisItem>regexp[show(?i)]first[]]" variable="text0">	<!-- show -->
+<$list filter="[[$showText$]regexp[\S]first[]]" variable="text1">	<!-- not empty -->
+		<<ttme-render-button "$showText$" message:"tm-navigate" tooltip:"Show $(me)$" class:"$class$">>
+</$list>
+<$list filter="[[$showText$]!regexp[\S]first[]]" variable="text2">	<!-- is empty -->
+		<<ttme-render-button "$:/plugins/eucaly/titleme/defaultShowText" message:"tm-navigate" tooltip:"Show $(me)$" class:"$class$">>
+</$list>
+	</$list>
+	<$list filter="[<thisItem>regexp[edit(?i)]first[]]" variable="text0">	<!-- edit -->
+<$list filter="[[$editText$]regexp[\S]first[]]" variable="text1">	<!-- not empty -->
+		<<ttme-render-button text:"$editText$" message:"tm-edit-tiddler" tooltip:"Edit $(me)$" class:"$class$">>
+</$list>
+<$list filter="[[$editText$]!regexp[\S]first[]]" variable="text2">	<!-- is empty -->
+		<<ttme-render-button text:"$:/plugins/eucaly/titleme/defaultEditText" message:"tm-edit-tiddler" tooltip:"Edit $(me)$" class:"$class$">>
+</$list>
+	</$list>
+	<$list filter="[<thisItem>regexp<beginRegEx>first[]]" variable="text0">	<!-- begin -->
+		<$text text="$beginText$"/>
+	</$list>
+	<$list filter="[<thisItem>regexp<midRegEx>first[]]" variable="text0">	<!-- mid -->
+		<$text text="$midText$"/>
+	</$list>
+	<$list filter="[<thisItem>regexp<endRegEx>first[]]" variable="text0">	<!-- end -->
+		<$text text="$endText$"/>
+	</$list>
+</$list>
+\end

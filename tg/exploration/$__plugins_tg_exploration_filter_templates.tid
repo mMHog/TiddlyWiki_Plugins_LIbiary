@@ -1,0 +1,8 @@
+created: 20170324172714778
+creator: TonGerner
+description: Templates
+filter: [all[shadows]sort[title]]+[prefix[$:/core/templates]]
+modified: 20191229162149150
+modifier: TonGerner
+tags: $:/tags/codeFilter
+title: $:/plugins/tg/exploration/filter/templates

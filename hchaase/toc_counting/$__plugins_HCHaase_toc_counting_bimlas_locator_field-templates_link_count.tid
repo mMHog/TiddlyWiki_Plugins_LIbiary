@@ -1,0 +1,12 @@
+caption: Link (with counter)
+created: 20200214102303417
+creator: HC Haase
+modified: 20200309121557750
+modifier: HC Haase
+tags: $:/plugins/HCHaase/toc_counting $:/tags/bimlas/locator/field-templates $:/tags/bimlas/locator/context-item-templates
+title: $:/plugins/HCHaase/toc_counting/bimlas/locator/field-templates/link_count
+type: text/vnd.tiddlywiki
+
+<$link to=<<currentTiddler>>>
+  <$transclude field="caption"><$view field="title"/></$transclude> <<toc_counting>>
+</$link>

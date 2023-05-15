@@ -1,0 +1,25 @@
+code-body: yes
+title: $:/plugins/kookma/favorites/templates/folder-title-edit
+type: text/vnd.tiddlywiki
+
+<div class="kk-fav-input-textbox">
+<!-- view mode ----->
+<!-- see also: $:/plugins/kookma/favorites/templates/folder-title-view -->
+<$reveal stateTitle=<<stateFolderEdit>> type="nomatch" text="edit" tag="div" class="kk-fav-title">
+<$droppable actions=<<drop-actions>> enable=<<tv-enable-drag-and-drop>> >
+<$let tv-wikilinks="no">
+<$transclude tiddler=<<currentFolder>> field="caption">
+<$transclude tiddler=<<currentFolder>> field="title"/>
+</$transclude>
+</$let>
+</$droppable>
+</$reveal>
+<!-- view mode ----->
+<$reveal stateTitle=<<stateFolderEdit>> type="match" text="edit" tag="div">
+<$keyboard key=enter  actions=<<rename-perform-actions>> >
+<$keyboard key=escape actions=<<rename-cancel-actions>>  >
+<$edit-text tiddler=<<tempFolderTextEdit>> field="text" tag="input" default={{{[<currentFolder>get[caption]]}}} placeholder="enter a folder title" focus=yes class="kk-fav-input"/>
+</$keyboard>
+</$keyboard>
+</$reveal>
+</div>

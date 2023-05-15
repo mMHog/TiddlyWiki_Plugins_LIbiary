@@ -1,0 +1,79 @@
+created: 20200510004425508
+modified: 20200517155210548
+tags: $:/tags/Stylesheet
+title: $:/plugins/sobjornstad/TiddlyRemember/stylesheets/remember
+type: text/vnd.tiddlywiki
+
+div.remembertwo {
+	border-left: 3px solid <<colour tag-background>>;
+	padding-left: 0.5em;
+	margin-bottom: 22px; /* line-height of the selfidentification block */
+}
+
+div.remembertwo .tr-ritem p {
+	margin-top: 0px;
+	margin-bottom: 0px;
+	margin-left: 2em;
+}
+
+div.remembertwo .tr-ritem div {
+	font-weight: bold;
+	color: <<colour primary>>;
+	float: left;
+}
+
+div.remembertwo div.tr-selfidentification {
+	float: right;
+	color: <<colour muted-foreground>>;
+}
+
+div.remembercz {
+	border-left: 3px solid <<colour tag-background>>;
+	padding-left: 0.5em;
+	line-height: 22px; /* default; setting explicitly */
+}
+
+.remembercz > span.cloze-identifier {
+	color: <<colour tag-background>>;
+}
+
+.remembercz div.tr-selfidentification {
+	float: right;
+	margin-left: 0.5em;
+	color: <<colour muted-foreground>>;
+}
+
+
+/* these separate fields are only read by the TR parser */
+div.remembertwo div.tr-reference, .remembercz div.tr-reference {
+	display: none;
+}
+
+div.remembertwo div.rid, .remembercz div.rid {
+	display: none;
+}
+
+div.remembertwo div.tr-sched, .remembercz div.tr-sched {
+	display: none;
+}
+
+.remembercz > span.cloze-text {
+	display: none;
+}
+
+
+/***** Built-in classes for common format customizations; apply to the class: parameter to macros *****/
+/* Hide the ID field */
+.tr-hide-id div.tr-selfidentification {
+	display: none;
+}
+
+/* Hide the ID only if it's an inline cloze */
+span.remembercz.tr-hide-inline-cloze-id div.tr-selfidentification {
+	display: none;
+}
+
+/* Hide the word "cloze" on inline clozes */
+span.remembercz.tr-hide-inline-cloze-name span.cloze-identifier span.tr-name-cloze {
+	display: none;
+}

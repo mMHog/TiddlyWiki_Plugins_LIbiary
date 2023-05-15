@@ -1,0 +1,51 @@
+created: 20200214111942791
+creator: HC Haase
+modified: 20200311110312148
+modifier: HC Haase
+tags: 
+title: $:/plugins/HCHaase/toc_counting/changelog
+
+I'm trying to follow the rules of [[Semantic Versioning|https://semver.org/]].
+
+2.2.1
+
+* [fix] counting of zeros in deep mode and tag/link view (corrected filter)
+
+2.2.0
+
+* [new] added counting for all sub-levels of tags (kin- filter). WARNING: this is very slow.
+* [new] added button in page toolbar with 3 modes. 1level count/all level count/turn off
+* [new] added count of links or tag/links (and tag). toggle by pressing the number (3 views)
+*[new] added support for list-links, list-links-draggable and list-tag-draggable
+*[new] moved code to a [[macro|$:/plugins/HCHaase/macro/toc_counting]] that is used in the plugin, and can be used with the syntax `<<toc_counting>>` (not used in tocp)
+* [fix] removed counting of 0 zero in the locator and tocp plugins
+*[fix] removed the double "tags" tab form the sidebar. $:/plugins/HCHaase/toc_counting/more/tag_org still had sidebar tag. 
+
+2.1.0
+
+* [fix] removed `$:/plugins/HCHaase/toc_counting/bimlas/locator/field-templates/link_org` from templates in the locator plugin (removed tag)
+* [documentation] clarity: change caption of `$:/plugins/HCHaase/toc_counting/bimlas/locator/field-templates/link_count ` to` Link (with counter)`
+* [documentation] clarity: added description field to tiddlers, describing there function
+* [documentation] added reference to the locator plugin settings
+* [new] added count for P Marios[[ tocP|https://wikilabs.github.io/editions/tocP/]] plugin. It only works when the `parent` field is used but not with a custom field  (I don't know how to do this).
+
+2.0.0
+
+* [fix] more sidebar/tags had old and new version. now toggle between two
+* [new] toggle the more sidebar/tags count/no.count
+* [new] added count for bimlas locator plugin
+* [new] added toggle count/no.count for bimlas locator plugin
+
+1.0.0
+
+  * First public version
+  * toggle count/no.count for main toc macro
+  * add a more sidebar/tags with counts
+
+!!! Roadmap
+ When I have time 
+
+# ~~make the toggle 1./all levels button more pretty~~
+# speed up performance somehow.
+#~~I would like to expand this to lists as well.~~
+# ~~I would also like to add an extra count of sub-sub-tiddlers~~

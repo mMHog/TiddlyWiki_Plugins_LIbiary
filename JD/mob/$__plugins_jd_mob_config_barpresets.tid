@@ -1,0 +1,46 @@
+caption: Top and bottom bars
+created: 20171113033257223
+creator: JD
+modified: 20171122154450000
+modifier: JD
+tags: $:/tags/jd/config
+title: $:/plugins/jd/mob/config/barpresets
+
+<h2>Topbar and bottombar presets</h2>
+<$button class="tc-btn-invisible">
+<<jdconfig barpreset 1>>
+<<setToptitlebar>>
+<<noBottom>>
+<<jdradbut barpreset 1>>
+</$button> ''Titlebar'' on top, hidden bottom
+<<moreOps barpreset 1 titlebar>>
+<$button class="tc-btn-invisible">
+<<jdconfig barpreset 2>>
+<<setTopcontrols>>
+<<noBottom>>
+<<jdradbut barpreset 2>>
+</$button> ''Controls'' on top, hidden bottom
+<<moreOps barpreset 2 searchbutton>>
+<$button class="tc-btn-invisible">
+<<jdconfig barpreset 3>>
+<<setTophide>>
+<<setBottomcontrols>>
+<<jdradbut barpreset 3>>
+</$button> Hidden top, ''Controls'' on bottom
+<<moreOps barpreset 3 searchbutton>>
+<$button class="tc-btn-invisible">
+<<jdconfig barpreset 4>>
+<<setTopsearchbar>>
+<<setBottomcontrols>>
+<<jdradbut barpreset 4>>
+</$button> ''Searchbar'' on top, ''Controls'' on bottom
+<<moreOps barpreset 4 searchbar>>
+<$button class="tc-btn-invisible">
+<<jdconfig barpreset 5>>
+<<jdradbut barpreset 5>>
+</$button> Custom topbar and bottombar
+<$reveal type="match" state="$:/plugins/jd/mob/config/config##barpreset" text="5">
+{{$:/plugins/jd/mob/config/topbar}}
+{{$:/plugins/jd/mob/config/bottombar}}
+</$reveal>
+<br><br>

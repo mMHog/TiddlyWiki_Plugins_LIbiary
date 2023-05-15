@@ -1,0 +1,44 @@
+tags: $:/tags/Stylesheet
+title: $:/plugins/kookma/favorites/styles/dynamic
+type: text/vnd.tiddlywiki
+
+/* skin */
+.kk-fav-row:hover {
+	background-color: <<colour table-header-background>>;
+}
+.kk-fav-row .tc-btn-invisible svg
+{
+	font-size: 0.9em;
+	fill: <<colour muted-foreground>>;
+	vertical-align: middle;
+	margin-right:0.5em;
+}
+.kk-fav-folder-content .tc-btn-invisible.tc-btn-mini svg {
+	font-size: 0.7em;
+	fill: <<colour muted-foreground>>;
+	vertical-align: middle;
+
+}
+
+/* for manager btn */
+.tc-btn-invisible.kk-fav-btn{
+	color: <<colour muted-foreground>>;
+}
+.tc-btn-invisible.kk-fav-btn svg{
+	fill:  <<colour muted-foreground>>;
+}
+
+/* very important: style the favorite icon on tiddler view toolbar */
+.tc-tiddler-controls .notselected .tc-image-favorites-button {
+	stroke:#000;
+}
+
+.tc-tiddler-controls .selected .tc-image-favorites-button {
+	stroke: {{$:/config/favorites/IconColor}};
+	fill:   {{$:/config/favorites/IconColor}};
+}
+
+.tc-tiddler-controls:hover .selected .tc-image-favorites-button {
+	stroke: {{$:/config/favorites/IconColor}};
+	fill:   {{$:/config/favorites/IconColor}};
+}

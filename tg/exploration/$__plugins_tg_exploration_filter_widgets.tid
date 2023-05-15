@@ -1,0 +1,8 @@
+created: 20141005142452796
+creator: TonGerner
+description: Widgets
+filter: [all[shadows]sort[title]]+[prefix[$:/core/modules/widgets]]
+modified: 20191229162359445
+modifier: TonGerner
+tags: $:/tags/codeFilter
+title: $:/plugins/tg/exploration/filter/widgets

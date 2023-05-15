@@ -1,0 +1,30 @@
+created: 20190611082221870
+creator: HC Haase
+modified: 20200311084928641
+modifier: HC Haase
+title: $:/plugins/HCHaase/toc_counting/readme
+
+The //TOC counting// plugin adds a count of child tiddlers to the right of each entry in the TOC(s) and list. No count will be shown if there isn't any child tiddlers (e.g. no 0).
+
+Change state by pressing the number
+
+# show tags (tag)
+# show tags and backlinkslinkls (tag/__links__)
+# show backlinks (__links__)
+
+
+Links are __underlined__.
+
+(Note: if you are filtering by e.g. links[] (or using the list-links macro), you might want to change the view to links and not tags) 
+
+If you want to use the plugin in deep mode with counting of all sub-level tiddlers, you also need to install the kin-filter by Bimlas.
+
+* Plugin homepage: https://hchaase.github.io/HC-Plugins/
+* Plugin dependencies (only for deep mode): The [[kin-filter|https://bimlas.gitlab.io/tw5-kin-filter/]]
+
+The plugin can be toggled on or of in the settings or below.
+
+{{$:/plugins/HCHaase/toc_counting/settings}}
+
+
+See [[changelog and roadmap here|$:/plugins/HCHaase/toc_counting/changelog]].

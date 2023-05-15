@@ -1,0 +1,55 @@
+created: 20190919132938820
+creator: HC Haase
+modified: 20200403113209401
+modifier: HC Haase
+title: $:/plugins/hchaase/trashbin-mod/readme
+
+
+
+!! The problem
+
+If you use JD's very nice [[Plain Revisions|http://j.d.revisions.tiddlyspot.com/]] plugin and also want to use Kookma's very nice [[Trashbin|https://kookma.github.io/TW-Trashbin/]] plugin you have a problem! when a tiddler go in the trash bin, the revisions are not touched, and if you later delete the tiddler from trash, you will have revisions of non-existing tiddelrs filling up the wiki and a hard time locating these revisions.
+
+!! The solution
+
+The solution is my Trashbin-mod. With this mod, the revision tiddlers will be deleted whenever the corresponding tiddeler is deleted permanently from the trash bin. 
+
+The revisions are not changed nor deleted as long as the corresponding tiddler is in the trash bin. Therefore, if you restore a tiddler from the trash bin, the revisions will still be there.
+
+!!! Features
+
+# When a tiddler is ''permanently'' deleted from the trash (individually or in bulk), the corresponding revisions of these tiddelers are also deleted. 
+# In the trashbin sidebar I added a count items in trash that will appear when the trashbin is not empty. 
+
+!! Install
+
+# Drag and drop the plugin to your wiki: [[$:/plugins/hchaase/trashbin-mod]]
+# Drag and drop these tiddlers to your wiki: [[$:/plugins/kookma/trashbin/macros/bulk-operation]] and [[$:/plugins/kookma/trashbin/ui/sidebar]]
+
+!! Uninstall
+
+Delete the above tiddlers and the plugin tiddler.
+
+!! Tip
+
+If you (like me) don't want the sidebar cluttered, you can move the trashbin to the more tab by replacing the `$:/tags/SideBar` tag with `$:/tags/MoreSideBar` tag.
+
+
+!! Issues ?
+Post them at [[github|https://github.com/hchaase/TW-Trashbin-mod/issues]].
+
+!!Changelog
+
+v2.0.0
+
+* [new] compatible with the [[trashbin plugin|https://kookma.github.io/TW-Trashbin/]] v 1.2.1
+* [new] moved the mod to a macro
+
+
+v1.1.0
+
+* made it compatible with the new [[trashbin plugin v 1.2.0|https://kookma.github.io/TW-Trashbin/]] 
+
+v 1.0.0
+
+* first release. Use this for trahsbin plugin v 1.0.0 (find it [[here|$:/plugins/kookma/trashbin/trashbin-mod/readme-v1]])

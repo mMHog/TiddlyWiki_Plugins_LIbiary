@@ -1,0 +1,34 @@
+code-body: yes
+tags: $:/tags/Favorites/Macro/Folder
+title: $:/plugins/kookma/favorites/macros/folder-reorder
+type: text/vnd.tiddlywiki
+
+\define folder-reorder()
+<$let selectedFolder={{{ [<tempreorderTid>get[text]] }}} 
+      disabledStatus={{{[<selectedFolder>tag<foldertagTid>limit[1]then[no]else[yes]]}}} >
+<div class="kk-fav-title">
+<$list filter="[<disabledStatus>match[no]]" variable=null emptyMessage="//First select a folder//">
+<$transclude tiddler=<<selectedFolder>> field=caption/>
+</$list>
+</div>
+
+<$button tooltip="move down" disabled=<<disabledStatus>> >{{$:/core/images/down-arrow}}
+<$action-listops $tiddler=<<foldertagTid>> $field="list" $subfilter="+[move:1<selectedFolder>]"/>
+</$button>
+<$button tooltip="move up" disabled=<<disabledStatus>> >{{$:/core/images/up-arrow}}
+<$action-listops $tiddler=<<foldertagTid>> $field="list" $subfilter="+[move:-1<selectedFolder>]"/>
+</$button>
+<$button tooltip="put first" disabled=<<disabledStatus>> >{{$:/core/images/fold-button}}
+<$action-listops $tiddler=<<foldertagTid>> $field="list" $subfilter="-[<selectedFolder>] [<selectedFolder>] +[putfirst:1[]]"/>
+</$button>
+<$button tooltip="put last" disabled=<<disabledStatus>> >{{$:/core/images/unfold-button}}
+<$action-listops $tiddler=<<foldertagTid>> $field="list" $subfilter="-[<selectedFolder>] [<selectedFolder>putlast:1[]]"/>
+</$button>
+<$button tooltip="sort downwards" disabled=<<disabledStatus>> >{{$:/core/images/unfold-all-button}}
+<$action-listops $tiddler=<<foldertagTid>> $field="list" $subfilter="+[sort[caption]]"/>
+</$button>
+<$button tooltip="sort upwards" disabled=<<disabledStatus>> >{{$:/core/images/fold-all-button}}
+<$action-listops $tiddler=<<foldertagTid>> $field="list" $subfilter="+[!sort[caption]]"/>
+</$button>
+</$let>
+\end

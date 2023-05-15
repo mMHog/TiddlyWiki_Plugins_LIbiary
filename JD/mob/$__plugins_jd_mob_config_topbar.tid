@@ -1,0 +1,42 @@
+caption: Topbar style
+created: 20171028024424838
+creator: JD
+list-before: $:/plugins/jd/mob/config/bottombar
+modified: 20171122131221362
+modifier: JD
+title: $:/plugins/jd/mob/config/topbar
+
+<h2>Topbar</h2>
+<$button class=tc-btn-invisible>
+<<setTopsearchbar>>
+<<tglSearch>>
+<<jdconfig searchbutton simple>>
+<<jdradbut radbuttop fixedsearch>>
+</$button> Fixed searchbar
+<<moreOps radbuttop fixedsearch searchbar>>
+<$button class=tc-btn-invisible>
+<<setTopcontrols>>
+<<tglSearch>>
+<<jdconfig searchbutton simple>>
+<<jdradbut radbuttop controls>>
+</$button> Controls
+<<moreOps radbuttop controls searchbutton>>
+<$button class=tc-btn-invisible>
+<<setTopmobbuttons>>
+<<tglSearch>>
+<<jdconfig searchbutton simple>>
+<<jdradbut radbuttop mobbuttons>>
+</$button> Mob buttons only
+<<moreOps radbuttop mobbuttons searchbutton>>
+<$button class=tc-btn-invisible>
+<<setToptitlebar>>
+<<tglSearch>>
+<<jdconfig searchbutton simple>>
+<<jdradbut radbuttop title>>
+</$button> Titlebar
+<<moreOps radbuttop title titlebar>>
+<$button class=tc-btn-invisible>
+<<setTophide>>
+<<jdradbut radbuttop hide>>
+</$button> Hidden
+<br>

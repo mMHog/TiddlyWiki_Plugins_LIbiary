@@ -1,0 +1,626 @@
+created: 20171016123229521
+creator: JD
+font-body: {{$:/temp/jd/mob/font/font-body}}
+font-button: {{$:/temp/jd/mob/font/font-button}}
+font-sitetitle: {{$:/temp/jd/mob/font/font-sitetitle}}
+font-subsitetitle: {{$:/temp/jd/mob/font/font-subsitetitle}}
+font-tab-button: {{$:/temp/jd/mob/font/font-tab-button}}
+font-title: {{$:/temp/jd/mob/font/font-title}}
+height-sitetitle: {{$:/temp/jd/mob/font/height-sitetitle}}
+height-subsitetitle: {{$:/temp/jd/mob/font/height-subsitetitle}}
+lineheight: {{$:/temp/jd/mob/font/lineheight}}
+list-after: $:/themes/tiddlywiki/vanilla/base
+modified: 20180903124046078
+modifier: JD
+tags: $:/tags/Stylesheet
+title: $:/plugins/jd/mob/stylesheet
+z-bar: 2000
+z-dropdown: 4000
+z-notif: 9000
+z-search: 4000
+z-searchbuttons: 4100
+z-searchwrapper: 2500
+z-sidebar: 1500
+
+@media print
+{
+.tc-sidebar-scrollable,
+.jd-search,
+.jd-topbar,
+.jd-bottombar { display: none !important; }
+}
+
+/**  CONFIG RADIO BUTTONS  **/
+
+.radbutton, .radbuttoff { 
+    display: inline-block; 
+    height: 12px; 
+    width: 12px; 
+    border: 2px solid <<colour muted-foreground>>; 
+    -webkit-transition-duration: {{$:/config/AnimationDuration}}ms;
+    -moz-transition-duration: {{$:/config/AnimationDuration}}ms;
+    -ms-transition-duration: {{$:/config/AnimationDuration}}ms;
+    -o-transition-duration: {{$:/config/AnimationDuration}}ms;
+    transition-duration: {{$:/config/AnimationDuration}}ms;
+}
+
+.radbutton { background: <<colour primary>>; }
+.radbuttoff { background: <<colour muted-foreground>>; }
+.radbutton:hover, .radbuttoff:hover { 
+    border: 2px solid <<colour primary>>;
+    background: <<colour primary>>; 
+}
+
+.jd-bq {
+    margin: 5px;
+    padding: 5px;
+    border: 1px solid <<colour tab-border>>;
+}
+
+.jd-bq, .radbutton, .radbuttoff {
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    -ms-border-radius: 6px;
+    -o-border-radius: 6px;
+    border-radius: 6px;
+}
+
+.jd-btn-txt {
+    border: none;
+    background: none;
+    font-size: inherit;
+    text-decoration: underline;
+    padding: 0;
+    margin: 0;
+}
+
+.jd-btn-txt:hover {
+    text-decoration: none;
+}
+
+@media (min-width: {{$:/themes/tiddlywiki/vanilla/metrics/sidebarbreakpoint}}) { 
+.jd-topbar, 
+.jd-bottombar,
+.jd-search { display: none; }
+} 
+
+@media (max-width: {{$:/themes/tiddlywiki/vanilla/metrics/sidebarbreakpoint}}) { 
+
+.tc-topbar { display: none !important; } 
+
+.tc-tags-wrapper { margin: 5px 0 !important; }
+
+
+/**  NOTIFICATIONS  **/
+
+.tc-notification {
+    position: fixed; 
+    top: 60px !important;
+    right: 10px !important;
+    z-index: {{!!z-bar}} !important;
+}
+
+.tc-modal {
+    top: 50px !important;
+    left: 50px !important;
+    right: 50px !important;
+}
+
+.tc-modal-body { max-height: calc(100vh - 200px) !important; }
+
+.tc-modal-wrapper,
+.tc-plugin-reload-warning { z-index: {{!!z-notif}} !important; }
+
+
+/**  STORY RIVER  **/
+
+.tc-story-river { 
+    margin: 0 !important;
+    padding-top: 0 !important;
+}
+
+<$reveal type="match" state="$:/plugins/jd/mob/config/config##storyfix" text="no">
+
+<$reveal type="nomatch" state="$:/plugins/jd/mob/config/config##topbar" text="hide">
+
+@media print
+{
+.tc-story-river { margin-top: 0 !important; }
+}
+
+@media screen
+{
+.tc-story-river { margin-top: 50px !important; }
+}
+
+</$reveal>
+
+<$reveal type="nomatch" state="$:/plugins/jd/mob/config/config##bottombar" text="hide">
+
+.tc-story-river { margin-bottom: 50px !important; }
+
+</$reveal>
+
+</$reveal>
+
+<$reveal type="match" state="$:/plugins/jd/mob/config/config##storyfix" text="yes">
+
+.tc-story-river { 
+    width: 100% !important;
+    position: fixed !important;
+    left: 0 !important;
+    overflow-y: auto !important;
+}
+
+<$reveal type="nomatch" state="$:/plugins/jd/mob/config/config##topbar" text="hide">
+
+<$reveal type="match" state="$:/plugins/jd/mob/config/config##bottombar" text="hide">
+.tc-story-river { 
+    top: 50px !important;
+    height: calc(100% - 50px) !important;
+}
+</$reveal>
+
+<$reveal type="nomatch" state="$:/plugins/jd/mob/config/config##bottombar" text="hide">
+.tc-story-river { 
+    top: 50px !important; 
+    height: calc(100% - 100px) !important;
+}
+</$reveal>
+
+</$reveal>
+
+<$reveal type="match" state="$:/plugins/jd/mob/config/config##topbar" text="hide">
+
+<$reveal type="match" state="$:/plugins/jd/mob/config/config##bottombar" text="hide">
+.tc-story-river { 
+    top: 0 !important; 
+    height: 100% !important;
+}
+</$reveal>
+
+<$reveal type="nomatch" state="$:/plugins/jd/mob/config/config##bottombar" text="hide">
+.tc-story-river { 
+    top: 0 !important; 
+    height: calc(100% - 50px) !important;
+}
+</$reveal>
+
+</$reveal>
+
+</$reveal>
+
+.tc-tiddler-frame {
+    margin-bottom: 2px !important;
+    padding: 15px 10px;
+    overflow: auto;
+}
+
+
+/**  POPUPS AND DROPDOWNS INSIDE VIEW AREA  **/
+
+.tc-drop-down,
+.tc-block-dropdown {
+    position: fixed !important;
+    top: 50% !important;
+    left: 50% !important;
+    text-align: left;
+    white-space: normal !important;
+    max-height: calc(100% - 160px) !important;
+    min-width: calc(100% - 90px) !important;
+    max-width: calc(100% - 60px) !important;
+   -webkit-transform: translate(-50%, -50%) !important;
+   -moz-transform: translate(-50%, -50%) !important;
+   -ms-transform: translate(-50%, -50%) !important;
+   -o-transform: translate(-50%, -50%) !important;
+    transform: translate(-50%, -50%) !important;
+    -webkit-box-shadow: 0 0 10px 5px rgba(0,0,0,0.5);
+    -moz-box-shadow: 0 0 10px 5px rgba(0,0,0,0.5);
+    -ms-box-shadow: 0 0 10px 5px rgba(0,0,0,0.5);
+    -o-box-shadow: 0 0 10px 5px rgba(0,0,0,0.5);
+    box-shadow: 0 0 10px 5px rgba(0,0,0,0.5);
+    overflow: auto !important;
+    z-index: {{!!z-dropdown}} !important;
+}
+
+.tc-menu-list-item {
+    padding-left: 5px;
+    text-indent: -5px;
+    white-space: normal !important;
+    word-wrap: break-word !important;
+    -webkit-word-break: break-all !important;
+    -moz-word-break: break-all !important;
+    -ms-word-break: break-all !important;
+    -o-word-break: break-all !important;
+    word-break: break-all !important;
+}
+
+.tc-edit-type-dropdown { overflow: auto; }
+
+
+/**  SCROLLBARS  **/
+
+<$reveal type="match" state="$:/plugins/jd/mob/config/config##scrollbars" text="hide">
+
+body { 
+   -ms-overflow-style: -ms-autohiding-scrollbar;
+}
+
+div::-webkit-scrollbar,
+.tc-edit-type-dropdown::-webkit-scrollbar,
+.tc-block-dropdown::-webkit-scrollbar,
+.tc-drop-down::-webkit-scrollbar,
+.jd-search-results::-webkit-scrollbar,
+.tc-story-river::-webkit-scrollbar,
+.tc-sidebar-scrollable::-webkit-scrollbar {
+    background: transparent;
+    width: 0;
+}
+
+</$reveal>
+
+<$reveal type="match" state="$:/plugins/jd/mob/config/config##scrollbars" text="show">
+
+body { 
+    scrollbar-face-color: <<colour background>>;
+    scrollbar-arrow-color: <<colour page-background>>;
+    scrollbar-track-color: <<colour page-background>>;
+    scrollbar-shadow-color: <<colour page-background>>;
+}
+
+div::-webkit-scrollbar,
+.tc-edit-type-dropdown::-webkit-scrollbar,
+.tc-block-dropdown::-webkit-scrollbar,
+.tc-drop-down::-webkit-scrollbar,
+.tc-story-river::-webkit-scrollbar,
+.tc-sidebar-scrollable::-webkit-scrollbar {
+    background: <<colour background>>;
+    width: 6px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+}
+
+div::-webkit-scrollbar-thumb,
+.tc-edit-type-dropdown::-webkit-scrollbar-thumb,
+.tc-block-dropdown::-webkit-scrollbar-thumb,
+.tc-drop-down::-webkit-scrollbar-thumb,
+.jd-search-results::-webkit-scrollbar,
+.tc-story-river::-webkit-scrollbar-thumb,
+.tc-sidebar-scrollable::-webkit-scrollbar-thumb {
+    background: <<colour page-background>>; 
+    width: 6px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+}
+
+.jd-search-results::-webkit-scrollbar-thumb {
+    background: <<colour primary>>;
+    width: 6px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+}
+
+</$reveal>
+
+
+/**  FOCUS  **/
+
+<$reveal type="match" state="$:/plugins/jd/mob/config/config##focus" text="hide">
+textarea:focus, select:focus, button:focus, input:focus { outline: none; }
+</$reveal>
+
+
+/**  TOPBAR & BOTTOMBAR  **/
+
+.jd-topbar,
+.jd-bottombar {
+    width: 100%;
+    position: fixed;
+    left: 0;
+    background: <<colour page-background>>;
+    overflow: hidden;
+    z-index: {{!!z-bar}};
+}
+
+.jd-topbar { top: 0; height: 50px; }
+.jd-bottombar { bottom: 0; }
+
+
+/**  SEARCH  **/
+
+.jd-search { z-index: {{!!z-search}}; }
+
+.jd-search-results {
+    background: <<colour page-background>>;
+    width: 100%;
+    position: fixed;
+    top: 50px;
+    left: 0;
+    margin: 0;
+    padding: 0 10px;
+    overflow-y: auto;
+    z-index: {{!!z-searchwrapper}};
+}
+
+<$reveal type="nomatch" state="$:/plugins/jd/mob/config/config##bottombar" text="hide">
+.jd-search-results { max-height: calc(100% - 100px); }
+</$reveal>
+
+<$reveal type="match" state="$:/plugins/jd/mob/config/config##bottombar" text="hide">
+.jd-search-results { max-height: calc(100% - 50px); }
+</$reveal>
+
+.jd-searchwrapper {
+    background: <<colour page-background>>;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    z-index: {{!!z-searchwrapper}};
+}
+
+.jd-searchbar {
+    width: calc(100% - 20px);
+    height: 30px; 
+    position: fixed;
+    top: 0;
+    left: 0;
+    font-size: 16px !important;
+    background: transparent !important;
+    border: none;
+    border-bottom: 2px solid<<colour primary>>;
+<$reveal state="$:/plugins/jd/mob/config/config##searchbarchoice" type="match" text="combined">
+    padding: 0 160px 0 10px;
+</$reveal>
+<$reveal state="$:/plugins/jd/mob/config/config##searchbarchoice" type="match" text="simple">
+    padding: 0 100px 0 10px;
+</$reveal>
+    margin: 10px;
+}
+
+.jd-search-buttons {
+<$reveal state="$:/plugins/jd/mob/config/config##searchbarchoice" type="match" text="combined">
+    width: 160px; 
+</$reveal>
+<$reveal state="$:/plugins/jd/mob/config/config##searchbarchoice" type="match" text="simple">
+    width: 100px; 
+</$reveal>
+    position: fixed; 
+    top: 12px;
+    right: 0; 
+    background: <<colour page-background>>;
+    border: transparent;
+    margin-right: 20px; 
+    text-align: right;
+    vertical-align: middle;
+}
+
+.jd-search-buttons {
+    z-index: {{!!z-searchbuttons}};
+}
+
+.jd-search-buttons .tc-popup-keep,
+.jd-search-buttons .tc-btn-invisible {
+    font-size: 18px;
+    background: transparent;
+    border: transparent;
+    cursor: pointer;
+}
+
+.jd-search-buttons .tc-btn-invisible { margin-left: 8px; }
+
+
+/**  CONTROLS **/
+
+.jd-title-controls {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px;
+}
+
+.jd-search-buttons button,
+.jd-title-controls button {
+    fill: <<colour sidebar-controls-foreground>>;
+    font-size: 1.6em;
+    -webkit-transition-duration: {{$:/config/AnimationDuration}}ms;
+    -moz-transition-duration: {{$:/config/AnimationDuration}}ms;
+    -ms-transition-duration: {{$:/config/AnimationDuration}}ms;
+    -o-transition-duration: {{$:/config/AnimationDuration}}ms;
+    transition-duration: {{$:/config/AnimationDuration}}ms;
+}
+
+.jd-search-buttons button:hover,
+.jd-title-controls button:hover {
+    fill: <<colour sidebar-controls-foreground-hover>>;
+}
+
+.jd-topbar .tc-page-controls,
+.jd-bottombar .tc-page-controls {
+    display: flex;
+    justify-content: space-between;
+    height: 30px;
+    margin: 10px;
+}
+
+.tc-page-controls button { margin: 0 !important;}
+
+
+/**  TITLEBAR  **/
+
+.jd-title-wrapper .tc-site-title,
+.jd-title-wrapper .tc-site-subtitle {
+    position: absolute;
+    left: 50%;
+    text-align: center;
+   -webkit-transform: translate(-50%, 50%);
+   -moz-transform: translate(-50%, 50%);
+   -ms-transform: translate(-50%, 50%);
+   -o-transform: translate(-50%, 50%);
+    transform: translate(-50%, 50%);
+}
+
+.jd-title-wrapper .tc-site-subtitle {
+    width: calc(100% - 100px);
+}
+
+
+/**  SIDEBAR LISTS  **/
+
+.tc-sidebar-scrollable .tc-site-title,
+.tc-sidebar-scrollable .tc-site-subtitle,
+.tc-sidebar-scrollable .tc-page-controls,
+.tc-sidebar-scrollable .tc-search
+ { display: none; }
+
+.tc-sidebar-header { padding: 0 !important; }
+
+<$reveal state="$:/state/sidebar" type="nomatch" text="no">
+.tc-sidebar-scrollable {
+    background: <<colour background>>;
+    width: 100%;
+    position: fixed;
+    left: 0; 
+    z-index: {{!!z-sidebar}};
+    overflow: auto !important;
+}
+</$reveal>
+
+<$reveal type="match" state="$:/state/sidebar" text="no">
+
+.tc-sidebar-scrollable { display:none; }
+
+.tc-tab-set { overflow-y: auto !important; }
+
+</$reveal>
+
+<$reveal type="nomatch" state="$:/plugins/jd/mob/config/config##topbar" text="hide">
+
+<$reveal type="match" state="$:/plugins/jd/mob/config/config##bottombar" text="hide">
+.tc-sidebar-scrollable { 
+    top: 50px !important;
+    height: calc(100% - 50px) !important;
+}
+
+.tc-sidebar-scrollable .tc-tab-buttons { top: 50px; }
+</$reveal>
+
+<$reveal type="nomatch" state="$:/plugins/jd/mob/config/config##bottombar" text="hide">
+.tc-sidebar-scrollable { 
+    top: 50px !important;
+    height: calc(100% - 100px) !important;
+}
+
+.tc-sidebar-scrollable .tc-tab-buttons { top: 50px; }
+</$reveal>
+
+</$reveal>
+
+<$reveal type="match" state="$:/plugins/jd/mob/config/config##topbar" text="hide">
+
+<$reveal type="match" state="$:/plugins/jd/mob/config/config##bottombar" text="hide">
+.tc-sidebar-scrollable { 
+    top: 0 !important;
+    height: 100% !important;
+}
+</$reveal>
+
+<$reveal type="nomatch" state="$:/plugins/jd/mob/config/config##bottombar" text="hide">
+.tc-sidebar-scrollable { 
+    top: 0 !important;
+    height: calc(100% - 50px) !important;
+}
+</$reveal>
+
+</$reveal>
+
+
+/**  SIDEBAR LISTS BUTTONS  **/
+
+.tc-sidebar-scrollable .tc-tab-buttons { margin: 10px; }
+
+.tc-sidebar-scrollable .tc-tab-content { 
+    margin: 10px !important; 
+    border: 0 !important;
+}
+
+
+/**  ADJUSTABLE  FONTS AND HEIGHTS  **/
+
+<$reveal type="match" state="$:/plugins/jd/mob/config/config##titlebaradjust" text="no">
+.jd-title-wrapper .tc-site-title { top: -3px; font-size: 18px; }
+.jd-title-wrapper .tc-site-subtitle { top: 15px; font-size: 12px; }
+</$reveal>
+
+<$reveal type="match" state="$:/plugins/jd/mob/config/config##titlebaradjust" text="yes">
+.jd-title-wrapper .tc-site-title { top: {{!!height-sitetitle}}; font-size: {{!!font-sitetitle}}; }
+.jd-title-wrapper .tc-site-subtitle { top: {{!!height-subsitetitle}}; font-size: {{!!font-subsitetitle}}; }
+</$reveal>
+
+<$reveal type="nomatch" state="$:/plugins/jd/mob/config/config##fontsize" text="default">
+
+.tc-tiddler-view-frame h2.tc-title,
+input.tc-titlebar.tc-edit-texteditor { 
+    font-size: {{!!font-title}} !important; 
+}
+
+.tc-tiddler-view-frame .tc-subtitle { 
+    font-size: calc({{!!font-body}} - 4px) !important; 
+}
+
+h1, h1 a { 
+    font-size: calc({{!!font-body}} + 6px) !important; 
+}
+
+h2, h2 a { 
+    font-size: calc({{!!font-body}} + 4px) !important; 
+}
+
+h3, h3 a { 
+    font-size: calc({{!!font-body}} + 2px) !important; 
+}
+
+h4, a, li, table,
+input, textarea, select,
+.tc-tiddler-preview-preview p,
+.tc-tiddler-view-frame p,
+.tc-modal p,
+.tc-btn-text,
+.jd-search-results,
+.tc-tab-content,
+.tc-modal-header h3 { 
+    font-size: {{!!font-body}} !important; 
+    line-height: {{!!lineheight}} !important;
+}
+
+button.tc-btn-invisible.tc-remove-tag-button,
+.tc-tag-label.tc-btn-invisible { 
+    font-size: calc({{!!font-body}} - 4px) !important; 
+}
+
+.tc-tab-buttons button,
+.tc-tab-buttons.tc-vertical button,
+.tc-sidebar-scrollable .tc-tab-buttons button,
+.tc-sidebar-scrollable .tc-tab-buttons.tc-vertical button {
+    font-size: {{!!font-tab-button}} !important;
+}
+
+.tc-btn-invisible,
+.tc-tiddler-controls button, 
+.tc-tiddler-controls button svg, 
+.tc-tiddler-controls button img,
+.tc-image-buttons,
+.tc-page-controls { 
+    font-size: {{!!font-button}} !important; 
+}
+
+.tc-tiddler-controls button svg, 
+.tc-tiddler-controls button img,
+.tc-image-buttons { 
+    height: {{!!font-button}} !important; 
+    width: {{!!font-button}} !important; 
+}
+
+</$reveal>
+
+}

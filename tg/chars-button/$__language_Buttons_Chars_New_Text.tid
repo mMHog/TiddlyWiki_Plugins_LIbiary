@@ -1,0 +1,11 @@
+created: 20181107162854101
+creator: TonGerner
+modified: 20201227192558483
+modifier: TonGerner
+title: $:/language/Buttons/Chars/New/Text
+
+* Add a character:
+** e.g. as character (`↔`),  in hex (`&#x2194;`), or dec (`&#8595;`)
+* Add a descriptive title in the caption field of this tiddler, e.g. 'Text color Purple'
+* Add a appropriate title to this tiddler
+* Save this tiddler

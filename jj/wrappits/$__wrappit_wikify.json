@@ -1,0 +1,16 @@
+[
+    {
+        "created": "20200421145521948",
+        "text": "",
+        "tooltip": "parses and renders a string of text and assigns the result to a specified variable",
+        "title": "$:/wrappit/wikify",
+        "tags": "",
+        "suffix": "</$wikify>",
+        "reflink": "WikifyWidget",
+        "prefix": " <$wikify name=\"\" text=<<>> >",
+        "modified": "20200502094946985",
+        "icon": "",
+        "caption": "",
+        "param": "wrap-lines"
+    }
+]

@@ -1,0 +1,56 @@
+created: 20140728113918255
+creator: TonGerner
+modified: 20191229162542006
+modifier: TonGerner
+tags: $:/tags/Macro
+title: $:/plugins/tg/exploration/macros/codefilter
+
+\define codefilter(filter, state)
+<$select tiddler='$:/state/$state$/list'>
+<$list filter="$filter$">
+<option><$view field='title'/></option>
+</$list>
+</$select>
+
+''Tiddler:'' <$tiddler tiddler={{$:/state/$state$/list}}>
+<$link to={{$:/state/$state$/list}}>
+
+<$view field="title"/>
+</$link>
+''Source code:''
+<pre><$view field="text"/></pre>
+<hr>
+''Renders as:''
+<$tiddler tiddler={{$:/state/$state$/list}}>
+<$transclude mode='block'/>
+</$tiddler>
+<hr>
+''Fields:''
+<$transclude tiddler="$:/core/ui/TiddlerFields"/>
+\end
+
+```
+\define codefilter(filter, state)
+<$select tiddler='$:/state/$state$/list'>
+<$list filter="$filter$">
+<option><$view field='title'/></option>
+</$list>
+</$select>
+
+''Tiddler:'' <$tiddler tiddler={{$:/state/$state$/list}}>
+<$link to={{$:/state/$state$/list}}>
+
+<$view field="title"/>
+</$link>
+''Source code:''
+<pre><$view field="text"/></pre>
+<hr>
+''Renders as:''
+<$tiddler tiddler={{$:/state/$state$/list}}>
+<$transclude mode='block'/>
+</$tiddler>
+<hr>
+''Fields:''
+<$transclude tiddler="$:/core/ui/TiddlerFields"/>
+\end
+```

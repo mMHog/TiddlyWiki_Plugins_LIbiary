@@ -1,0 +1,16 @@
+created: 20181104201802562
+creator: TonGerner
+modified: 20210104194634103
+modifier: TonGerner
+title: $:/plugins/tg/chars-button/readme
+
+\define icn(icon)
+<button class="tc-btn-invisible"> {{$icon$}}</button>
+\end
+
+A button (<<icn $:/core/images/chars>>) for inserting special characters.<br>
+Assigned shortcut: {{$:/config/shortcuts/chars}}
+
+To add new characters you can:
+
+You can add new entries via 'Add your own' in the dropdown menu. 

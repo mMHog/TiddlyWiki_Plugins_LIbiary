@@ -1,0 +1,24 @@
+created: 20171111135718973
+creator: JD
+modified: 20171119140040863
+modifier: JD
+tags: 
+title: $:/plugins/jd/mob/template/controls
+
+\define config-title()
+$:/config/PageControlButtons/Visibility/$(listItem)$
+\end
+<div class="tc-page-controls">
+<$list filter="[all[shadows+tiddlers]tag[$:/tags/TopLeftBar]!has[draft.of]!tag[$:/tags/jd/mobno]]">
+<$transclude/>
+</$list>
+<$list filter="[all[shadows+tiddlers]tag[$:/tags/PageControls]!has[draft.of]!tag[$:/tags/jd/mobno]]" variable="listItem">
+<$reveal type="nomatch" state=<<config-title>> text="hide">
+<$transclude tiddler=<<listItem>>/>
+</$reveal>
+</$list>
+{{$:/plugins/jd/mob/template/mobbuttons}}
+<$list filter="[all[shadows+tiddlers]tag[$:/tags/TopRightBar]!has[draft.of]!tag[$:/tags/jd/mobno]]">
+<$transclude/>
+</$list>
+</div>

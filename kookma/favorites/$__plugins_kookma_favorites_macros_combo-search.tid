@@ -1,0 +1,67 @@
+code-body: yes
+tags: 
+title: $:/plugins/kookma/favorites/macros/combo-search
+type: text/vnd.tiddlywiki
+
+\define standardSearch()  [all[tiddlers+shadows]tag<foldertagTid>get[list]enlist-input[]search<searchTerms>]
+\define filterSearch()    [all[tiddlers+shadows]tag<foldertagTid>get[list]enlist-input[]]+[subfilter<searchTerms>]
+
+\define displayResult(filter)
+<!-- is there any reults at all -->
+<$set name=itemsFound filter=<<__filter__>> >
+<$list filter="[enlist<itemsFound>limit[1]]" variable=null emptyMessage='//  no result for this folder//<br>'>
+
+<!-- is there any reults at all, if no just show an empty message -->
+<$list filter="[subfilter<folders>]" variable=folder>
+<!-- show folder name if there is a result for it -->
+<$list filter="[list<folder>]  :intersection[enlist<itemsFound>] :and[limit[1]]">
+<div class="kk-fav-title"><$transclude tiddler=<<folder>> field=caption/></div>
+</$list>
+<!-- search and show the result in current folder -->
+<$list filter="[list<folder>]  :intersection[enlist<itemsFound>]">
+<span class="kk-fav-left-gap"><$link to=<<item>>/></span><br>
+</$list>
+</$list>
+
+</$list>
+</$set>
+\end
+
+
+\define combo-search(stateTiddler:"")
+<$vars pattern="^\["
+       stateTid={{{ [[$:/temp/favorites/combosearch/]addsuffix[$stateTiddler$]] }}}>	 
+<!--UI -->
+<div class="tc-search tc-advanced-search">
+<$keyboard key=escape actions='<$action-deletetiddler $tiddler=<<stateTid>>/>' >
+<$edit-text tiddler=<<stateTid>> tag=input default="" placeholder="search by keyword or filter" class="sltext"/>			
+</$keyboard>
+
+<!-- show results if any-->
+<$reveal state=<<stateTid>> type="nomatch" text=""><!--do not display when searchbox is empty-->
+<$button class="tc-btn-invisible" actions='<$action-deletetiddler $tiddler=<<stateTid>>/>'>
+{{$:/core/images/close-button}}
+</$button>
+
+<$set name=searchTerms tiddler=<<stateTid>> field=text>
+
+<$list filter="[<searchTerms>trim[]minlength[3]limit[1]]" emptyMessage="<br>//<small>Search text too short</small>//" variable=null>
+
+<!-- Check input search term -->
+<div class="tc-search-results">
+<$list filter="[<searchTerms>regexp<pattern>then[filterSearch]else[standardSearch]]" variable=searchMethod >
+<$reveal type=nomatch default="filterSearch" text=<<searchMethod>> >
+<$macrocall $name=displayResult filter=<<standardSearch>> />
+</$reveal>
+<$reveal type=match default="filterSearch" text=<<searchMethod>> >
+<$macrocall $name=displayResult filter=<<filterSearch>> />
+</$reveal>
+
+</$list>
+</div>
+</$list>
+</$set>
+</$reveal>
+</div>
+</$vars>
+\end

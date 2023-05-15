@@ -1,0 +1,6 @@
+list-before: $:/config/ViewTemplateTitleFilters/system
+tags: $:/tags/ViewTemplateTitleFilter
+title: $:/config/kookma/favorites/ViewTemplateTitleFilters/Manager
+type: text/vnd.tiddlywiki
+
+[match[$:/plugins/kookma/favorites/ui/manager]then[$:/plugins/kookma/favorites/ui/ViewTemplate/Title]]

@@ -1,0 +1,25 @@
+created: 20200402063311728
+creator: HC Haase
+modified: 20200402084015110
+modifier: HC Haase
+tags: $:/tags/Macro
+title: $:/plugins/hchaase/trashbin-mod/macros/filter
+
+\define trashbin-mod(var:"<Item>") 
+<$action-deletetiddler $filter="[$var$] [$var$removeprefix[$:/trashbin/]listed[]prefix[$:/rev]!has[pin]] [$var$removeprefix[$:/trashbin/]listed[]prefix[$:/_vc/]!has[pin]]"/>
+\end
+
+* ''Version'': 1.0.0
+* ''Date'': 2020/04/02
+* ''Creator'': HC Haase
+!! Function
+to be used in mohammads/kookmas trashbin plugin in order to also delete versions made with jds plain revison plugin or mats mod of jds plugin.
+
+!! Use
+in the trashbin plugin `<trashbin-mod>` is inserted after the line with the delete command. used with the appropriate parameter; `<Item>` or `<currentTiddler>`.
+
+;Syntax
+: `<<trashbin-mod "parameter">>` <$button message="tm-copy-to-clipboard" param="<<trashbin-mod>>"}>Copy</$button>
+
+
+

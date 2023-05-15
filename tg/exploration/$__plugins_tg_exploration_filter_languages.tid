@@ -1,0 +1,8 @@
+created: 20190203185817539
+creator: TonGerner
+description: Language tiddlers
+filter: [all[shadows]sort[title]]+[prefix[$:/language/]]
+modified: 20191229162052870
+modifier: TonGerner
+tags: $:/tags/codeFilter
+title: $:/plugins/tg/exploration/filter/languages

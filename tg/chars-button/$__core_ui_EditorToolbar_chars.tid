@@ -1,0 +1,10 @@
+caption: {{$:/language/Buttons/Chars/Caption}}
+condition: [<targetTiddler>type[]] [<targetTiddler>get[type]prefix[text/]] +[first[]]
+created: 20181104183128736
+description: {{$:/language/Buttons/Chars/Hint}}
+dropdown: $:/core/ui/EditorToolbar/chars-dropdown
+icon: $:/core/images/chars
+modified: 20181106112437524
+shortcuts: ((chars))
+tags: $:/tags/EditorToolbar
+title: $:/core/ui/EditorToolbar/chars

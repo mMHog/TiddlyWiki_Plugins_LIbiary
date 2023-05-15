@@ -1,0 +1,50 @@
+caption: Favorites
+tags: $:/tags/ControlPanel/SettingsTab $:/tags/MoreSideBar
+title: $:/plugins/kookma/favorites/ui/ControlPanel/Settings
+type: text/vnd.tiddlywiki
+
+\define checked-frozen()
+<$action-setfield $tiddler="$:/plugins/kookma/favorites/ui/sidebar/active-tab" tags=""/>
+<$action-setfield $tiddler="$:/plugins/kookma/favorites/ui/buttons/add-remove" tags=""/> 
+<$action-setfield $tiddler="$:/state/tab/sidebar--595412856" text="$:/plugins/kookma/favorites/ui/sidebar/frozen-tab"/> 
+\end
+
+\define unchecked-frozen()
+<$action-setfield $tiddler="$:/plugins/kookma/favorites/ui/sidebar/active-tab" tags="$:/tags/SideBar"/>
+<$action-setfield $tiddler="$:/plugins/kookma/favorites/ui/buttons/add-remove" tags="$:/tags/ViewToolbar"/> 
+<$action-setfield $tiddler="$:/state/tab/sidebar--595412856" text="$:/plugins/kookma/favorites/ui/sidebar/active-tab"/> 
+\end
+
+These settings let you customize the behaviour of the Favorites plugin.
+
+---
+
+;Show Favorites setting in more sidebar
+:<$checkbox tiddler="$:/plugins/kookma/favorites/ui/ControlPanel/Settings" tag="$:/tags/MoreSideBar"> Show setting in more sidebar</$checkbox>
+
+;Options
+:<$checkbox tiddler="$:/config/favorites/NewFolderPosition" field="text"
+    checked="yes" unchecked="no" default="no"> Add new folder at the top of folders list</$checkbox>
+:<$checkbox tiddler="$:/config/favorites/FolderOpenOnDrop" field="text"
+    checked="yes" unchecked="no" default="no"> Open folder on drop item</$checkbox>
+:<input type="checkbox" disabled> Viewtoolbar icon color <$edit-text tiddler="$:/config/favorites/IconColor" 
+	field="text" tag="input" type="color" class="kk-fv-color-input"/>&nbsp;<$list filter="[[$:/config/favorites/IconColor]get[text]!match[#ff0000]]" variable=null>
+	<$button class="tc-btn-invisible kk-fav-btn" tooltip="Reset viewtoolbar icon color">{{$:/core/images/refresh-button}}
+    <$action-setfield $tiddler="$:/config/favorites/IconColor" text="#ff0000" />
+  </$button>
+	</$list>
+	 
+;Freeze favorites
+:<$checkbox checkactions=<<checked-frozen>> 
+   tiddler="$:/plugins/kookma/favorites/ui/sidebar/frozen-tab" tag="$:/tags/SideBar"
+	 checkactions=<<checked-frozen>>
+	 uncheckactions=<<unchecked-frozen>> > Enable frozen tab</$checkbox>
+
+;Shortcuts
+: <label class="kk-fav-label">Expand folder, collapse other</label><$edit-text tiddler="$:/config/favorites/modifierkey/expand-folder" tag=input default="" placeholder="a moifier key like ctrl" class="kk-fav-input"/> + <kbd>click</kbd>
+: <label class="kk-fav-label">Open folder in story river</label><$edit-text tiddler="$:/config/favorites/modifierkey/open-folder" tag=input default="" placeholder="a moifier key like shift" class="kk-fav-input"/> + <kbd>click</kbd>
+: <label class="kk-fav-label">Open folder items in story river</label><$edit-text tiddler="$:/config/favorites/modifierkey/open-folder-items" tag=input default="" placeholder="a moifier key like shift" class="kk-fav-input"/> + <kbd>click</kbd>
+: <label class="kk-fav-label">Create a sidebar tab from folder</label><$edit-text tiddler="$:/config/favorites/modifierkey/sidebar-tab-from-folder" tag=input default="" placeholder="a moifier key like shift" class="kk-fav-input"/> + <kbd>click</kbd>
+
+;Hidden settings
+: [[Global setting for item link title|$:/config/favorites/ItemLinkTitle]]

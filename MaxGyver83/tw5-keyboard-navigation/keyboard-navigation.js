@@ -1,0 +1,338 @@
+(function () {
+
+/*jslint node: false, browser: true */
+/*global $tw: false */
+"use strict";
+
+exports.name = "tw5-keyboard-navigation"; exports.after = ["rootwidget"];
+
+exports.startup = function () {
+
+// Keybinds section
+const navigate_up_key = 'k';
+const navigate_down_key = 'j';
+const bindings = {
+	'more-tiddler-actions': 'm',
+	info: null,
+	'new-here': null,
+	'new-journal-here': null,
+	clone: null,
+	'export-tiddler': null,
+	edit: 'e',
+	delete: null,
+	permalink: null,
+	permaview: null,
+	'open-window': null,
+	'close-others': null,
+	close: 'c',
+	'fold-others': null,
+	fold: null
+};
+// if you're using an alternative keyboard layout,
+// provide a list of key codes which should be ignored
+const alternativeLayoutIgnoreKeys = ["ArrowUp"];
+// if you just want to add/change keybindings, you don't need to look further
+
+// tiddler buttons have classnames in the form `BTN_CLASSNAME_PREFIX`{button name}
+const BTN_CLASSNAME_PREFIX = 'tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2F';
+// all transitions with `navigate_up_key` and `navigate_down_key` are instant
+const INSTANT_NAVIGATION = false;
+// if navigated before x milliseconds, transition is instant
+const INSTANT_NAVIGATION_BEFORE = 800;
+
+const MARK_CURRENT_TIDDLER = true;
+// tiddler's top position should be +/- LIMIT pixels in order to be considered the topmost
+const LIMIT = 50;
+
+var ignoreKeyboardLayout = false;
+var cycle = false;
+var tiddlers;
+var tiddler_index = -1;
+var tiddler_title = "";
+var timestamp_last_navigation = 0;
+
+// unselect search box on startup
+var activeElement = document.activeElement;
+activeElement.blur();
+
+// mark first tiddler on startup
+tiddlers = document.getElementsByClassName("tc-tiddler-frame");
+if (tiddlers.length > 0) {
+	tiddler_index = 0;
+	if (MARK_CURRENT_TIDDLER) {
+		tiddlers[tiddler_index].classList.add("activeTiddler");
+	}
+}
+
+
+// refresh active tiddler marker after page refresh (p.e. after closing or editing a tiddler)
+$tw.hooks.addHook("th-page-refreshed", function() {
+	tiddlers = document.getElementsByClassName("tc-tiddler-frame");
+
+	if (!MARK_CURRENT_TIDDLER) return;
+	if (tiddler_index < 0 && tiddlers.length) tiddler_index = 0;
+
+	// if tiddler_index > last_visible_index, select the last visible tiddler
+	var last_visible_index = tiddlers.length - 1;
+	while (last_visible_index >= 0 && tiddlers[last_visible_index].style.opacity === "0") {
+		last_visible_index--;  // might be -1
+	}
+	if (tiddler_index > last_visible_index) {
+		tiddler_index = last_visible_index;
+	}
+	if (tiddler_index < 0) return;
+
+	// if the current tiddler is invisible, find the next visible one
+	var i = tiddler_index;
+	while (i < tiddlers.length && tiddlers[i].style.opacity === "0") {
+		i++;
+	}
+	// if no visible tiddler was found, search upwards
+	if (i == tiddlers.length) {
+		i = tiddler_index;
+		while (i >= 0 && tiddlers[i].style.opacity === "0") {
+			i--;
+		}
+	}
+	tiddler_index = i;
+	updateActiveTiddlerClass();
+});
+
+
+// get name of new/edited tiddler after saving
+$tw.hooks.addHook("th-saving-tiddler", function(tiddler) {
+	tiddler_title = tiddler.getFieldString("title");
+	return tiddler;
+});
+
+
+// mark new tiddler after navigating to it
+$tw.hooks.addHook("th-navigating", function(event) {
+	tiddler_title = event.navigateTo;
+	tiddlers = document.getElementsByClassName("tc-tiddler-frame");
+	for (var i=0; i<tiddlers.length; i++) {
+		if (tiddlers[i].getAttribute("data-tiddler-title") == tiddler_title) {
+			if (MARK_CURRENT_TIDDLER) {
+				if (tiddlers[tiddler_index] !== undefined)
+					tiddlers[tiddler_index].classList.remove("activeTiddler");
+				tiddlers[i].classList.add("activeTiddler");
+			}
+			tiddler_index = i;
+			break;
+		}
+	}
+	return event;
+});
+
+
+function updateActiveTiddlerClass() {
+	for (var i=0; i<tiddlers.length; i++) {
+		if (i != tiddler_index) {
+			tiddlers[i].classList.remove("activeTiddler");
+		}
+	}
+	tiddlers[tiddler_index].classList.add("activeTiddler");
+}
+
+
+function getActiveTiddlersTitle() {
+	tiddler_title = (tiddler_index < 0) ? "" : tiddlers[tiddler_index].getAttribute("data-tiddler-title");
+}
+
+
+function isInViewport(el) {
+	var rect = el.getBoundingClientRect();
+	return (
+		rect.bottom > 0 &&
+		rect.top < (window.innerHeight || document.documentElement.clientHeight)
+	);
+}
+
+
+function isElementCloseToTop(el) {
+	var rect = el.getBoundingClientRect();
+	return (rect.top >= -LIMIT && rect.top <= LIMIT);
+}
+
+
+function findTopmostTiddler(tiddlers) {
+	var i = 0;
+	while (i < tiddlers.length && tiddlers[i].getBoundingClientRect().top <= -LIMIT) {
+		i++;
+	}
+	return i;
+}
+
+
+function switchTiddler(scrollTo) {
+	if (scrollTo) {
+		if (INSTANT_NAVIGATION ||
+				Date.now() - timestamp_last_navigation < INSTANT_NAVIGATION_BEFORE) {
+			// if user navigates quickly or wants to navigate instantly,
+			// jump instantly to next or previous tiddler
+			tiddlers[tiddler_index].scrollIntoView();
+		} else {
+			// scroll smoothly to next or previous tiddler
+			tiddlers[tiddler_index].scrollIntoView(
+				{behavior: "smooth", block: "start", inline: "nearest"});
+		}
+	}
+	timestamp_last_navigation = Date.now();
+	if (MARK_CURRENT_TIDDLER) {
+		updateActiveTiddlerClass();
+	}
+	getActiveTiddlersTitle();
+}
+
+
+document.onclick = function(e) {
+	var elem = e.target;
+
+	while (elem && !elem.classList.contains("tc-tiddler-frame")) {
+		elem = elem.parentElement;
+	}
+	if (!elem) return;
+	const titleOfClickedTiddler = elem.getAttribute("data-tiddler-title");
+	tiddlers = document.getElementsByClassName("tc-tiddler-frame");
+	for (var i=0; i<tiddlers.length; i++) {
+		if (tiddlers[i].getAttribute("data-tiddler-title") == titleOfClickedTiddler) {
+			tiddler_index = i;
+			switchTiddler(false);
+			return;
+		}
+	}
+};
+
+
+document.onkeydown = function(e) {
+	if (e.repeat) return;
+	if (e.ctrlKey || e.altKey || e.metaKey || e.shiftKey) return;
+
+	var activeElement = document.activeElement;
+	if (activeElement) {
+		if (activeElement.tagName.toLowerCase() == "textarea") return;
+		if (activeElement.tagName.toLowerCase() == "input") return;
+	}
+
+	// if (e.code == "Escape") {
+	// 	// menu = document.getElementsByClassName("tc-drop-down");
+	// 	var menu = document.querySelector("div.tc-drop-down");
+	// 	if (menu) {
+	// 		menu.parentElement.previousSibling.click();
+	// 	}
+	// }
+
+	tiddlers = document.getElementsByClassName("tc-tiddler-frame");
+	if (tiddlers.length == 0) return;
+
+	var tiddlerIgnoreKeyboardLayout = $tw.wiki.getTiddler("$:/config/IgnoreKeyboardLayout");
+	ignoreKeyboardLayout = (tiddlerIgnoreKeyboardLayout.fields.text.trim() == "1");
+
+	var tiddlerCycle = $tw.wiki.getTiddler("$:/config/Cycle");
+	cycle = (tiddlerCycle.fields.text.trim() == "1");
+
+	var down_key_pressed = ignoreKeyboardLayout ? (e.code == "Key" + navigate_down_key.toUpperCase())
+	                                            : (e.key == navigate_down_key);
+	var up_key_pressed = ignoreKeyboardLayout ? (e.code == "Key" + navigate_up_key.toUpperCase())
+	                                          : (e.key == navigate_up_key);
+	var other_bind_used = Object.keys(bindings).find(k => {
+		if (!bindings[k]) return false;
+		if (ignoreKeyboardLayout)
+			return e.code == ("Key" + bindings[k].toUpperCase()) &&
+			       !alternativeLayoutIgnoreKeys.find(ak => ak == e.key);
+		return e.key == bindings[k];
+	});
+
+	if (tiddler_title) {
+		if (tiddler_index < 0 || tiddler_index >= tiddlers.length ||
+		        tiddlers[tiddler_index].getAttribute("data-tiddler-title") != tiddler_title) {
+			tiddler_index = -1;
+			// find correct index (after editing or creating a new tiddler)
+			for (var i=0; i<tiddlers.length; i++) {
+				if (tiddlers[i].getAttribute("data-tiddler-title") == tiddler_title) {
+					tiddler_index = i;
+					break;
+				}
+			}
+		}
+	}
+
+	if (down_key_pressed || up_key_pressed || other_bind_used) {
+		if (tiddler_index < 0 || (!isInViewport(tiddlers[tiddler_index]) &&
+		                          !isElementCloseToTop(tiddlers[tiddler_index]))) {
+			tiddler_index = findTopmostTiddler(tiddlers);
+			if (down_key_pressed) tiddler_index -= 1;
+		}
+		if (down_key_pressed) {
+			// go down
+			tiddler_index += 1;
+			if (tiddler_index >= tiddlers.length)
+				tiddler_index = cycle ? 0 : tiddlers.length - 1;
+			switchTiddler(true);
+		} else if (up_key_pressed) {
+			// go up
+			tiddler_index -= 1;
+			if (tiddler_index < 0)
+				tiddler_index = cycle ? tiddlers.length - 1 : 0;
+			switchTiddler(true);
+		} else { // other bind used
+			if (tiddlers[tiddler_index] === undefined) return;
+			if (!isInViewport(tiddlers[tiddler_index])) return;
+			var button = tiddlers[tiddler_index].
+							getElementsByClassName(BTN_CLASSNAME_PREFIX+other_bind_used)[0];
+			if (!button) return;
+			button.click();
+			if (other_bind_used == 'close' || other_bind_used == 'delete') {
+				tiddlers[tiddler_index].classList.remove("activeTiddler");
+				if (tiddlers.length == 1) {
+					tiddler_index = -1;
+				} else { // tiddlers.length >= 2
+					if (tiddler_index >= tiddlers.length - 1) { // last tiddler selected
+						tiddler_index = tiddlers.length - 2; // select second to last tiddler
+						if (MARK_CURRENT_TIDDLER)
+							tiddlers[tiddler_index].classList.add("activeTiddler");
+					} else {
+						if (MARK_CURRENT_TIDDLER)
+							// use tiddler_index + 1 because the `tiddlers` array wasn't yet updated
+							tiddlers[tiddler_index+1].classList.add("activeTiddler");
+					}
+				}
+			}
+			getActiveTiddlersTitle();
+		}
+	}
+};
+
+document.onkeyup = function(e) {
+	if (e.ctrlKey || e.altKey || e.metaKey || e.shiftKey) return;
+
+	var activeElement = document.activeElement;
+	if (activeElement && activeElement.tagName.toLowerCase() == "textarea") return;
+	if (activeElement && activeElement.tagName.toLowerCase() == "input") {
+		if (e.code == "Escape") {
+			// check if search drop down menu is open
+			var dropdown = document.querySelector("div.tc-search-drop-down");
+			if (dropdown) {
+				// if (dropdown[0].classList.contains
+				var elem = dropdown.parentNode.parentNode;
+				elem.querySelector("svg.tc-image-close-button");
+				if (elem && elem.parentNode) {
+					elem.parentNode.click();
+				}
+			}
+			// unfocus search box
+			activeElement.blur();
+		}
+		return;
+	}
+	if (e.code == "Escape") {
+		var menu = document.querySelector("div.tc-drop-down");
+		if (menu) {
+			menu.parentElement.previousSibling.click();
+		}
+	}
+};
+
+}
+
+})();

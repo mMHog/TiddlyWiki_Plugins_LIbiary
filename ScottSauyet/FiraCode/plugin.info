@@ -1,0 +1,14 @@
+{
+    "bag": "default",
+    "revision": "0",
+    "version": "1.0.0",
+    "title": "$:/plugins/ScottSauyet/FiraCode",
+    "plugin-type": "plugin",
+    "name": "Fira Code",
+    "modified": "20190602020830715",
+    "list": "readme usage license",
+    "description": "Fira Code: embed the font",
+    "dependents": "",
+    "created": "20190601135029227",
+    "author": "Scott Sauyet <scott@sauyet.com>"
+}

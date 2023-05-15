@@ -1,0 +1,14 @@
+caption: {{$:/core/images/right-arrow}} TOC_counting
+created: 20200310153832712
+creator: HC Haase
+description: Toggle counting in TOCs (1. leve/all levels/off)
+modified: 20200311075508619
+modifier: HC Haase
+tags: $:/tags/PageControls
+title: $:/plugins/HCHaase/toc_counting/button/toggle-counting-level
+
+<$reveal type="match" state="$:/state/plugins/HCHaase/toc_counting/macro/toc_counting!!level" text="off"><$button set="$:/state/plugins/HCHaase/toc_counting/macro/toc_counting!!level" setTo="1" tooltip="TOC: count first level" class=<<tv-config-toolbar-class>>>{{$:/core/images/down-arrow}}</$button></$reveal>
+
+<$reveal type="match" state="$:/state/plugins/HCHaase/toc_counting/macro/toc_counting!!level" text="1"><$button set="$:/state/plugins/HCHaase/toc_counting/macro/toc_counting!!level" setTo="deep" tooltip="TOC: count all levels" class=<<tv-config-toolbar-class>>>{{$:/core/images/right-arrow}}</$button></$reveal>
+
+<$reveal type="match" state="$:/state/plugins/HCHaase/toc_counting/macro/toc_counting!!level" text="deep"> <$button set="$:/state/plugins/HCHaase/toc_counting/macro/toc_counting!!level" setTo="off" tooltip="TOC: turn off" class=<<tv-config-toolbar-class>>>{{$:/core/images/left-arrow}}</$button> </$reveal>  

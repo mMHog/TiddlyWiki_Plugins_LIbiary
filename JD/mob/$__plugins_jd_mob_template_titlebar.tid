@@ -1,0 +1,23 @@
+created: 20171112032454483
+creator: JD
+modified: 20171122134204001
+modifier: JD
+tags: 
+title: $:/plugins/jd/mob/template/titlebar
+
+<div class="jd-title-wrapper">
+<span class="tc-site-title"><$transclude tiddler="$:/SiteTitle"/></span>
+<span class="tc-site-subtitle"><$transclude tiddler="$:/SiteSubtitle"/></span>
+</div>
+<div class="jd-title-controls">
+<$reveal type="match" state="$:/plugins/jd/mob/config/config##searchbutton" text="simple">
+{{$:/plugins/jd/mob/button/search}}
+</$reveal>
+<$reveal type="match" state="$:/plugins/jd/mob/config/config##searchbutton" text="combined">
+{{$:/plugins/jd/mob/button/search}}
+</$reveal>
+<$reveal type="match" state="$:/plugins/jd/mob/config/config##searchbutton" text="core">
+{{$:/core/ui/Buttons/advanced-search}}
+</$reveal>
+{{$:/core/ui/TopBar/menu}}
+</div>

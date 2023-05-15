@@ -1,0 +1,24 @@
+caption: Bottombar style
+created: 20171110164302862
+creator: JD
+list-after: $:/plugins/jd/mob/config/topbar
+modified: 20171122131210851
+modifier: JD
+title: $:/plugins/jd/mob/config/bottombar
+
+<h2>Bottombar</h2>
+<$button class="tc-btn-invisible">
+<<setBottomcontrols>>
+<<jdradbut bottombar controls>>
+</$button> Controls
+<<moreOps bottombar controls searchbutton>>
+<$button class="tc-btn-invisible">
+<<jdconfig bottombar mobbuttons>>
+<<jdradbut bottombar mobbuttons>>
+</$button> Mob buttons only
+<<moreOps bottombar mobbuttons searchbutton>>
+<$button class="tc-btn-invisible">
+<<noBottom>>
+<<jdradbut bottombar hide>>
+</$button> Hidden
+<br>

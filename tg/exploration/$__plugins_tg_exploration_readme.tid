@@ -1,0 +1,7 @@
+created: 20170510120822070
+modified: 20191229162641793
+tags: 
+title: $:/plugins/tg/exploration/readme
+
+It is always good to have a look at the code/~WikiText TW uses in the core tiddlers and learn from it.<br>
+With this plugin you can explore code/~WikiText core tiddlers like the UI shadow tiddlers, code snippets, macros, themes and so on.

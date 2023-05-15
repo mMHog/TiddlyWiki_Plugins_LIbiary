@@ -1,0 +1,9 @@
+caption: 
+hint: {{$:/language/Search/Filter/Hint}}
+icon: $:/plugins/wikilabs/advanced-search-plus/filter-search.svg
+info: {{$:/language/Search/Filter/Caption}}
+tags: $:/tags/AdvancedSearchPlus
+title: $:/plugins/wikilabs/ui/AdvancedSearchPlus/Filter
+
+<$transclude tiddler="$:/plugins/wikilabs/advanced-search-plus/filter-search-plus-new"/>
+<$transclude tiddler="$:/core/ui/AdvancedSearch/Filter"/>

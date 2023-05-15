@@ -1,0 +1,143 @@
+created: 20200326095623095
+creator: HC Haase
+modified: 20210215102023747
+modifier: HC Haase
+tags: $:/tags/Macro
+title: $:/plugins/HCHaase/TOCgeneric/macro/transclusion
+
+\define box-transclusion()
+    <$link>
+        <span class="toc-indent">
+        <span class="transclude-box">
+
+            <$transclude 
+                field="text" 
+                mode="block" 
+            />
+				<!-- modified/created stamp in right corner(toggle in settings)-->
+				<$reveal 
+					type="nomatch" 
+					stateTitle="$:/state/plugins/HCHaase/TOCgeneric/state-transclusion" 
+					stateIndex="transclude-created" 
+					default="show" text="hide"
+				>
+                <span class="subtext">
+                    <$list filter="[is[current]has[modified]]">modified <$view field="modified" format="relativedate"/> ( <$view field="modified" format="date" template="0DD. MMM YYYY"/>).</$list>
+                    <$list filter="[is[current]]">created: <$view field="created" format="date" template="0DD. MMM YYYY"/></$list>
+                </span>
+            </$reveal>
+        </span>
+        </span>
+    </$link>
+\end
+
+
+\define toc-list-transclusion(filter:"all[current]backlinks[]") 
+    <$list filter="$filter$ -[tag[hide]] -[tag[outlines]] -[is[system]] -[is[current]sort[title]]">
+
+		* <$link>
+			<$transclude field="caption">
+			<$view field="title"/>
+			</$transclude>
+		</$link><<box-transclusion>>
+    </$list>
+\end
+
+\define toc-list-transclusion-individual(filter:"all[current]backlinks[]") 
+    <$list filter="$filter$ -[tag[hide]] -[tag[outlines]] -[is[system]] -[is[current]sort[title]]">
+
+		* <$link>
+			<$transclude field="caption">
+			<$view field="title"/>
+			</$transclude>
+		</$link><!-- reveal transclusions--><$reveal 
+				class="hideprint"  
+				type="nomatch" 
+				stateTitle="$:/state/plugins/HCHaase/TOCgeneric/state-transclusion-individual" 
+				stateIndex=<<currentTiddler>> 
+				default={{$:/plugins/HCHaase/TOCgeneric/ViewTemplate!!default-state-transclude}} 
+				text="show"
+			>
+				<$button 
+					setTitle="$:/state/plugins/HCHaase/TOCgeneric/state-transclusion-individual" 
+					setIndex=<<currentTiddler>> 
+					setTo="show" class="tc-btn-invisible" 
+					tooltip="Show content"
+				>
+					{{$:/core/images/unfold-button}} 
+				</$button>
+			</$reveal><!-- hide transclusions --><$reveal 
+				class="hideprint" 
+				type="match"  
+				stateTitle="$:/state/plugins/HCHaase/TOCgeneric/state-transclusion-individual" 
+				stateIndex=<<currentTiddler>> 
+				default={{$:/plugins/HCHaase/TOCgeneric/ViewTemplate!!default-state-transclude}} 
+				text="show"
+			>
+			<!--dummy break - dont delete -->
+			<!-- hide button  -->
+			<$button 
+				setTitle="$:/state/plugins/HCHaase/TOCgeneric/state-transclusion-individual" 
+				setIndex=<<currentTiddler>> 
+				setTo="hide" class="tc-btn-invisible" 
+				tooltip="Hide content"
+			>
+				{{$:/core/images/fold-button}}
+			</$button>
+			</$reveal>
+			<!-- hide transclusions -->
+			<$reveal 
+				class="hideprint" 
+				type="match"  
+				stateTitle="$:/state/plugins/HCHaase/TOCgeneric/state-transclusion-individual" 
+				stateIndex=<<currentTiddler>> 
+				default={{$:/plugins/HCHaase/TOCgeneric/ViewTemplate!!default-state-transclude}} 
+				text="show"
+			>
+                                <<box-transclusion>>
+			</$reveal>
+    </$list>
+\end
+
+* ''Version'': 2.0.0
+* ''Date'': 2020/05/05
+* ''Creator'': HC Haase. Mostly a copy of elements from Davids [[TiddlyBlink edition|https://giffmex.org/gifts/tiddlyblink.html]].
+
+!! Function
+
+transcluds tiddlers for the list in a (indented) box with the colour of "code background" and date stamp in the right corner (toggle in settings).
+
+!! Use
+
+;Syntax for lists with transclusion
+:`<<toc-list-transclusion "filter">>` <$button message="tm-copy-to-clipboard" param="<<toc-list-transclusion>>"}>Copy</$button>
+
+filter already includes generic filtering. only include filter for the specefic list.
+
+* for links filter `all[current]backlinks[]`
+* for list `list{!!title}`
+* for listed `all[current]listed[]`
+
+;Syntax for lists with transclusion-individual
+:`<<toc-list-transclusion-individual "filter">>` <$button message="tm-copy-to-clipboard" param="<<toc-list-transclusion-individual>>"}>Copy</$button>
+
+filter already includes generic filtering. only include filter for the specific list.
+
+* for links filter `all[current]backlinks[]`
+* for list `list{!!title}`
+* for listed `all[current]listed[]`
+
+
+;Syntax for box with transcluson only (no initial link)
+:`<<box-transclusion>>` <$button message="tm-copy-to-clipboard" param="<<box-transclusion>>"}>Copy</$button>
+
+
+
+!! Other macros in this plugin
+
+in [[$:/plugins/HCHaase/TOCgeneric/core/macros/toc-tranclusion]] The following macros are added, to produce transcluding toc's (it contains the  above `<<box-transclusion>>` macro).
+
+* `<<toc-transclusion>>`
+* `<<toc-expandable-transclusion>>`
+* `<<toc-selective-expandable-transclusion>>`
+

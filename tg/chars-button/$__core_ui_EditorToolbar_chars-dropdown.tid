@@ -1,0 +1,54 @@
+created: 20181104183704616
+modified: 20181104201027388
+title: $:/core/ui/EditorToolbar/chars-dropdown
+
+\define toolbar-button-chars-inner()
+<$button tag="a">
+
+<$action-sendmessage
+	$message="tm-edit-text-operation"
+	$param="replace-selection"
+	text={{$(snippetTitle)$}}
+/>
+
+<$action-deletetiddler
+	$tiddler=<<dropdown-state>>
+/>
+
+<$view tiddler=<<snippetTitle>> field="caption" mode="inline">
+
+<$view tiddler=<<snippetTitle>> field="title" mode="inline"/>
+
+</$view>
+
+</$button>
+\end
+
+<$list filter="[all[shadows+tiddlers]tag[$:/tags/TextEditor/Chars]!has[draft.of]sort[caption]]" variable="snippetTitle">
+
+<<toolbar-button-chars-inner>>
+
+</$list>
+
+----
+
+<$button tag="a">
+
+<$action-sendmessage
+	$message="tm-new-tiddler"
+	tags="$:/tags/TextEditor/Chars"
+	caption={{$:/language/Buttons/Chars/New/Title}}
+	text={{$:/language/Buttons/Chars/New/Text}}
+/>
+
+<$action-deletetiddler
+	$tiddler=<<dropdown-state>>
+/>
+
+<em>
+
+<$text text={{$:/language/Buttons/Chars/Caption/New}}/>
+
+</em>
+
+</$button>

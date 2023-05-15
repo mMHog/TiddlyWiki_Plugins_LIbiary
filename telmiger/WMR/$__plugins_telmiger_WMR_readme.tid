@@ -1,0 +1,10 @@
+created: 20200604214120112
+modified: 20200604214439727
+tags: 
+title: $:/plugins/telmiger/WMR/readme
+
+!!! Wikitext Markup Reference WMR
+
+{{$:/plugins/telmiger/WMR/about}}
+
+Inspired by [[Greg Davis' Begin plugin|http://gdplugins.tiddlyspot.com/#%24%3A%2Fplugins%2Fgdavis%2Ftwbegin]].

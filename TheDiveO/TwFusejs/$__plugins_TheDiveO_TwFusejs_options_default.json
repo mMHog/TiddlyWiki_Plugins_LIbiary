@@ -1,0 +1,9 @@
+{
+	"tokenize": true,
+    "shouldSort": true,
+	"minMatchCharLength": 3,
+    "threshold": 0.35,
+    "distance": 1000,
+	"keys": [ "fields.text,fields.title,fields.tags" ],
+    "getFn": "$:/plugins/TheDiveO/TwFusejs/getfns/multipath.js"
+}

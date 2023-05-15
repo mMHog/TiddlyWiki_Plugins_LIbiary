@@ -1,0 +1,15 @@
+button-classes: sq-text-editor-btn-hidden
+caption: 
+condition: [<targetTiddler>!has[type]] [<targetTiddler>type[text/vnd.tiddlywiki]]
+created: 20200803165453913
+description: 
+icon: $:/core/images/list-bullet
+modified: 20200804124434675
+shortcuts: ((autolist-newline))
+tags: $:/tags/EditorToolbar
+title: $:/plugins/sq/editor-autolist/EditorToolbar-autolist
+
+<$action-sendmessage
+	$message="tm-edit-text-operation"
+	$param="autolist"
+/>

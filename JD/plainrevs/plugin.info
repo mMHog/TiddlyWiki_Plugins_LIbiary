@@ -1,0 +1,9 @@
+{
+    "version": "0.0.30",
+    "title": "$:/plugins/jd/plainrevs",
+    "plugin-type": "plugin",
+    "list": "readme config",
+    "description": "Plain Revisions",
+    "core-version": ">=5.1.17",
+    "author": "JD"
+}

@@ -1,0 +1,11 @@
+{
+    "title": "$:/plugins/wikilabs/advanced-search-plus",
+    "name": "Advance Search Plus",
+    "description": "Adds some powerfull search tools",
+    "author": "Mario Pietsch",
+    "core-version": ">=5.1.15",
+    "version": "0.5.0",
+    "list": "readme license history",
+    "plugin-type": "plugin",
+    "dependents": ""
+}

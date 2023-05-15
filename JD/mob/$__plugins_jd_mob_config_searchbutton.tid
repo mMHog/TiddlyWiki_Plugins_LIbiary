@@ -1,0 +1,40 @@
+caption: Choose search button
+created: 20171118142818660
+creator: JD
+modified: 20171122125953528
+modifier: JD
+tags: 
+title: $:/plugins/jd/mob/config/searchbutton
+
+<h3>Choose search button</h3>
+
+<$button class="tc-btn-invisible">
+<<tglSearch show>>
+<$action-setfield $tiddler="$:/config/PageControlButtons/Visibility/$:/core/ui/Buttons/advanced-search" text="hide"/>
+<<jdconfig searchbarchoice simple>>
+<<jdconfig searchbutton simple>>
+<<jdradbut searchbutton simple>>
+</$button> Toggle for simple searchbar
+<br>
+<$button class="tc-btn-invisible">
+<<tglSearch show>>
+<$action-setfield $tiddler="$:/config/PageControlButtons/Visibility/$:/core/ui/Buttons/advanced-search" text="hide"/>
+<<jdconfig searchbarchoice combined>>
+<<jdconfig searchbutton combined>>
+<<jdradbut searchbutton combined>>
+</$button> Toggle for combined searchbar
+<br>
+<$button class="tc-btn-invisible">
+<<tglSearch hide>>
+<$action-setfield $tiddler="$:/config/PageControlButtons/Visibility/$:/core/ui/Buttons/advanced-search" text="show"/>
+<<jdconfig searchbutton core>>
+<<jdradbut searchbutton core>>
+</$button> Button to core search
+<br>
+<$button class="tc-btn-invisible">
+<<tglSearch hide>>
+<$action-setfield $tiddler="$:/config/PageControlButtons/Visibility/$:/core/ui/Buttons/advanced-search" text="hide"/>
+<<jdconfig searchbutton hide>>
+<<jdradbut searchbutton hide>>
+</$button> Hidden
+<br><br>

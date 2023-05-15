@@ -1,0 +1,26 @@
+created: 20150708095918463
+creator: TonGerner
+modified: 20191229162006472
+modifier: TonGerner
+tags: 
+title: $:/plugins/tg/exploration/filter/howto
+
+Default the list of filters contains:
+
+# Buttons (`[all[shadows]sort[title]]+[prefix[$:/core/ui/Buttons]]`)
+# Code snippets (`[all[shadows]sort[title]]+[prefix[$:/snippets]]`)
+# Configuration tiddlers (`[all[shadows]sort[title]]+[prefix[$:/config]]`)
+# Core images (`[all[shadows]sort[title]]+[prefix[$:/core/images]]`)
+# Core macros (`[all[shadows]sort[title]]+[prefix[$:/core/macros]]`)
+# Editor toolbar buttons (`[all[shadows]sort[title]]+[prefix[$:/core/ui/EditorToolbar]]`)
+# Plugins (`[all[shadows]sort[title]]+[prefix[$:/plugins]]`)
+# Shadow ui tiddlers (`[all[shadows]sort[title]]+[prefix[$:/core/ui]]`)
+# Templates (`[all[shadows]sort[title]]+[prefix[$:/core/templates]]`)
+# Themes (`[all[shadows]sort[title]]+[prefix[$:/themes]]`)
+# Widgets (`[all[shadows]sort[title]]+[prefix[$:/core/modules/widgets]]`)
+
+To add a filter to the list:
+
+* Create a tiddler tagged with `$:/tags/codeFilter`
+* Add a field `description` which contains the name of the filter to be seen in the list
+* Add a field `filter` which contains the filter you want to add to the list

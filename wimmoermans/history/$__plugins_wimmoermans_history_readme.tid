@@ -1,0 +1,75 @@
+created: 20160505113313287
+creator: wjam
+modified: 20160514063831746
+modifier: wjam
+tags: historyplugin sh
+title: $:/plugins/wimmoermans/history/readme
+
+!!history filter
+Tom Tumb (Dutch: Klein Duimpje).used breadcrumbs because he didn't want to get lost in the woods. 
+
+When reading or editing a large ~TiddlyWiki you sometimes get lost and revisit tiddlers over and over.  This plugin ''automatically creates a list of all visited tiddlers'', and allows you to answer questions like "Where did I read that?", "Did I update tiddler XXYY already?", "Which system tiddlers did I view/edit?" "Which tiddlers did I rename/delete?". 
+
+!!functionality 
+
+*The ''plugin/filter'' generates the tiddlers which you visited since loading the ~TiddlyWiki. 
+*Like  ~OpenTab all* tiddlers from the story river are shown in the history. When you ''close a tiddler'' it is removed from the ~OpenTab but is ''still present in the the history''. 
+*Tiddler titles which were opened using tiddlers like $:/DefaultTiddlers are not present in the history.
+*Like  ~RecentTab, the history list includes the tiddlers you created or modified during this session. When you ''delete or rename'' a tiddler during your session the old tiddler title will be in ''//italics//''. 
+
+compare ''history[]  and ''fullhistory[]
+
+| |''history[]''|fullhistory[]|
+| most recent visited tiddlers|''most recent visited appear first''|most recent appear last|
+| Draft titles|''drafts not included ''|all drafts ^^dangerous[1]^^|
+| visited multiple times|''no duplicates, only most recent title''|includes all duplicates|
+| usage|normal use|advanced use only|
+
+!!examples
+
+To display all visited tiddlers so far use
+
+ ``{{{[history[]]}}}`` 
+
+You can sort the list alphabetically, ''search'' the tiddlers and ''limit'' the number of results to 25. e.g.
+
+``{{{[history[]search{$:/temp/search}limit[25]]}}}``
+
+if you want to exclude system tiddlers from the list:
+
+``{{{[history[]!is[system]]}}}``
+
+If you want modified but possibly not yet saved tiddlers (incl renamed, deleted but excluding Draft. 
+
+``{{{[history[]haschanged[]]}}}``
+
+''fullhistory[]'' is only included for //advanced users//. To generate the same list as history[] you would have to write 
+``{{{[fullhistory[]!prefix[Draft]reverse[]unique[]]}}}``  ^^[2]^^
+
+!!how to install 
+
+''Drag'' the link $:/plugins/wimmoermans/history to your wiki, ''import'' the tiddler and ''save'' your wiki, then ''LOAD'' the newly saved wiki.
+Or ''open'' the history tiddler in this wiki and use the top right icon ''V'', ''export tiddler'', ''JSON file'' to save the tiddler to disk, then in your wiki in the sidebar use ''Tools'',  ''import (paperclip)'' to import the JSON file you just saved, ''save'' your wiki, ''LOAD'' the saved wiki.
+
+# history filter <br>[[$:/plugins/wimmoermans/history/history.js]]
+
+#fullhistory filter <br>[[$:/plugins/wimmoermans/history/fhistory.js]]
+
+#History tab in the Sidebar.<br>[[$:/plugins/wimmoermans/history/HistoryTab]]<br><small>(to disable remove the ~$:/tags/SideBar tag)</small>
+# History2 tab for advanced seard tiddler <br>[[$:/plugins/wimmoermans/history/HistoryTab2]]<br><small>(to disable remove the ~$:/tags/AdvancedSearch tag)</small>
+#$:/plugins/wimmoermans/history/readme this tiddler
+# $:/plugins/wimmoermans/history/icon three cat paw prints (by Motovun ?)
+
+!!Google plus forum to discuss the history filters
+https://groups.google.com/forum/#!topic/tiddlywiki/u4lN-olqnPc
+
+
+!! ~TiddlyWiki version compatibility [3]
+history and fullhistory were tested on version 5.1.12 pre-release, 5.1.11, 5.1.9, 5.0.8-beta. For 5.0.8-beta the tab-example tiddlers require manually adding the field named 'caption' value 'History' and 'History2' to present the Tab captions.
+
+!!notes/warning
+[1] clicking on ''Draft'' titles in the history is ''dangerous'' especially when the tiddler is already open.
+
+[2] ''unique[]'' is a undocumented filter present in ~TiddlyWiki boot.js.
+
+[3] history scan the $:/HistoryList tiddler for "title"://single space//"//tiddler title//"  and displays the //tiddler title// value. It correctly handles double quote and backslahs in tiddler titles.

@@ -1,0 +1,8 @@
+created: 20140923160800468
+creator: TonGerner
+description: Themes
+filter: [all[shadows]sort[title]]+[prefix[$:/themes]]
+modified: 20191229162205439
+modifier: TonGerner
+tags: $:/tags/codeFilter
+title: $:/plugins/tg/exploration/filter/themes

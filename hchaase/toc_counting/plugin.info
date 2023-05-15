@@ -1,0 +1,16 @@
+{
+    "version": "2.2.1",
+    "title": "$:/plugins/hchaase/toc_counting",
+    "source": "https://hchaase.github.io/HC-Plugins/",
+    "plugin-type": "plugin",
+    "name": "TOC Counting",
+    "modifier": "HC Haase",
+    "modified": "20200311101957166",
+    "list": "readme changelog settings",
+    "description": "TOC Counting",
+    "dependents": "kin-filter",
+    "creator": "HC Haase",
+    "created": "20190611093248651",
+    "core-version": "5.1.21",
+    "author": "HC Haase"
+}

@@ -1,0 +1,35 @@
+created: 20190601170916451
+modified: 20190602014330140
+title: $:/plugins/ScottSauyet/FiraCode/usage
+
+!! Using the plugin for all `code` sections
+
+If you are using the default theme, you can update `$:/ControlPanel > Appearance > Theme Tweaks > Settings > Code Font` to include `"Fira Code"`, as the first or only entry in the list.  Equivalently, you can update the shadow tiddler, [[$:/themes/tiddlywiki/vanilla/settings/codefontfamily]] to begin with `"Fira Code"`.
+
+If you are using a different theme, you may be able to set it the same way, or you can set the font for `code` blocks to `"Fira Code"`, by creating a `text/css` tiddler tagged `$:/tags/Stylesheet` with this CSS:
+
+```css
+code {
+    font-family: "Fira Code"
+}
+```
+
+----------
+
+!! Using the plugin inline
+
+You can wrap any section of text in `@@css ... @@` blocks, like this:
+
+```
+@@font-family: "Fira Code"; const nonNegatives = (ns) => ns.filter(n => n >= 0) @@
+```
+
+to yield something like this:
+
+> @@font-family: "Fira Code"; const nonNegatives = (ns) => ns.filter(n => n >= 0) @@
+
+----------
+
+!! Or however
+
+With this plugin installed, you simply have [[Fira Code|https://github.com/tonsky/FiraCode]] available to you.  Use it how you like.

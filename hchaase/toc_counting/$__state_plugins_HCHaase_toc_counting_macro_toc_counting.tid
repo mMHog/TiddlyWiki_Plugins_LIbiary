@@ -1,0 +1,9 @@
+created: 20200309145412325
+creator: HC Haase
+description: state for the the count type of the toc_counting macro. level field to choose between clasin and deep level search with kin filter
+level: 1
+modified: 20200311110035694
+modifier: HC Haase
+title: $:/state/plugins/HCHaase/toc_counting/macro/toc_counting
+
+tag/link

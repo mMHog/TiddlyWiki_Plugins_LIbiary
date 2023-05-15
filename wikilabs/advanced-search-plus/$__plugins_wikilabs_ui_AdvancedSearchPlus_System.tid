@@ -1,0 +1,9 @@
+caption: 
+hint: {{$:/language/Search/System/Hint}}
+icon: $:/plugins/wikilabs/advanced-search-plus/system-search.svg
+info: {{$:/language/Search/System/Caption}}
+tags: $:/tags/AdvancedSearchPlus
+title: $:/plugins/wikilabs/ui/AdvancedSearchPlus/System
+
+<$transclude tiddler="$:/plugins/wikilabs/advanced-search-plus/system-search-plus-new"/>
+<$transclude tiddler="$:/core/ui/AdvancedSearch/System"/>

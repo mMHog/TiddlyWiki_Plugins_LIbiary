@@ -1,0 +1,46 @@
+caption: JD Mob
+created: 20171029115120346
+creator: JD
+modified: 20171122151014084
+modifier: JD
+subtitle: Configure JD mobile layout
+tags: $:/tags/ControlPanel/Appearance
+title: $:/plugins/jd/mob/config
+
+<style>
+.tc-btn-invisible { text-align: left; }
+</style>
+<$reveal type="match" state="$:/plugins/jd/mob/config/config##freshinstall" text="yes">
+<div class="jd-bq">
+<p>
+Thanks for installing this plugin! You can always find the latest updates <a target="blank" href="http://j.d.simplemobile.tiddlyspot.com">here</a>
+</p>
+<p>
+This plugin options tiddler is also available at ''Control panel'' >> ''Appearance'' >> ''JD Mob''
+</p>
+<p>
+<$button>
+<<jdconfig freshinstall no>>
+Close message
+</$button>
+</p>
+</div>
+<br>
+<hr>
+<br>
+</$reveal>
+Show as:
+<$select tiddler="$:/plugins/jd/mob/config/config" index="configtype">
+<option value="list">List</option>
+<option value="htabs">Horizontal tabs</option>
+<option value="vtabs">Vertical tabs</option>
+</$select>
+<$reveal type="match" state="$:/plugins/jd/mob/config/config##configtype" text="list">
+<$list filter="[all[shadows+tiddlers]tag[$:/tags/jd/config]]"><$transclude/><hr></$list>
+</$reveal>
+<$reveal type="match" state="$:/plugins/jd/mob/config/config##configtype" text="htabs">
+<<tabs "[all[shadows+tiddlers]tag[$:/tags/jd/config]!has[draft.of]]" "$:/plugins/jd/mob/config/barpresets">>
+</$reveal>
+<$reveal type="match" state="$:/plugins/jd/mob/config/config##configtype" text="vtabs">
+<<tabs "[all[shadows+tiddlers]tag[$:/tags/jd/config]!has[draft.of]]" "$:/plugins/jd/mob/config/barpresets" "$:/state/tab/JDconfig" "tc-vertical">>
+</$reveal>

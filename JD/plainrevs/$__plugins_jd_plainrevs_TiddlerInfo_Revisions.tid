@@ -1,0 +1,23 @@
+caption: Revisions
+created: 20180713032258699
+creator: jd
+modified: 20180715090724978
+modifier: jd
+revision: 2-6c1651bc53216f77697bbeefe012fcbe
+tags: $:/tags/TiddlerInfo
+title: $:/plugins/jd/plainrevs/TiddlerInfo/Revisions
+type: text/vnd.tiddlywiki
+
+<style>
+.diff-wrapper { margin: 0 0 1em 0; }
+.diff-wrapper div { width: 100%; }
+.diff-wrapper pre {
+    margin: 0;
+    width: 100%;
+    max-height: 24em;
+    overflow-y: auto;
+}
+</style>
+<$list filter="[[$:/state/revTab/tabType]!text[vertical]]" variable="tabType" emptyMessage="""<<revTabs "tc-vertical">>""">
+<<revTabs>>
+</$list>

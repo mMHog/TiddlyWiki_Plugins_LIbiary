@@ -1,0 +1,8 @@
+created: 20141005142753238
+creator: TonGerner
+description: Configuration tiddlers
+filter: [all[shadows]sort[title]]+[prefix[$:/config]]
+modified: 20191229161832634
+modifier: TonGerner
+tags: $:/tags/codeFilter
+title: $:/plugins/tg/exploration/filter/configuration

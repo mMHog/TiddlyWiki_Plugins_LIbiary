@@ -1,0 +1,15 @@
+created: 20171118055005587
+creator: JD
+modified: 20171118161831963
+modifier: JD
+tags: 
+title: $:/plugins/jd/mob/template/mobbuttons
+
+\define config-mobtitle()
+$:/config/jd/mobbutton/visibility/$(listItem)$
+\end
+<$list filter="[all[shadows+tiddlers]tag[$:/tags/jd/mobbutton]!has[draft.of]]" variable="listItem">
+<$reveal type="nomatch" state=<<config-mobtitle>> text="hide">
+<$transclude tiddler=<<listItem>>/>
+</$reveal>
+</$list>

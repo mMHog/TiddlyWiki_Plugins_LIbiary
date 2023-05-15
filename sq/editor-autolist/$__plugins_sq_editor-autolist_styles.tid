@@ -1,0 +1,8 @@
+created: 20200803171440138
+modified: 20200803172530073
+tags: $:/tags/Stylesheet
+title: $:/plugins/sq/editor-autolist/styles
+
+.sq-text-editor-btn-hidden {
+	display: none;
+}

@@ -1,0 +1,107 @@
+created: 20171119044207910
+creator: JD
+modified: 20171122150921869
+modifier: JD
+tags: $:/tags/Macro
+title: $:/plugins/jd/mob/macros
+
+\define jdconf() $:/plugins/jd/mob/config/config
+\define jdconfont() $:/temp/jd/mob/font/
+\define jdconfig(config:"" choice:"")
+<$action-setfield $tiddler=<<jdconf>> $index="$config$" $value=$choice$/>
+\end
+\define moreOps(config:"" choice:"" option:"")
+<$reveal type="match" state="$(jdconf)$##$config$" text="$choice$">
+<$reveal type="nomatch" state="$(jdconf)$##$config$$choice$ops" text="show">
+<$button class ="jd-btn-txt" set="$(jdconf)$##$config$$choice$ops" setTo="show"> Show options</$button>
+</$reveal>
+<$reveal type="match" state="$(jdconf)$##$config$$choice$ops" text="show">
+<$button class ="jd-btn-txt" set="$(jdconf)$##$config$$choice$ops" setTo="hide"> Hide options</$button>
+<div class="jd-bq">{{$:/plugins/jd/mob/config/$option$}}</div>
+</$reveal>
+</$reveal>
+<br>
+\end
+\define jdfont(font-title:"" font-body:"" lineheight:"" font-tab:"" font-button:"")
+<$action-setfield $tiddler="$(jdconfont)$font-title" text="$font-title$"/>
+<$action-setfield $tiddler="$(jdconfont)$font-body" text="$font-body$"/>
+<$action-setfield $tiddler="$(jdconfont)$lineheight" text="$lineheight$"/>
+<$action-setfield $tiddler="$(jdconfont)$font-tab-button" text="$font-tab$"/>
+<$action-setfield $tiddler="$(jdconfont)$font-button" text="$font-button$"/>
+\end
+\define jdradbut(config:"" choice:"")
+<$reveal type="match" state="$(jdconf)$##$config$" text="$choice$"><div class="radbutton"></div></$reveal>
+<$reveal type="nomatch" state="$(jdconf)$##$config$" text="$choice$"><div class="radbuttoff"></div></$reveal>
+\end
+\define tglSearch(choice:"show")
+<$action-setfield $tiddler="$:/config/jd/mobbutton/visibility/$:/plugins/jd/mob/button/search" text=$choice$/>
+\end
+\define notPreset()
+<<jdconfig barpreset 0>>
+\end
+\define setTopsearchbar()
+<<jdconfig topbar fixedsearch>>
+<<jdconfig topbarchoice hide>>
+<<jdconfig searchbar yes>>
+<<jdconfig radbuttop fixedsearch>>
+\end
+\define setToptitlebar()
+<<jdconfig searchbar no>>
+<<jdconfig topbar title>>
+<<jdconfig topbarchoice title>>
+<<jdconfig radbuttop title>>
+\end
+\define setTopcontrols()
+<<jdconfig searchbar no>>
+<<jdconfig topbar controls>>
+<<jdconfig topbarchoice controls>>
+<<jdconfig radbuttop controls>>
+\end
+\define setTopmobbuttons()
+<<jdconfig searchbar no>>
+<<jdconfig topbar mobbuttons>>
+<<jdconfig topbarchoice mobbuttons>>
+<<jdconfig radbuttop mobbuttons>>
+\end
+\define setTophide()
+<<jdconfig searchbar no>>
+<<jdconfig topbar hide>>
+<<jdconfig topbarchoice hide>>
+<<jdconfig radbuttop hide>>
+\end
+\define noBottom()
+<<jdconfig bottombar hide>>
+\end
+\define setBottomcontrols()
+<<jdconfig bottombar controls>>
+\end
+\define setJDmobdefaults()
+<<tglSearch>>
+<<jdconfig freshinstall yes>>
+<<jdconfig configtype list>>
+<<jdfont>>
+<<jdconfig fontsize default>>
+<<jdconfig scrollbars show>>
+<<jdconfig focus show>>
+<<jdconfig storyfix no>>
+<<jdconfig titlebaradjust no>>
+<<jdconfig topbarchoice hide>>
+<<jdconfig searchbarchoice simple>>
+<<jdconfig searchbutton simple>>
+<<jdconfig barpreset 4>>
+<<setTopsearchbar>>
+<<setBottomcontrols>>
+<<jdconfig radbuttopfixedsearchops hide>>
+<<jdconfig radbuttopcontrolsops hide>>
+<<jdconfig radbuttopmobbuttonsops hide>>
+<<jdconfig radbuttoptitleops hide>>
+<<jdconfig bottombarcontrolsops hide>>
+<<jdconfig bottombarmobbuttonsops hide>>
+<<jdconfig barpreset1ops hide>>
+<<jdconfig barpreset2ops hide>>
+<<jdconfig barpreset3ops hide>>
+<<jdconfig barpreset4ops hide>>
+<$fieldmangler tiddler="$:/plugins/jd/mob/button/search">
+<$action-sendmessage $message="tm-add-tag" $param="$:/tags/jd/mobbutton"/>
+</$fieldmangler>
+\end

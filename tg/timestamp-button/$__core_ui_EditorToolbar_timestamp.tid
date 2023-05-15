@@ -1,0 +1,17 @@
+caption: {{$:/language/Buttons/TimeStamp/Caption}}
+condition: [<targetTiddler>!has[type]] [<targetTiddler>type[text/vnd.tiddlywiki]]
+created: 20161118171456554
+creator: TonGerner
+description: {{$:/language/Buttons/TimeStamp/Hint}}
+icon: $:/core/images/timestamp
+modified: 20170726074415991
+modifier: TonGerner
+shortcuts: ((timestamp))
+tags: $:/tags/EditorToolbar
+title: $:/core/ui/EditorToolbar/timestamp
+
+<$action-sendmessage
+	$message="tm-edit-text-operation"
+	$param="replace-selection"
+	text=<<now>>
+/>

@@ -1,0 +1,31 @@
+created: 20140913031711920
+creator: EucalyJ
+modified: 20140913081020618
+modifier: EucalyJ
+tags: $:/tags/Macro $:/_macros $:/_titleme
+title: $:/plugins/eucaly/titleme/macros
+type: text/vnd.tiddlywiki
+
+\define LinkMe(linkText:"")
+<$set name="me" value=<<TitleMe>> >
+<$importvariables filter="[all[shadows+tiddlers]prefix[$:/plugins/eucaly/titleme/macros-]]">
+	<<ttme-render-link "$linkText$">>
+</$importvariables>
+</$set>
+\end
+
+\define EditOrShowMe(editText:"", showText:"", beginText:"" midText:"", endText:"", class="$class$", order:"< edit / show >" mode:"link")
+<$importvariables filter="[all[shadows+tiddlers]prefix[$:/plugins/eucaly/titleme/macros-]]">
+<$set name="me" value=<<TitleMe>> >
+	<<ttme-render-full editText:"$editText$" showText:"$showText$" beginText:"$beginText$" midText:"$midText$" endText:"$endText$" class:"$class$" order:"$order$">>
+</$set>
+</$importvariables>
+\end
+
+\define ShowMe(text:"", beginText:"", endText:"", class:"")
+	<<EditOrShowMe showText:"$text$" beginText:"$beginText$" endText:"$endText$" class:"$class$" mode:"link" order:"< show >">>
+\end
+
+\define EditMe(text:"", beginText:"", endText:"", class:"")
+	<<EditOrShowMe editText:"$text$" beginText:"$beginText$" endText:"$endText$" class:"$class$" mode:"link" order:"( edit )">>
+\end

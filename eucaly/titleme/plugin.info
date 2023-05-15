@@ -1,0 +1,16 @@
+{
+    "author": "EucalyJ",
+    "created": "20140913002308223",
+    "creator": "EucalyJ",
+    "description": "TitleMe - Return in-place tiddler title, to link / show / edit the source tiddler",
+    "lastupdate": "20140913.5",
+    "list": "readme history",
+    "modified": "20140913121346429",
+    "modifier": "EucalyJ",
+    "plugin-type": "plugin",
+    "source": "http://eucaly-tw5.tiddlyspot.com/",
+    "tags": "$:/_plugin-package $:/_titleme",
+    "title": "$:/plugins/eucaly/titleme",
+    "version": "0.0.1",
+    "name": "titleme"
+}

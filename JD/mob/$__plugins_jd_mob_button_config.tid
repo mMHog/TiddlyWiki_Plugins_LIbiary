@@ -1,0 +1,10 @@
+caption: {{$:/core/images/theme-button}} configure JDmob
+created: 20171117090228867
+creator: JD
+description: Configure JD mobile layout
+modified: 20171122114923959
+modifier: JD
+tags: $:/tags/jd/mobbutton
+title: $:/plugins/jd/mob/button/config
+
+<$button tooltip="Configure JD mobile layout" class="tc-btn-invisible">{{$:/core/images/theme-button}}<$action-sendmessage $message="tm-modal" $param="$:/plugins/jd/mob/config"/></$button>

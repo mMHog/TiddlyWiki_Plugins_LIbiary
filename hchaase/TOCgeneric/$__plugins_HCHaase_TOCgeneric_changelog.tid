@@ -1,0 +1,76 @@
+created: 20200203125209497
+creator: HC Haase
+modified: 20210312124433599
+modifier: HC Haase
+tags: 
+title: $:/plugins/HCHaase/TOCgeneric/changelog
+
+I'm trying to follow the rules of [[Semantic Versioning|https://semver.org/]].
+
+ v. 2.2.1
+
+* [Fix] the references list disappeared instead of collapse when pressed
+* [new] added  freelinks partial match mode. toggle in settings
+* [new] added submenu under "references". toggle with {{$:/core/images/right-arrow}} to the right
+
+v. 2.2.0
+
+* [New] added  freelinks (copied form [[TWCrossLinks|https://akhater.github.io/drift/#%24%3A%2Fak%2Fplugins%2FTWCrossLinks]]) for full match (partial match coming soon)
+* [New]  added options to remove any of the lists (in settings)
+
+
+ v. 2.1.1
+
+* [Fix] bug in the style sheet (}) interfered with other plugins (thanks Mat).
+
+ v. 2.1.0
+
+* [New] added transclusion of individual tiddlers, to the ''toc, backlinks, list'' and ''listed'' (also recursive through the toc)(from tiddly blink)
+* [New] enable use of the caption field (if present) in transclusion mode, for link/list/listed
+* [Change] Improved documentation
+* [New] moved settings from ./readme to ./settings tiddler
+
+ v. 2.0.1
+
+* [Fix] close transclusion button at the bottom right showed for both links and tags, even if only one of these lists where present
+
+ v. 2.0.0
+
+* [New] added transclusion of tiddlers, to the ''toc, backlinks, list'' and ''listed'' (also recursive through the toc)(from tiddly blink)
+* [New] added toggle transclusion button at the "references" top and at the end of transcluded ''toc, backlinks, list'' and ''listed''. Also available in the readme 
+* [New] added modified/created date in the bottom right corner of transcluded tiddlers in the lists (toggle in readme)
+* [New] made the transclusion background (grey box) and text, follow the theme (code class). This means you can use dark themes and still read the text.
+* [Change] changed settings from radio buttons to checkbox in the readme 
+
+
+
+2020/02/18 - v. 1.2.10
+
+ * [FIX] if references is closed, hide it in when printing
+
+2020/02/06 - v. 1.2.9
+
+ * [New] changing list visibility show/hide will not trigger "red save wiki button". The visibility state is now stored in state (json) tiddlers that do not make the wiki dirty, but will be saved on wiki save.
+
+2020/02/04 - v. 1.2.8
+
+ * [Fix] bug that reversed toggles
+
+2020/02/04 - v. 1.2.7
+
+* [New] Set default show/hide status of all lists. Note the default is overridden when status is changed in individual tiddler (by design).
+* [New] delete individual tiddler show/hide setting and set default instead
+* [Fix] tiddlers with colon: in title can now toggle the view of lists
+
+2020/01/31 - v. 1.2.5
+
+* [New] new default hide/show icon is set to text and use the arrows used in the normal TOC to keep it consistent with TW (can be changed by user)
+* [New] big one: all "sub" headings (tags, backlinks, list and listed) can be folded/hidden by clicking on them
+* [New] the reveal status for the general hide/show and for the sub-lists are tiddler specific and remembered  (stored in a data tiddler)
+* [New] position in viewtemplate is set in the plugin viewtemplate by a list-after field.
+ 
+
+2020/01/27
+
+* [Fix] the hide button no longer appear on tiddlers with nothing to show.
+* [New] option to change icon/text of buttons in the readme.

@@ -1,0 +1,9 @@
+{
+    "version": "0.0.6",
+    "title": "$:/plugins/jj/wrappits",
+    "plugin-type": "plugin",
+    "modified": "20200427075212336",
+    "description": "Wrappits",
+    "created": "20200427075211873",
+    "author": "JJ"
+}

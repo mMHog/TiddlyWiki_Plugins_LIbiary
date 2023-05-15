@@ -1,0 +1,12 @@
+caption: Code5
+created: 20141031144255930
+creator: TonGerner
+modified: 20191229161630749
+modifier: TonGerner
+tags: $:/tags/xcode
+title: $:/plugins/tg/exploration/code5
+
+!! [[Code5|$:/plugins/tg/exploration/code5]]
+<<selectfilter "code5">>
+
+<$macrocall $name="codefilter" filter={{$:/temp/filter/code5}} state="code5"/>

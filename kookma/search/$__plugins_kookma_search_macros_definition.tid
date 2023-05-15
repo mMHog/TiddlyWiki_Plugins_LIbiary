@@ -1,0 +1,17 @@
+tags: $:/tags/Search/Macro
+title: $:/plugins/kookma/search/macros/definition
+type: text/vnd.tiddlywiki
+
+\define searchTid()  $:/temp/advancedsearch/input
+
+\define optionTid()         $:/config/search-in-fields/option
+\define sFieldsTid()        $:/config/search-in-fields/selected-fields
+\define searchScopeTid()    $:/config/Search/search-scope
+\define primaryfieldsTid()  $:/config/Search/primary-fields
+\define excludefieldsTid()  $:/config/Search/exclude-fields
+\define columnsTid()        $:/config/Search/tabular-columns
+\define livepreviewTid()    $:/config/Search/live-preview
+
+\define searchScope()     [subfilter{$(searchScopeTid)$}] -[[$(searchTid)$]]
+\define allFields()       $(searchScope)$+[fields[]sort[title]] -[subfilter{$(excludefieldsTid)$}]
+\define selectedFields()  [[$(sFieldsTid)$]indexes[]sort[title]]

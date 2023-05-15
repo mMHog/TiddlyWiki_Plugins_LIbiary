@@ -1,0 +1,33 @@
+caption: {{$:/language/SideBar/Tags/Caption}}
+created: 20200213124045173
+creator: HC Haase
+description: placeholder for code including counting for the tags sidebar tab
+list-after: Recent
+modified: 20200309124130572
+modifier: HC Haase
+tags: count-stuff
+title: $:/plugins/HCHaase/toc_counting/more/tag
+
+<$set name="tv-config-toolbar-icons" value="yes">
+
+<$set name="tv-config-toolbar-text" value="yes">
+
+<$set name="tv-config-toolbar-class" value="">
+
+{{$:/core/ui/Buttons/tag-manager}}
+
+</$set>
+
+</$set>
+
+</$set>
+
+<$list filter={{$:/core/Filters/AllTags!!filter}}>
+
+<$transclude tiddler="$:/core/ui/TagTemplate"/><<toc_counting>>
+
+</$list>
+
+<hr class="tc-untagged-separator">
+
+{{$:/core/ui/UntaggedTemplate}}

@@ -1,0 +1,95 @@
+caption: Fonts and heights
+created: 20171031124255884
+creator: JD
+modified: 20171120143104637
+modifier: JD
+tags: $:/tags/jd/config
+title: $:/plugins/jd/mob/config/fonts
+
+<style> .texte { width: calc(100% - 60px); } </style>
+
+<h2>Fonts and heights presets</h2>
+
+
+<$button class="tc-btn-invisible">
+<<jdfont 38px 30px 38px 28px 20px>>
+<<jdconfig fontsize largest>>
+<<jdradbut fontsize largest>>
+</$button> Largest
+<br>
+<$button class="tc-btn-invisible">
+<<jdfont 34px 26px 34px 24px 20px>>
+<<jdconfig fontsize larger>>
+<<jdradbut fontsize larger>>
+</$button> Larger
+<br>
+<$button class="tc-btn-invisible">
+<<jdfont 30px 22px 30px 20px 20px>>
+<<jdconfig fontsize large>>
+<<jdradbut fontsize large>>
+</$button> Large
+<br>
+<$button class="tc-btn-invisible">
+<<jdfont 26px 18px 26px 16px 20px>>
+<<jdconfig fontsize medium>>
+<<jdradbut fontsize medium>>
+</$button> Medium
+<br>
+<$button class="tc-btn-invisible">
+<<jdfont 22px 14px 20px 12px 20px>>
+<<jdconfig fontsize small>>
+<<jdradbut fontsize small>>
+</$button> Small
+<br>
+<$button class="tc-btn-invisible">
+<<jdfont 18px 10px 16px 8px 20px>>
+<<jdconfig fontsize smaller>>
+<<jdradbut fontsize smaller>>
+</$button> Smaller
+<br>
+<$button class="tc-btn-invisible">
+<<jdfont>>
+<<jdconfig fontsize default>>
+<<jdradbut fontsize default>>
+</$button> TW5 default
+<br>
+<$button class="tc-btn-invisible">
+<$action-setfield $tiddler="$:/temp/jd/mob/font/font-title" caption="Title" list-before="$:/temp/jd/mob/font/font-body"/>
+<$action-setfield $tiddler="$:/temp/jd/mob/font/font-body" caption="Body, text buttons" list-after="$:/temp/jd/mob/font/font-title"/>
+<$action-setfield $tiddler="$:/temp/jd/mob/font/lineheight" caption="Lineheight"/>
+<$action-setfield $tiddler="$:/temp/jd/mob/font/font-tab-button" caption="Tab buttons"/>
+<$action-setfield $tiddler="$:/temp/jd/mob/font/font-button" caption="Image buttons"/>
+<<jdconfig fontsize custom>>
+<<jdradbut fontsize custom>>
+</$button> Custom
+
+<$reveal type="match" state="$:/plugins/jd/mob/config/config##fontsize" text="custom">
+
+Include unit (''px'' or ''em'') when entering custom values
+
+<table style="width:100%">
+<tr>
+<th style="width:40%">Element</th>
+<th style="width:60%">Adjust</th>
+</tr>
+<$list filter="[all[shadows+tiddlers]prefix[$:/temp/jd/mob/font/]!suffix[sitetitle]]">
+<tr>
+<td><$view field="caption"/></td>
+<td><$edit-text tiddler={{!!title}} field="temp" placeholder={{!!text}} class="texte"/>
+<$reveal type="match" state=!!temp text="">
+<$button class="tc-btn-invisible" style="color:grey; cursor:not-allowed;">✓</$button>
+<$button class="tc-btn-invisible" style="color:grey; cursor:not-allowed;">✕</$button>
+</$reveal>
+<$reveal type="nomatch" state=!!temp text="">
+<$button class="tc-btn-invisible">
+<$action-setfield $tiddler={{!!title}} text={{!!temp}}/>
+<$action-setfield $tiddler={{!!title}} temp=""/>✓</$button>
+<$button class="tc-btn-invisible">
+<$action-setfield $tiddler={{!!title}} temp=""/>✕</$button>
+</$reveal>
+</td>
+</tr>
+</$list>
+</table>
+</$reveal>
+<br><br>

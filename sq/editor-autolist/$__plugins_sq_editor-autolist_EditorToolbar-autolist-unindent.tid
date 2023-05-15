@@ -1,0 +1,16 @@
+button-classes: sq-text-editor-btn-hidden
+caption: 
+condition: [<targetTiddler>!has[type]] [<targetTiddler>type[text/vnd.tiddlywiki]]
+created: 20200804122848593
+description: 
+icon: $:/core/images/list-bullet
+modified: 20200804124808496
+shortcuts: ((autolist-unindent))
+tags: $:/tags/EditorToolbar
+title: $:/plugins/sq/editor-autolist/EditorToolbar-autolist-unindent
+
+<$action-sendmessage
+	$message="tm-edit-text-operation"
+	$param="autolist"
+	mode="unindent"
+/>

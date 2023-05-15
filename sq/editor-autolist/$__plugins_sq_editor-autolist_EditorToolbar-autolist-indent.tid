@@ -1,0 +1,16 @@
+button-classes: sq-text-editor-btn-hidden
+caption: 
+condition: [<targetTiddler>!has[type]] [<targetTiddler>type[text/vnd.tiddlywiki]]
+created: 20200803213912954
+description: 
+icon: $:/core/images/list-bullet
+modified: 20200804124659294
+shortcuts: ((autolist-indent))
+tags: $:/tags/EditorToolbar
+title: $:/plugins/sq/editor-autolist/EditorToolbar-autolist-indent
+
+<$action-sendmessage
+	$message="tm-edit-text-operation"
+	$param="autolist"
+	mode="indent"
+/>

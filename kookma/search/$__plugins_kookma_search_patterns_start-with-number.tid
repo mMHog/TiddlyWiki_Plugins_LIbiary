@@ -1,0 +1,18 @@
+description: Starting with numbers
+pattern: ^\d+
+tags: $:/tags/Search/Pattern
+title: $:/plugins/kookma/search/patterns/start-with-number
+type: text/vnd.tiddlywiki
+
+!! Match Lines Starting with Numbers
+The numbers can be located at the start of the line. These numbers can be matched by using the `^` sign which is used to express the start of the line.
+
+```
+^\d+
+```
+
+or
+
+```
+^\[0-9]+
+```

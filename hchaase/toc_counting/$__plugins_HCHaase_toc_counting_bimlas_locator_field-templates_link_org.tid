@@ -1,0 +1,12 @@
+caption: Link
+created: 20200214111229175
+creator: HC Haase
+modified: 20200217074813681
+modifier: HC Haase
+tags: $:/plugins/HCHaase/toc_counting
+title: $:/plugins/HCHaase/toc_counting/bimlas/locator/field-templates/link_org
+type: text/vnd.tiddlywiki
+
+<$link to=<<currentTiddler>>>
+  <$transclude field="caption"><$view field="title"/></$transclude>
+</$link>

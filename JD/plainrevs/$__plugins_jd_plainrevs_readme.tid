@@ -1,0 +1,68 @@
+created: 20180714083837795
+creator: jd
+modified: 20200726150553358
+modifier: jd
+tags: 
+title: $:/plugins/jd/plainrevs/readme
+
+This plugin is a simple versioning system for edited tiddlers, recorded as they are saved. It works through the following buttons:
+
+* {{$:/plugins/jd/plainrevs/images/done-button}} will not just save the tiddler as usual, but will also save the previous version of that tiddler (all fields including //tags//, except //title//).
+
+* {{$:/plugins/jd/plainrevs/images/delete-button}} will not just delete the tiddler as usual, but will also delete that tiddler's revisions.
+
+A ''Revisions'' tab can be found under ''info'' {{$:/core/images/info-button}}, and from there the following actions can be done to each revision:
+
+* → / ↓ : show the revision list as horizontal or vertical tabs
+* ''(show differences)'' / ''(hide differences)'' : shows/hides the differences between the revision and the current state of the tiddler.
+* ''(restore)'' : replace the current state of the tiddler with that revision (all fields including //tags//, except //title//).
+* ''(pin)'' / ''(unpin)'' : makes it so that the revision will not be deleted when the source tiddler is deleted, nor when the user-defined limit of revisions is reached.
+* ''(delete)'' : deletes that revision, pinned or not.
+
+!!! ''Changing the source tiddler's title''
+
+* The source tiddler's title may be changed; its rev tiddlers will always follow it as long as "//Update (oldtitle) to (newtitle) in the tags and list fields of other tiddlers//" is checked when editing the source tiddler's title.
+
+!!! ''Filter search for rev tiddlers''
+
+For rev tiddlers of `Tiddler title`:
+
+`[prefix[$:/rev]search:list[Tiddler title]]`
+
+!!! ''Whitelisting / Blacklisting''
+<em class="tc-muted">The options below are available at ''~$:/ControlPanel'' → ''Settings'' tab </em>
+
+{{$:/plugins/jd/plainrevs/config}}
+
+!!! ''Rev tiddler structure''
+
+```
+title: $:/rev/<<now YYYY0MM0DD.0hh:0MM:0ss>>
+list: [[Title of source tiddler]]
+rev-list: listItems [[inside list field]] of [[source tiddler]]
+rev-tags: [[tag 1]] tag2
+rev-someotherfield: someotherfield's value
+... and all other fields of source tiddler, to be prefixed 'rev-'
+```
+
+If  the title already exists, it is incremented numerically. 
+
+Restoring the revision will re-copy the stored rev-fields (the "rev-" prefix will be removed). 
+
+!!! ''Notes''
+
+The ~$:/core ''save'' and ''delete'' buttons are neither replaced nor overwritten. You can still use them alongside this plugin's buttons by setting their visibility at ~$:/ControlPanel → Appearance → Toolbars
+
+<a target="blank" href="http://j.d.revisions.tiddlyspot.com/">Project Homepage on Tiddlyspot</a>
+
+<hr>
+
+//MIT License://
+
+Copyright 2020 jologsdialogue@gmail.com
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.

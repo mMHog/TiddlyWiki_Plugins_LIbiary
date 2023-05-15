@@ -1,0 +1,33 @@
+created: 20190611081555857
+creator: HC Haase
+modified: 20200311101838852
+modifier: HC Haase
+tags: $:/tags/ControlPanel/Settings
+title: $:/plugins/HCHaase/toc_counting/settings
+
+! [[Counting in Table of Contents|$:/plugins/HCHaase/toc_counting/settings]] 
+
+Choose between classic mode, counting tags for the// first level//, deep mode with counting, tags in //all levels//  (requires the kin-filter plugin) or turn off.
+Toggle below or press the button <<icon {{$:/plugins/HCHaase/toc_counting/button/toggle-counting-level}}>> in the page toolbar.
+
+*<$radio tiddler="$:/state/plugins/HCHaase/toc_counting/macro/toc_counting" field="level" value="1"> Classic mode (1 level)</$radio>
+*<$radio tiddler="$:/state/plugins/HCHaase/toc_counting/macro/toc_counting" field="level" value="deep"> Deep mode (all levels)</$radio> (NB: will slowdown the wiki)
+*<$radio tiddler="$:/state/plugins/HCHaase/toc_counting/macro/toc_counting" field="level" value="off"> Turn off</$radio>
+
+!! Enable 
+*<$checkbox tiddler="$:/plugins/HCHaase/toc_counting" tag="$:/tags/Macro" default="$:/tags/Macro"> <$link to="$:/plugins/HCHaase/toc_counting/settings/readme">Enable counting of sub-tiddlers in TOC</$link> </$checkbox>
+*<$checkbox tiddler="$:/core/ui/MoreSideBar/Tags" field="text" checked={{$:/plugins/HCHaase/toc_counting/more/tag!!text}} unchecked={{$:/plugins/HCHaase/toc_counting/more/tag_org!!text}}default={{!!tags_count}} > <$link to="$:/plugins/HCHaase/toc_counting/more/tag">Enable counting of sub-tiddlers in More/Tags</$link> </$checkbox>  
+*<$checkbox tiddler="$:/plugins/HCHaase/toc_counting/core/macros/list" tag="$:/tags/Macro" default="$:/tags/Macro"> <$link to="$:/plugins/HCHaase/toc_counting/core/macros/list">Enable counting of sub-tiddlers in list-links and list link-draggable</$link> </$checkbox>
+
+!! Integration with other plugins
+Here you can toggle counting in other TOC making plugins. If this interfere undesirably with these plugins (e.g. with future updates), you can leave them unchecked.
+
+*<$checkbox  tiddler="$:/plugins/bimlas/locator/field-templates/link" field="text" checked={{$:/plugins/HCHaase/toc_counting/bimlas/locator/field-templates/link_count!!text}} unchecked={{$:/plugins/HCHaase/toc_counting/bimlas/locator/field-templates/link_org!!text}}>
+<$link to="$:/plugins/bimlas/locator/field-templates/link">Enable counting of sub-tiddlers in Locator TOC</$link> </$checkbox>
+
+If you have the [[locator plugin|https://bimlas.gitlab.io/tw5-locator/#]] form bimlas, you can toggle the counting above. OR you can use the locator/context setting, in the locator plugin to toggle it. Press the context menu (cog wheel) and change the `Template of context items:` to LINKS (with counter).
+
+*<$checkbox tiddler="$:/plugins/HCHaase/toc_counting/tocP/macros" tag="$:/tags/Macro" default=""> <$link to="$:/plugins/HCHaase/toc_counting/tocP/readme">Enable (partial) counting of sub-tiddlers in tocP</$link> </$checkbox>
+
+NB: The support for the [[tocP plugin|https://wikilabs.github.io/editions/tocP/]] is only partial. It will only work when the plugin is used with the `parent` field and not when used with a custom field.
+

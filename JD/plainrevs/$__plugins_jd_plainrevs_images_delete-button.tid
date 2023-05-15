@@ -1,0 +1,19 @@
+created: 20180715050023671
+creator: jd
+modified: 20180715103423963
+modifier: jd
+tags: $:/tags/Image
+title: $:/plugins/jd/plainrevs/images/delete-button
+
+<svg class="tc-image-delete-button tc-image-button" viewBox="0 0 128 128" width="22pt" height="22pt">
+<g fill-rule="evenodd">
+        <rect x="12" y="11" width="105" height="16" rx="8" id="svg_2"/>
+        <rect x="40" y="0" width="48" height="16" rx="8" id="svg_3"/>
+        <rect x="20" y="16" width="16" height="112" rx="8" id="svg_4"/>
+        <rect x="20" y="112" width="88" height="16" rx="8" id="svg_5"/>
+        <rect x="92" y="16" width="16" height="112" rx="8" id="svg_6"/>
+        <rect x="68" y="16" width="16" height="112" rx="8" id="svg_7"/>
+        <rect x="44" y="16" width="16" height="112" rx="8" id="svg_8"/>
+        <rect x="30" y="62" width="70" height="10" rx="8" id="svg_9"/>
+    </g>
+</svg>

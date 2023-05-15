@@ -1,0 +1,9 @@
+command-palette-caption: {{$:/language/Buttons/Home/Caption}}
+command-palette-hint: {{$:/language/Buttons/Home/Hint}}
+command-palette-name: Home
+command-palette-type: message
+tags: $:/tags/CommandPaletteCommand
+title: $:/plugins/linonetwo/commandpalette/Home
+type: text/vnd.tiddlywiki
+
+tm-home

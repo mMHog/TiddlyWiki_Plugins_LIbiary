@@ -1,0 +1,40 @@
+created: 20200519065529571
+creator: HC Haase
+modified: 20210312111321110
+modifier: HC Haase
+tags: 
+title: $:/plugins/HCHaase/TOCgeneric/settings
+
+!! Customisations
+
+!!! Buttons
+You can change the reveal /hide buttons (or text) here. the default is `{{$:/core/images/right-arrow}}__References__` and `{{$:/core/images/down-arrow}}__References__`. If you like icons you could  transclude e.g. a chevron  like thiks `{{$:/core/images/chevron-up}}`, to get arrows {{$:/core/images/chevron-up}} .
+
+Reveal button: <$edit-text tiddler="$:/plugins/HCHaase/TOCgeneric/ViewTemplate" field="button_reveal" default="{{$:/core/images/chevron-down}}"/> >{{$:/plugins/HCHaase/TOCgeneric/ViewTemplate!!button_reveal}}
+
+Hide Button: <$edit-text tiddler="$:/plugins/HCHaase/TOCgeneric/ViewTemplate" field="button_hide" default="{{$:/core/images/chevron-up}}"/>  >{{$:/plugins/HCHaase/TOCgeneric/ViewTemplate!!button_hide}}
+
+!!! Default visibility
+
+You can change the visibility of the lists and other elements, or change if they are folded or unfolded by default.
+
+|!|!Enable|!Unfold|
+|Top level list | <$checkbox tiddler="$:/plugins/HCHaase/TOCgeneric/ViewTemplate" field="default-state-visible" checked="show" unchecked="hide" default="show" > </$checkbox>  | <$checkbox tiddler="$:/plugins/HCHaase/TOCgeneric/ViewTemplate" field="default-state" checked="show" unchecked="hide" default="show" > </$checkbox>  |
+|Tag list | <$checkbox tiddler="$:/plugins/HCHaase/TOCgeneric/ViewTemplate" field="default-state-visible-tag" checked="show" unchecked="hide" default="show" > </$checkbox>   | <$checkbox tiddler="$:/plugins/HCHaase/TOCgeneric/ViewTemplate" field="default-state-tag" checked="show" unchecked="hide" default="show" > </$checkbox> |
+|Backlinks list | <$checkbox tiddler="$:/plugins/HCHaase/TOCgeneric/ViewTemplate" field="default-state-visible-backlinks" checked="show" unchecked="hide" default="show" > </$checkbox> | <$checkbox tiddler="$:/plugins/HCHaase/TOCgeneric/ViewTemplate" field="default-state-backlinks" checked="show" unchecked="hide" default="show" > </$checkbox> |
+|Freelinks list ( <$checkbox tiddler="$:/plugins/HCHaase/TOCgeneric/ViewTemplate" field="freelink-search-pat" checked="fullMatch" unchecked="PartialMatch" default="fullMatch" > full</$checkbox> or <$checkbox tiddler="$:/plugins/HCHaase/TOCgeneric/ViewTemplate" field="freelink-search-pat" checked="PartialMatch" unchecked="fullMatch" default="fullMatch" > partial</$checkbox> match) | <$checkbox tiddler="$:/plugins/HCHaase/TOCgeneric/ViewTemplate" field="default-state-visible-freelinks" checked="show" unchecked="hide" default="show" > </$checkbox> | <$checkbox tiddler="$:/plugins/HCHaase/TOCgeneric/ViewTemplate" field="default-state-freelinks" checked="show" unchecked="hide" default="show" > </$checkbox> |
+|Lists list | <$checkbox tiddler="$:/plugins/HCHaase/TOCgeneric/ViewTemplate" field="default-state-visible-list" checked="show" unchecked="hide" default="hide" > </$checkbox> | <$checkbox tiddler="$:/plugins/HCHaase/TOCgeneric/ViewTemplate" field="default-state-list" checked="show" unchecked="hide" default="hide" > </$checkbox> |
+|Listed list | <$checkbox tiddler="$:/plugins/HCHaase/TOCgeneric/ViewTemplate" field="default-state-visible-listed" checked="show" unchecked="hide" default="hide" ></$checkbox> | <$checkbox tiddler="$:/plugins/HCHaase/TOCgeneric/ViewTemplate" field="default-state-listed" checked="show" unchecked="hide" default="hide" ></$checkbox> |
+
+<$checkbox tiddler="$:/state/plugins/HCHaase/TOCgeneric/state-transclusion" index="transclude-created" checked="show" unchecked="hide" default="show" > Show modified/created date in the right corner of the content box</$checkbox>  
+
+
+
+When you hide/show the list on a tiddler,'' the chosen state for that individual tiddler is remembered and overrides this default!'' Below you can delete the state and revert to default.
+
+<$button>
+<$action-deletetiddler $filter="[prefix[$:/state/plugins/HCHaase/TOCgeneric/state]]"/>
+Reset lists visibility to the above defaults
+</$button> for all individual tiddlers (''can not be undone!!'') 
+
+(you can  do this manually by deleting $:/plugins/HCHaase/TOCgeneric/state-xx tiddlers).

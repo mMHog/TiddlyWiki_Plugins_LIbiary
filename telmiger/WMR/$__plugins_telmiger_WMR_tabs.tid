@@ -1,0 +1,17 @@
+created: 20181130193703180
+creator: Thomas Elmiger
+modified: 20181130195012073
+modifier: Thomas Elmiger
+tags: ShortReference
+title: $:/plugins/telmiger/WMR/tabs
+wmr-source-link: https://tiddlywiki.com/#tabs%20Macro
+
+!!! Filter tiddlers for tabs
+
+<$macrocall $name="wt" wikitext="""<<tabs "[tag[Foo]][tag[Bar]]" default:"$:/plugins/telmiger/WMR/foo">>"""/>
+
+
+
+!!! Vertical tabs
+
+<$macrocall $name="wt" wikitext="""<<tabs "[tag[Foo]][tag[Bar]]" "$:/plugins/telmiger/WMR/foo" class:"tc-vertical">>"""/>

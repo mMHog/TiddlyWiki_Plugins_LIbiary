@@ -1,0 +1,16 @@
+[
+    {
+        "created": "20200422001727183",
+        "text": "",
+        "tooltip": "",
+        "title": "$:/wrappit/vars",
+        "tags": "",
+        "suffix": "</$vars>",
+        "reflink": "VarsWidget",
+        "prefix": " <$vars yourvariable=\"value\" >",
+        "modified": "20200502094921288",
+        "icon": "",
+        "caption": "",
+        "param": "wrap-lines"
+    }
+]

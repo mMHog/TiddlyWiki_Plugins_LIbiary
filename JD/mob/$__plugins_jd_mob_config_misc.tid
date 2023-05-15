@@ -1,0 +1,89 @@
+caption: Miscellaneous
+created: 20171122140327337
+creator: JD
+modified: 20171122141012375
+modifier: JD
+tags: $:/tags/jd/config
+title: $:/plugins/jd/mob/config/misc
+
+<h2>Miscellaneous</h2>
+<h3>Config button</h3>
+<$checkbox tiddler="$:/config/jd/mobbutton/visibility/$:/plugins/jd/mob/button/config" field="text" checked="show" unchecked="hide" default="show"/> Show {{$:/core/images/theme-button}} button at ''Controls'' / ''Mobbuttons''
+<br><br>
+<hr>
+<h3>Scrollbars</h3>
+<$button class="tc-btn-invisible">
+<<jdconfig scrollbars hide>>
+<<jdradbut scrollbars hide>>
+</$button> Invisible scrollbars
+<br>
+<$button class="tc-btn-invisible">
+<<jdconfig scrollbars show>>
+<<jdradbut scrollbars show>>
+</$button> Visible scrollbars
+<br><br>
+<hr>
+<h3>Focus</h3>
+<p>Here we can hide the hightlight / outline on focused text inputs and buttons</p>
+<$button class="tc-btn-invisible">
+<<jdconfig focus show>>
+<<jdradbut focus show>>
+</$button> Default
+<br>
+<$button class="tc-btn-invisible">
+<<jdconfig focus hide>>
+<<jdradbut focus hide>>
+</$button> Hide focus
+<br><br>
+<hr>
+<h3>Story river</h3>
+Here we can try to stop the fist tiddler in the story river from scrolling past the topbar
+<br>
+''Side effects:''
+<br>
+<li>For ''classic'' and ''pop'' story view: tiddlers won't automatically scroll into view on link click</li>
+<li>Browser search bar won't automatically hide on scroll up (tested on Chrome for Android)</li>
+<br>
+<$button class="tc-btn-invisible">
+<<jdconfig storyfix yes>>
+<<jdradbut storyfix yes>>
+</$button> Apply 
+<br>
+<$button class="tc-btn-invisible">
+<<jdconfig storyfix no>>
+<<jdradbut storyfix no>>
+</$button> Don't apply
+<br><br>
+<hr>
+<h3>Restore defaults</h3>
+<div class="jd-bq">
+<p>
+To reset to...
+</p>
+<p>
+Default font size,  Visible scrollbars, ''Simple searchbar'' on top, ''Controls'' on bottom,  ''Simple searchbar button'' on controls,  Story river hack not applied...
+</p>
+<p>
+Click:
+</p>
+<p>
+<$reveal type="nomatch" state="$:/plugins/jd/mob/config/config##defaultconfirm" text="confirm">
+<$button class="jd-btn-txt">
+<<jdconfig defaultconfirm confirm>>
+Restore defaults
+</$button>
+</$reveal>
+<$reveal type="match" state="$:/plugins/jd/mob/config/config##defaultconfirm" text="confirm">
+<$button class="jd-btn-txt">
+<<setJDmobdefaults>>
+<<jdconfig defaultconfirm cancel>>
+Confirm
+</$button>
+<$button class="jd-btn-txt">
+<<jdconfig defaultconfirm cancel>>
+Cancel
+</$button>
+</$reveal>
+</p>
+</div>
+<br>

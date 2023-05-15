@@ -1,0 +1,11 @@
+caption: Help
+created: 20170510130615844
+modified: 20191231181254485
+tags: 
+title: $:/plugins/tg/exploration/help
+
+!! Help
+* To explore ~WikiText core tiddlers like the UI shadow tiddlers, code snippets, macros, themes and so on, select a filter and then the appropriate tiddler from the list
+* The five 'Code' tabs can contain/remember earlier results.
+* You can choose a filter from the list or add a filter manually
+** Default the list of filters contains <$count filter="[all[shadows+tiddlers]tag[$:/tags/codeFilter]]"/> filters but you can add your own filters to the list, see [[How to add a filter to the list|$:/plugins/tg/exploration/filter/howto]]

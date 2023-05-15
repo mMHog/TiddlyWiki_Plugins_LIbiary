@@ -1,0 +1,7 @@
+code-body: yes
+key: ((view-fields))
+tags: $:/tags/KeyboardShortcut
+title: $:/plugins/kookma/utility/actions/view-fields
+type: text/vnd.tiddlywiki
+
+<$action-listops $tiddler="$:/state/utility/view-fields" $field="text" $subfilter="+[toggle[show],[hide]]" />
