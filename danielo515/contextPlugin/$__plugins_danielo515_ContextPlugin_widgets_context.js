@@ -1,11 +1,3 @@
-created: 20140418153435777
-creator: danielo
-modified: 20140530231943517
-modifier: danielo
-module-type: widget
-title: $:/plugins/danielo515/ContextPlugin/widgets/context.js
-type: application/javascript
-
 /*\\
 title: $:/core/modules/widgets/danielo/context-widget.js
 type: application/javascript
@@ -41,7 +33,7 @@ contextWidget.prototype.render = function(parent,nextSibling) {
 	// Execute our logic
 	this.execute();
     
-  if(this.term && this.term.length >= this.minTermLength){
+  if(this.term && this.term.length>3){
      
       this.createRegexp();
       var matches = this.executeRegexp();
@@ -64,7 +56,6 @@ Compute the internal state of the widget
 contextWidget.prototype.execute = function() {
 	// Get the parameters from the attributes
     this.matchedClass = this.getAttribute("matchClass","matched");
-    this.minTermLength = this.getAttribute("min-term-length", 3);
 	this.tiddler = this.getAttribute( "tiddler",this.getVariable("currentTiddler") );
     this.term =  this.getAttribute("term",this.getAttribute("searchTerm"));
 	this.contextLength = this.getAttribute("length",50);
