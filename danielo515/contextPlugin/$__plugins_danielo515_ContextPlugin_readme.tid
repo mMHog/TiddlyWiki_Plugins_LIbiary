@@ -1,5 +1,4 @@
 title: $:/plugins/danielo515/ContextPlugin/readme
-This widget works as regular search and shows the result with the searched word highlighted with some of its context.
 
 !Usage
 
@@ -34,9 +33,8 @@ That will search for tiddlers containing the text specified in [[$:/temp/advance
 | before | Number of characters before the matched term to show | the value of the length parameter |
 | after | Number of characters after the matched term to show | the value of the length parameter |
 | maxMatches | maximun number of matched elements to show. Incrementing this can cause several performance issues | 10 |
-| element | Node element to create. This element will contain the results of the search. If you want to style it its class is `tw-context` | `pre` which will generate a `<pre>` element |
+| element | Node element to create. This element will contain the results of the search. If you want to style it its class is `tw-context` | `<pre>` |
 | matchClass | The css class to assign to the matched terms in the results. This is used to highlight the results | matched |
-| min-term-length | Minimum search length to display context | 3 |
 
 !Customizing the output
 There are not many ways to customize the output of this widget. You can specify ''what type of node you want to create'' to wrap the results (div,span...). The default is `<pre>`. This container is created with the class `tw-context` so you can easily apply styles to it. Something similar happens to the ''highlighted'' words. You can specify the name of the class to assign to it and also you can apply styles to that class.
